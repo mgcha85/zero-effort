@@ -36,3 +36,16 @@ services:
       - "${MEDIA_PORT:-3003}:80"
     environment:
       - APP_ENV=${APP_ENV:-dev}
+
+  pdf-tools:
+    build:
+      context: .
+      dockerfile: apps/pdf-tools/Containerfile
+    image: zero-effort-pdf:latest
+    container_name: pdf-web
+    restart: always
+    ports:
+      - "${PDF_PORT:-3004}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
