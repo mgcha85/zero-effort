@@ -7,7 +7,7 @@
   <header class="border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 z-30 shadow-2xs">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
       <div class="flex items-center space-x-2.5">
-        <span class="text-2xl drop-shadow-xs">📑</span>
+        <img src="/favicon.png" alt="로고" class="h-8 w-8 rounded-lg object-contain" />
         <span class="text-lg font-black tracking-tight text-rose-700">ZeroPDF Safe Tools</span>
       </div>
       <div class="flex items-center space-x-1.5 text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 shadow-2xs">

@@ -13,7 +13,7 @@
   <header class="border-b border-slate-200 bg-white shadow-xs sticky top-0 z-30">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
       <div class="flex items-center space-x-2">
-        <span class="text-2xl">⚔️</span>
+        <img src="/favicon.png" alt="로고" class="h-8 w-8 rounded-lg object-contain" />
         <div class="flex flex-col">
           <span class="text-base font-black tracking-tight text-indigo-700 leading-tight">
             {translations[$currentLang].siteTitle}
