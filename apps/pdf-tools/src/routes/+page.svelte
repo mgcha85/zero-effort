@@ -27,9 +27,9 @@
   let errorMessage = '';
 
   const jsonLd = buildWebAppJsonLd({
-    name: '안심 PDF 병합 및 분할 도구 (100% 서버 무전송 브라우저 직접 처리)',
-    url: 'https://pdf.chadata.kr',
-    description: '서버로 PDF 파일을 업로드하지 않고 사용자 PC의 CPU/RAM으로 직접 빠르고 안전하게 PDF 문서를 병합(Merge)하거나 원하는 페이지를 분할(Split)합니다.',
+    name: 'PDF 합치기 나누기 - SecurePDF',
+    url: 'https://zero-effort-pdf.vercel.app',
+    description: '서버로 PDF 파일을 업로드하지 않고 브라우저에서 직접 빠르고 안전하게 PDF 문서를 합치거나(Merge) 원하는 페이지만 나눕니다(Split).',
     applicationCategory: 'BusinessApplication'
   });
 
@@ -241,12 +241,12 @@
 </script>
 
 <svelte:head>
-  <title>안심 PDF 병합 및 분할기 - 서버 전송 없이 내 PC 브라우저에서 100% 직접 처리</title>
-  <meta name="description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 안심 PDF 병합(합치기) 및 페이지 분할(자르기). 서버 업로드 없이 내 PC CPU/RAM으로 초고속 직접 변환." />
-  <meta name="keywords" content="PDF 합치기, PDF 병합, PDF 분할, PDF 나누기, PDF 페이지 추출, 안전한 PDF 변환기, 무업로드 PDF" />
+  <title>PDF 합치기 나누기 - SecurePDF (서버 전송 0KB)</title>
+  <meta name="description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 PDF 합치기 및 나누기. 서버 전송 0KB, 내 기기 메모리에서 즉시 처리." />
+  <meta name="keywords" content="PDF 합치기, PDF 나누기, PDF 병합, PDF 분할, PDF 페이지 추출, 안전한 PDF 변환기, 무업로드 PDF" />
   <link rel="canonical" href="https://zero-effort-pdf.vercel.app/" />
-  <meta property="og:title" content="안심 PDF 병합 및 분할기 - 서버 전송 없이 내 PC 브라우저에서 100% 직접 처리" />
-  <meta property="og:description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 안심 PDF 병합(합치기) 및 페이지 분할(자르기)." />
+  <meta property="og:title" content="PDF 합치기 나누기 - SecurePDF" />
+  <meta property="og:description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 PDF 합치기 및 나누기 (서버 전송 없음)." />
   <meta property="og:url" content="https://zero-effort-pdf.vercel.app/" />
   <meta property="og:image" content="https://zero-effort-pdf.vercel.app/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -263,7 +263,7 @@
       <span>외부 서버 전송 0바이트</span>
     </div>
     <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-      안심 PDF 병합 & 분할 도구
+      PDF 합치기 나누기
     </h1>
     <p class="mt-2 text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
       계약서, 금융 서류, 주민번호 등 민감한 서류가 외부 서버에 업로드될 걱정 없이, 내 브라우저 엔진에서 직접 초고속 연산합니다.
