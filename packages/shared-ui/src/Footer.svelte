@@ -48,40 +48,30 @@
   }
 </script>
 
-<footer class="mt-auto border-t border-gray-200 bg-gray-50 text-xs text-gray-500 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-400">
-  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+<footer class="mt-auto border-t border-slate-200/80 bg-white/70 backdrop-blur-xs text-xs text-slate-500">
+  <div class="mx-auto max-w-5xl px-4 py-6 sm:px-6">
     <!-- Links -->
-    <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-medium text-gray-600 dark:text-gray-300">
-      <button type="button" class="hover:underline hover:text-gray-900 dark:hover:text-white" on:click={() => openModal('terms')}>
+    <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 font-medium text-slate-600">
+      <a href="mailto:contact@chadata.kr" class="hover:underline hover:text-slate-900 transition">
+        연락처
+      </a>
+      <span class="text-slate-300">|</span>
+      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('terms')}>
         이용약관
       </button>
-      <span class="text-gray-300 dark:text-gray-700">|</span>
-      <button type="button" class="font-bold hover:underline hover:text-gray-900 dark:hover:text-white" on:click={() => openModal('privacy')}>
+      <span class="text-slate-300">|</span>
+      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('privacy')}>
         개인정보처리방침
       </button>
-      <span class="text-gray-300 dark:text-gray-700">|</span>
-      <button type="button" class="hover:underline hover:text-gray-900 dark:hover:text-white" on:click={() => openModal('refund')}>
-        환불/취소 정책
+      <span class="text-slate-300">|</span>
+      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('refund')}>
+        환불 정책
       </button>
     </div>
 
-    <!-- Company Legal Information (Strict User Rule) -->
-    <div class="mt-6 text-center leading-relaxed text-gray-500 dark:text-gray-400 space-y-1">
-      <p>
-        <span class="font-semibold text-gray-700 dark:text-gray-300">상호명: 차데이터리서치</span>
-        <span class="mx-1.5">|</span>
-        <span>대표자: 차민규</span>
-        <span class="mx-1.5">|</span>
-        <span>사업자등록번호: 219-03-78291</span>
-      </p>
-      <p>
-        <span>통신판매업 신고번호: 제 2021-평택안출-0261호</span>
-        <span class="mx-1.5">|</span>
-        <span>주소: 경기도 평택시 도대길 100-13</span>
-      </p>
-      <p class="pt-2 text-[11px] text-gray-400 dark:text-gray-500">
-        © {new Date().getFullYear()} 차데이터리서치 (Zero-Effort Apps). All rights reserved.
-      </p>
+    <!-- Copyright (Clean minimal style) -->
+    <div class="mt-3 text-center text-[11px] text-slate-400">
+      <p>© {new Date().getFullYear()} ZeroEffort. All rights reserved.</p>
     </div>
   </div>
 </footer>
