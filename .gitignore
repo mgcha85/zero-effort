@@ -1,0 +1,21 @@
+# Node / PNPM
+node_modules/
+.pnpm-store/
+dist/
+build/
+.svelte-kit/
+
+# Environment files (CRITICAL: user rule)
+.env
+.env.*
+!.env.example
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+
+# Podman / Docker
+.podman/

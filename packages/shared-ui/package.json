@@ -1,0 +1,19 @@
+{
+  "name": "@zero-effort/shared-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./Footer.svelte": "./src/Footer.svelte",
+    "./LegalModal.svelte": "./src/LegalModal.svelte",
+    "./AdBanner.svelte": "./src/AdBanner.svelte"
+  },
+  "dependencies": {
+    "@zero-effort/i18n": "workspace:*"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0 || ^4.0.0"
+  }
+}

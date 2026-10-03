@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  caro-game:
+    build:
+      context: .
+      dockerfile: apps/caro-game/Containerfile
+    image: zero-effort-caro:latest
+    container_name: caro-web
+    restart: always
+    ports:
+      - "${CARO_PORT:-3001}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
+  size-converter:
+    build:
+      context: .
+      dockerfile: apps/size-converter/Containerfile
+    image: zero-effort-size:latest
+    container_name: size-web
+    restart: always
+    ports:
+      - "${SIZE_PORT:-3002}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
+  wasm-media:
+    build:
+      context: .
+      dockerfile: apps/wasm-media-tools/Containerfile
+    image: zero-effort-media:latest
+    container_name: media-web
+    restart: always
+    ports:
+      - "${MEDIA_PORT:-3003}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}

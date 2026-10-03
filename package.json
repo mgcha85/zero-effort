@@ -1,0 +1,21 @@
+{
+  "name": "zero-effort-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:caro": "pnpm --filter @zero-effort/caro-game dev",
+    "dev:size": "pnpm --filter @zero-effort/size-converter dev",
+    "dev:wasm": "pnpm --filter @zero-effort/wasm-media-tools dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.5.0",
+    "prettier-plugin-svelte": "^3.3.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  }
+}
