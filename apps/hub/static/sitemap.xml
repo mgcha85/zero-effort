@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://minitoolbox.dev/</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url><loc>https://pdf.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://media.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://size.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://schengen.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://anmeldung.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://rirekisho.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://visarun.minitoolbox.dev/</loc><priority>0.9</priority></url>
+  <url><loc>https://caro.minitoolbox.dev/</loc><priority>0.8</priority></url>
+</urlset>
