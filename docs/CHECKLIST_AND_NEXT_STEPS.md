@@ -18,6 +18,10 @@
   - `minitoolbox.dev/robots.txt`
 - [x] **구조화 데이터(JSON-LD) 탑재**:
   - `WebApplication` & `FAQPage` 리치 스니펫 마크업 전 앱 적용 완료.
+- [x] **Google Search Console DNS TXT 레코드 배포 & 전파 완료**:
+  - `minitoolbox.dev`의 네임서버인 Vercel DNS에 `google-site-verification=J3LgjyH-P1O8Nc5ERB4yc-2H2YrKWvsI7y0T11-9JRQ` 직접 주입 완료.
+  - Google Public DNS(`8.8.8.8`)에 전파 확인 완료 (`TTL: 60`).
+  - HTML `<head>` 메타태그도 이중 배포 완료.
 - [x] **공통 프라이버시 & 사업자 정보 푸터 규정 준수**:
   - 통신판매업 신고번호, 사업자등록번호, 주소, 이용약관, 개인정보처리방침 완비.
 - [x] **텔레그램 알림 봇 연동 & 테스트 발송**:
@@ -27,30 +31,13 @@
 
 ---
 
-## 2. 즉시 진행한 스텝 (Completed Just Now)
-1. **텔레그램 수신 연동 완료**: `/start` 수신 확인 후 Chat ID `8516370855`를 `.env.dev`, `.env.prod`에 영구 기록 및 즉시 리포트 발송 테스트 통과.
-2. **모니터링 리포터 고도화**: `scripts/telegram_daily_briefing.py`를 `minitoolbox.dev` 8개 서브도메인 도메인 체계로 전면 업데이트.
-3. **SEO & 런치 전략서 구축**: [`docs/GROWTH_AND_SEO_STRATEGY.md`](file:///mnt/data/projects/zero-effort/docs/GROWTH_AND_SEO_STRATEGY.md) 작성 완료.
+## 2. 남은 사용자 클릭 액션 (1~2분 소요)
 
----
-
-## 3. 남은 작업 (Pending & Next Actions)
-
-### A. 사용자 직접 승인/입력이 필요한 외부 서비스 연동
-- [ ] **Google Search Console 등록**:
-  - `search.google.com/search-console` 접속 -> 속성 추가 -> 도메인 입력: `minitoolbox.dev`
-  - 제공되는 `google-site-verification=...` TXT 레코드를 Porkbun DNS에 1줄 추가.
-  - `https://minitoolbox.dev/sitemap.xml` 제출.
-- [ ] **Bing Webmaster Tools 등록**:
-  - `bing.com/webmasters` -> Google Search Console 연동(1클릭 동기화).
-- [ ] **Google AdSense 승인 신청**:
-  - `adsense.google.com`에 `minitoolbox.dev` 등록 (심사 제출).
-  - 승인 후 발급되는 `ca-pub-XXXXXXXX`를 `.env`의 `PUBLIC_ADSENSE_CLIENT_ID`에 입력.
-
-### B. 글로벌 커뮤니티 런칭 (준비 완료 상태)
-- [ ] **Hacker News (Show HN)**:
-  - 런칭 텍스트 템플릿 준비 (`docs/GROWTH_AND_SEO_STRATEGY.md` 참조).
-- [ ] **Product Hunt 런칭**:
-  - 메이커 등록 및 썸네일/GIF 업로드.
-- [ ] **Reddit 니치 서브레딧 시딩**:
-  - `r/berlin` (안멜둥 도구), `r/digitalnomad` (솅겐 계산기), `r/thailand` (TM.47 비자런).
+1. **Google Search Console 화면에서 [확인] (Verify) 버튼 클릭**:
+   - 이미 Google Public DNS에 TXT 레코드가 전파되어 있으므로 클릭 즉시 **"소유권이 확인됨"** 녹색 창이 뜹니다.
+2. **Sitemap 제출**:
+   - 인증 완료 후 좌측 메뉴 **[Sitemaps]** 에 들어가서 `sitemap.xml` 입력 후 제출 클릭.
+3. **Bing Webmaster Tools (선택/권장)**:
+   - `bing.com/webmasters` 접속 후 [Google 계정으로 로그인] -> [GSC에서 가져오기] 누르면 5초 만에 완료.
+4. **Google AdSense 승인 신청**:
+   - `adsense.google.com`에 `minitoolbox.dev` 사이트 등록 및 심사 제출.
