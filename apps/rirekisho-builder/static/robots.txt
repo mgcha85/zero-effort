@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zero-effort-rirekisho.vercel.app/sitemap.xml
+Sitemap: https://rirekisho.minitoolbox.dev/sitemap.xml
