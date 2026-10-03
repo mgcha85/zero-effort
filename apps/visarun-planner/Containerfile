@@ -1,0 +1,16 @@
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY package.json pnpm-workspace.yaml .npmrc ./
+COPY packages/ ./packages/
+COPY apps/visarun-planner/ ./apps/visarun-planner/
+
+RUN pnpm install --frozen-lockfile=false
+RUN pnpm --filter @zero-effort/visarun-planner run build
+
+FROM nginx:alpine
+COPY --from=builder /app/apps/visarun-planner/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

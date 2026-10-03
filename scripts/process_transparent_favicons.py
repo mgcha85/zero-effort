@@ -90,6 +90,8 @@ if __name__ == '__main__':
         ('apps/caro-game', 40, 0.8, 0.50),
         ('apps/schengen-calculator', 30, 0.8, 0.50),
         ('apps/anmeldung-prep', 30, 0.8, 0.50),
+        ('apps/rirekisho-builder', 30, 0.8, 0.50),
+        ('apps/visarun-planner', 30, 0.8, 0.50),
     ]
     for app, tol, blur, cy in apps:
         process_app_favicon(app, tolerance=tol, blur_radius=blur, center_y_ratio=cy)

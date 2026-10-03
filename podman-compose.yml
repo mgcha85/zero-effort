@@ -73,5 +73,29 @@ services:
     environment:
       - APP_ENV=${APP_ENV:-dev}
 
+  rirekisho-builder:
+    build:
+      context: .
+      dockerfile: apps/rirekisho-builder/Containerfile
+    image: zero-effort-rirekisho:latest
+    container_name: rirekisho-web
+    restart: always
+    ports:
+      - "${RIREKISHO_PORT:-3007}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
+  visarun-planner:
+    build:
+      context: .
+      dockerfile: apps/visarun-planner/Containerfile
+    image: zero-effort-visarun:latest
+    container_name: visarun-web
+    restart: always
+    ports:
+      - "${VISARUN_PORT:-3008}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
 
 

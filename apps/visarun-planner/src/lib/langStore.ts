@@ -1,0 +1,80 @@
+import { writable } from 'svelte/store';
+
+export type Lang = 'ko' | 'en' | 'th';
+
+export const currentLang = writable<Lang>('ko');
+
+export const translations = {
+  ko: {
+    siteTitle: '동남아 비자런 & 90일 체류신고',
+    subBrand: '태국 TM.47 · 발리 VoA · 베트남 무비자 알림 & 캘린더',
+    badge: '🔒 100% 로컬 계산 · 서버 전송 0KB',
+    step1Title: '1. 체류 국가 및 목적 선택',
+    step2Title: '2. 입국일(도착일) 입력',
+    entryDateLabel: '최근 입국일 (도착 스탬프 일자)',
+    calcCardTitle: '체류 기한 및 신고 마감일',
+    deadlineLabel: '체류 만료 / 신고 마감일',
+    daysRemainingLabel: '남은 일수',
+    onlineWindowLabel: '온라인 신고 가능 기간 (TM.47 등)',
+    safeStatus: '안전 (기한 여유)',
+    warningStatus: '주의 (온라인 신고 개시)',
+    urgentStatus: '긴급 (온라인 접수 마감 임박 / 오버스테이 주의)',
+    overdueStatus: '기한 경과 (오버스테이 / 벌금 대상)',
+    downloadIcs: '📅 캘린더(.ics) 알림 다운로드',
+    portalBtn: '공식 온라인 신고 사이트 바로가기',
+    tipsTitle: '💡 필수 실무 주의사항 및 벌금 규정',
+    faqTitle: '자주 묻는 질문 (FAQ)',
+    faq1Q: 'Q. 태국 90일 리포트(TM.47)는 언제 신청해야 하나요?',
+    faq1A: 'A. 공식 온라인 포털 접수는 마감일 15일 전부터 7일 전까지만 가능합니다. 7일 이내로 진입하면 온라인 접수가 막히므로 직접 이민국 청사에 가셔야 합니다.',
+    faq2Q: 'Q. 다른 나라로 여행 다녀오면 90일 카운트는 어떻게 되나요?',
+    faq2A: 'A. 해외로 출국했다가 다시 입국하면 입국일이 다시 Day 1이 되어 90일 카운트가 완전히 리셋됩니다.'
+  },
+  en: {
+    siteTitle: 'Southeast Asia Visa Run Planner',
+    subBrand: 'Thailand TM.47 · Bali VoA · Vietnam Border Runs & ICS Export',
+    badge: '🔒 100% In-Browser · 0KB Server Upload',
+    step1Title: '1. Select Destination & Rule',
+    step2Title: '2. Arrival Date',
+    entryDateLabel: 'Recent Arrival Date (Stamp date)',
+    calcCardTitle: 'Stay Expiration & Report Deadline',
+    deadlineLabel: 'Report Deadline / Expiry Date',
+    daysRemainingLabel: 'Days Remaining',
+    onlineWindowLabel: 'Online Filing Window (TM.47 etc)',
+    safeStatus: 'Safe (Plenty of time)',
+    warningStatus: 'Warning (Online filing window open)',
+    urgentStatus: 'Urgent (Online window closing soon)',
+    overdueStatus: 'Overdue (Overstay penalty applies)',
+    downloadIcs: '📅 Download Calendar (.ics) Alerts',
+    portalBtn: 'Go to Official Immigration Portal',
+    tipsTitle: '💡 Essential Rules & Overstay Penalties',
+    faqTitle: 'Frequently Asked Questions',
+    faq1Q: 'Q. When can I file the Thailand 90-day report (TM.47)?',
+    faq1A: 'A. The online portal accepts applications from 15 days up to 7 days before your deadline. If within 7 days, you must report in person at an immigration office.',
+    faq2Q: 'Q. Does leaving the country reset my 90-day count?',
+    faq2A: 'A. Yes. Whenever you exit and re-enter, your arrival date becomes Day 1, resetting the 90-day count.'
+  },
+  th: {
+    siteTitle: 'เครื่องมือวางแผนวีซ่ารัน & รายงาน 90 วัน',
+    subBrand: 'รายงานตัว 90 วัน (ตม.47) · วีซ่าบาหลี · บอร์เดอร์รันเวียดนาม',
+    badge: '🔒 ใช้งานบนเบราว์เซอร์ 100%',
+    step1Title: '1. เลือกประเทศและประเภทวีซ่า',
+    step2Title: '2. วันที่เดินทางถึง',
+    entryDateLabel: 'วันที่เดินทางมาถึงล่าสุด',
+    calcCardTitle: 'วันครบกำหนดรายงานตัว / สิ้นสุดการพำนัก',
+    deadlineLabel: 'วันครบกำหนด',
+    daysRemainingLabel: 'จำนวนวันที่เหลือ',
+    onlineWindowLabel: 'ช่วงเวลายื่นออนไลน์ (ตม.47)',
+    safeStatus: 'ปลอดภัย (ยังมีเวลา)',
+    warningStatus: 'แจ้งเตือน (เปิดยื่นออนไลน์แล้ว)',
+    urgentStatus: 'ด่วน (ใกล้หมดเวลายื่นออนไลน์)',
+    overdueStatus: 'เกินกำหนด (มีค่าปรับ)',
+    downloadIcs: '📅 ดาวน์โหลดการแจ้งเตือนปฏิทิน (.ics)',
+    portalBtn: 'ไปที่เว็บไซต์ตรวจคนเข้าเมืองทางการ',
+    tipsTitle: '💡 ข้อควรรู้และระเบียบค่าปรับ',
+    faqTitle: 'คำถามที่พบบ่อย (FAQ)',
+    faq1Q: 'Q. รายงานตัว 90 วัน (ตม.47) ยื่นออนไลน์ได้เมื่อไหร่?',
+    faq1A: 'A. สามารถยื่นออนไลน์ได้ล่วงหน้า 15 วัน ถึง 7 วันก่อนวันครบกำหนด หากเหลือน้อยกว่า 7 วัน ต้องไปยื่นที่สำนักงานตรวจคนเข้าเมืองด้วยตนเอง',
+    faq2Q: 'Q. หากเดินทางออกนอกประเทศ การนับ 90 วันจะเป็นอย่างไร?',
+    faq2A: 'A. เมื่อเดินทางออกและกลับเข้ามาใหม่ จะเริ่มนับวันแรกใหม่เป็นวันที่ 1'
+  }
+};

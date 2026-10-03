@@ -1,0 +1,16 @@
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY package.json pnpm-workspace.yaml .npmrc ./
+COPY packages/ ./packages/
+COPY apps/rirekisho-builder/ ./apps/rirekisho-builder/
+
+RUN pnpm install --frozen-lockfile=false
+RUN pnpm --filter @zero-effort/rirekisho-builder run build
+
+FROM nginx:alpine
+COPY --from=builder /app/apps/rirekisho-builder/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
