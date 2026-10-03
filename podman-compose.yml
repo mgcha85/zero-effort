@@ -61,4 +61,17 @@ services:
     environment:
       - APP_ENV=${APP_ENV:-dev}
 
+  anmeldung-prep:
+    build:
+      context: .
+      dockerfile: apps/anmeldung-prep/Containerfile
+    image: zero-effort-anmeldung:latest
+    container_name: anmeldung-web
+    restart: always
+    ports:
+      - "${ANMELDUNG_PORT:-3006}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
+
 

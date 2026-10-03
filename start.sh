@@ -9,7 +9,7 @@ if [ ! -f "$ENV_FILE" ]; then
     cp .env.example "$ENV_FILE"
 fi
 
-echo "🚀 Starting 5 Independent Zero-Effort Web Apps [ $APP_ENV ] using $ENV_FILE"
+echo "🚀 Starting 6 Independent Zero-Effort Web Apps [ $APP_ENV ] using $ENV_FILE"
 
 set -o allexport
 source "$ENV_FILE"
@@ -26,11 +26,13 @@ else
     exit 1
 fi
 
-echo "✅ All 5 independent web apps successfully started:"
+echo "✅ All 6 independent web apps successfully started:"
 echo "   - Cờ Caro Online (VN):         http://localhost:${CARO_PORT:-3001}"
 echo "   - Global Size Converter (SEA): http://localhost:${SIZE_PORT:-3002}"
 echo "   - Zero-Upload Image (KR):      http://localhost:${MEDIA_PORT:-3003}"
 echo "   - Secure PDF Tools (Global):   http://localhost:${PDF_PORT:-3004}"
 echo "   - Schengen 90/180 (Global):    http://localhost:${SCHENGEN_PORT:-3005}"
+echo "   - Anmeldung Prep (DE):         http://localhost:${ANMELDUNG_PORT:-3006}"
+
 
 
