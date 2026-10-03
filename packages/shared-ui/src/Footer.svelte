@@ -3,7 +3,7 @@
 
   export let lang: 'ko' | 'en' | 'vi' = 'ko';
 
-  let activeModal: 'terms' | 'privacy' | 'refund' | null = null;
+  let activeModal: 'terms' | 'privacy' | null = null;
 
   const legalContent = {
     terms: {
@@ -27,19 +27,10 @@
         <h4 class="font-bold text-base mb-2">3. 개인정보 보호책임자</h4>
         <p>성명: 차민규 | 연락처: privacy@chadata.kr</p>
       `
-    },
-    refund: {
-      title: '환불 및 취소 정책',
-      body: `
-        <h4 class="font-bold text-base mb-2">1. 환불 기준</h4>
-        <p class="mb-4">무료 제공 서비스는 결제 환불 대상이 아닙니다. 유료 프리미엄 구독 또는 디지털 다운로드 콘텐츠의 경우 결제 후 7일 이내에 디지털 콘텐츠를 사용(열람/다운로드)하지 않은 경우 전액 환불이 가능합니다.</p>
-        <h4 class="font-bold text-base mb-2">2. 환불 신청 절차</h4>
-        <p>환불을 원하시는 경우 결제 영수증 번호와 함께 고객센터로 접수해주시면 영업일 기준 3일 이내에 처리됩니다.</p>
-      `
     }
   };
 
-  function openModal(type: 'terms' | 'privacy' | 'refund') {
+  function openModal(type: 'terms' | 'privacy') {
     activeModal = type;
   }
 
@@ -47,9 +38,9 @@
     activeModal = null;
   }
   const labels = {
-    ko: { contact: '연락처', terms: '이용약관', privacy: '개인정보처리방침', refund: '환불 정책' },
-    en: { contact: 'Contact', terms: 'Terms of Service', privacy: 'Privacy Policy', refund: 'Refund Policy' },
-    vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật', refund: 'Chính sách hoàn tiền' }
+    ko: { contact: '연락처', terms: '이용약관', privacy: '개인정보처리방침' },
+    en: { contact: 'Contact', terms: 'Terms of Service', privacy: 'Privacy Policy' },
+    vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật' }
   };
 
   $: curLabels = labels[lang] || labels.ko;
@@ -69,10 +60,6 @@
       <span class="text-slate-300">|</span>
       <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('privacy')}>
         {curLabels.privacy}
-      </button>
-      <span class="text-slate-300">|</span>
-      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('refund')}>
-        {curLabels.refund}
       </button>
     </div>
 
