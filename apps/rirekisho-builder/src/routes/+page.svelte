@@ -192,7 +192,14 @@
 
 <svelte:head>
   <title>{t.siteTitle} | {t.subBrand}</title>
-  <meta name="description" content="JIS규격 일본 이력서(履歴書) 무료 자동완성. 생년월일만 넣으면 일본 학사일정에 맞춰 소학교/중학교/고등학교/대학교 입학·졸업 와레키(令和・平成・昭和) 자동 계산. 100% 브라우저 로컬 안전 출력." />
+  <meta
+    name="description"
+    content={$currentLang === 'ja'
+      ? 'JIS規格の履歴書をブラウザ上で簡単に無料作成・A4印刷。生年月日から小学校・中学校・高校・大学の入学・卒業年度（和暦・西暦）を自動計算。サーバー送信0KBの完全ローカル仕様。'
+      : $currentLang === 'en'
+      ? 'Free online Japanese JIS Standard resume builder. Automatic Wareki (Reiwa, Heisei, Showa) calculation for all school admission & graduation years. 100% in-browser private execution.'
+      : 'JIS규격 일본 이력서(履歴書) 무료 자동완성. 생년월일만 넣으면 일본 학사일정에 맞춰 소학교/중학교/고등학교/대학교 입학·졸업 와레키(令和・平成・昭和) 자동 계산. 100% 브라우저 로컬 안전 출력.'}
+  />
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6">
@@ -205,7 +212,7 @@
         on:click={() => (activeTab = 'form')}
       >
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-        <span>입력 편집 (Edit)</span>
+        <span>{t.tabEdit}</span>
       </button>
 
       <button
@@ -287,7 +294,7 @@
                 <div class="flex items-center justify-between mb-1">
                   <label class="block text-xs font-semibold text-slate-600">{t.birthDate}</label>
                   <button type="button" on:click={autoFillEducation} class="text-[11px] font-bold text-rose-600 hover:underline">
-                    ⚡ 학력 와레키 재계산
+                    {t.recalculateBtn}
                   </button>
                 </div>
                 <input type="date" bind:value={birthDate} on:change={autoFillEducation} class="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-rose-500 focus:outline-hidden" />
@@ -340,7 +347,7 @@
               {:else}
                 <div class="text-center p-2 text-slate-400">
                   <svg class="h-8 w-8 mx-auto mb-1 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                  <span class="text-[10px] leading-tight block">30mm x 40mm<br/>(4:3 비율)</span>
+                  <span class="text-[10px] leading-tight block">30mm x 40mm<br/>(4:3)</span>
                 </div>
               {/if}
             </div>
@@ -401,7 +408,7 @@
             </div>
 
             {#if workHistory.length === 0}
-              <p class="text-xs text-slate-400 italic">職歴なしの場合は「なし」と自動記載されます。職歴がある場合は行を追加してください。</p>
+              <p class="text-xs text-slate-400 italic">{t.noWorkNotice}</p>
             {/if}
 
             <div class="space-y-2">

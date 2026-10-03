@@ -37,8 +37,17 @@
   }
 
   function downloadCalendar() {
-    const title = `${selectedRule.flag} ${selectedRule.name} 마감 알림`;
-    const desc = `${selectedRule.name} 체류 만료/신고 마감일입니다.\\n남은 일수: ${result.daysRemaining}일\\n입국일: ${result.entryDate}\\n마감일: ${result.deadlineDate}`;
+    const ruleName = $currentLang === 'en' ? selectedRule.nameEn : $currentLang === 'th' ? selectedRule.nameTh : selectedRule.name;
+    const title = $currentLang === 'en'
+      ? `${selectedRule.flag} ${ruleName} Deadline Alert`
+      : $currentLang === 'th'
+      ? `${selectedRule.flag} แจ้งเตือนครบกำหนด ${ruleName}`
+      : `${selectedRule.flag} ${ruleName} 마감 알림`;
+    const desc = $currentLang === 'en'
+      ? `${ruleName} stay expiry/report deadline.\\nDays remaining: ${result.daysRemaining}\\nArrival: ${result.entryDate}\\nDeadline: ${result.deadlineDate}`
+      : $currentLang === 'th'
+      ? `วันครบกำหนดพำนัก/รายงานตัว ${ruleName}\\nจำนวนวันที่เหลือ: ${result.daysRemaining} วัน\\nวันเดินทางถึง: ${result.entryDate}\\nวันครบกำหนด: ${result.deadlineDate}`
+      : `${ruleName} 체류 만료/신고 마감일입니다.\\n남은 일수: ${result.daysRemaining}일\\n입국일: ${result.entryDate}\\n마감일: ${result.deadlineDate}`;
     const icsContent = generateIcsCalendar(title, desc, result.deadlineDate, result.deadlineDate);
 
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
@@ -68,7 +77,14 @@
 
 <svelte:head>
   <title>{t.siteTitle} | {t.subBrand}</title>
-  <meta name="description" content="태국 90일 거주신고(TM.47), 발리 도착비자(VoA), 베트남 무비자 비자런 D-Day 역산기. 오버스테이 방지 및 온라인 접수 가능 기간 알림, 1클릭 캘린더(.ics) 내보내기." />
+  <meta
+    name="description"
+    content={$currentLang === 'en'
+      ? 'Southeast Asia Visa Run & 90-Day Report D-Day Planner. Thailand TM.47, Bali VoA, Vietnam visa exemptions. Prevent overstay fines with 1-click .ics calendar alerts.'
+      : $currentLang === 'th'
+      ? 'เครื่องมือวางแผนการเดินทางวีซ่ารันและการรายงานตัว 90 วันในเอเชียตะวันออกเฉียงใต้ คำนวณวันครบกำหนดและส่งออกการแจ้งเตือนปฏิทิน (.ics)'
+      : '태국 90일 거주신고(TM.47), 발리 도착비자(VoA), 베트남 무비자 비자런 D-Day 역산기. 오버스테이 방지 및 온라인 접수 가능 기간 알림, 1클릭 캘린더(.ics) 내보내기.'}
+  />
 </svelte:head>
 
 <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
@@ -81,7 +97,11 @@
       {t.siteTitle}
     </h1>
     <p class="mt-2 text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
-      {t.subBrand}. 오버스테이 벌금 걱정 없이 실시간 D-Day 계산 및 캘린더 알림 등록.
+      {$currentLang === 'en'
+        ? `${t.subBrand}. Real-time D-day calculations & calendar reminders without overstay stress.`
+        : $currentLang === 'th'
+        ? `${t.subBrand} คำนวณวันครบกำหนดแบบเรียลไทม์พร้อมการแจ้งเตือนปฏิทิน`
+        : `${t.subBrand}. 오버스테이 벌금 걱정 없이 실시간 D-Day 계산 및 캘린더 알림 등록.`}
     </p>
   </div>
 
@@ -100,10 +120,10 @@
             >
               <div class="flex items-center space-x-2.5">
                 <span class="text-lg">{dest.flag}</span>
-                <span class="text-xs">{dest.name}</span>
+                <span class="text-xs">{$currentLang === 'en' ? dest.nameEn : $currentLang === 'th' ? dest.nameTh : dest.name}</span>
               </div>
               <span class="text-[10px] px-2 py-0.5 rounded-full {selectedDestId === dest.id ? 'bg-emerald-200 text-emerald-900' : 'bg-slate-100 text-slate-500'}">
-                {dest.periodDays}일
+                {dest.periodDays} {t.daysSuffix}
               </span>
             </button>
           {/each}
@@ -120,7 +140,7 @@
           class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm font-semibold text-slate-900 focus:border-emerald-500 focus:outline-hidden"
         />
         <p class="mt-2 text-[11px] text-slate-400 leading-tight">
-          여권의 입국 도장에 찍힌 날짜를 입력하세요. 입국 당일이 1일째로 계산됩니다.
+          {t.entryDateHint}
         </p>
       </div>
     </div>
@@ -132,8 +152,12 @@
           <div class="flex items-center space-x-2">
             <span class="text-2xl">{selectedRule.flag}</span>
             <div>
-              <h3 class="text-base font-black text-slate-900 leading-tight">{selectedRule.name}</h3>
-              <p class="text-[11px] text-slate-500 mt-0.5">{selectedRule.description}</p>
+              <h3 class="text-base font-black text-slate-900 leading-tight">
+                {$currentLang === 'en' ? selectedRule.nameEn : $currentLang === 'th' ? selectedRule.nameTh : selectedRule.name}
+              </h3>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                {$currentLang === 'en' ? selectedRule.descriptionEn : $currentLang === 'th' ? selectedRule.descriptionTh : selectedRule.description}
+              </p>
             </div>
           </div>
           <span class="px-2.5 py-1 text-xs font-bold rounded-full border {getStatusBadge(result.status).bg}">
@@ -146,10 +170,10 @@
           <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">{t.daysRemainingLabel}</span>
           <div class="mt-1 flex items-baseline justify-center space-x-2">
             <span class="text-4xl sm:text-5xl font-black {result.isOverdue ? 'text-red-600' : result.daysRemaining <= 7 ? 'text-rose-600' : 'text-emerald-700'}">
-              {result.isOverdue ? `+${Math.abs(result.daysRemaining)}일 초과` : `D-${result.daysRemaining}`}
+              {result.isOverdue ? `+${Math.abs(result.daysRemaining)} ${t.overdueSuffix}` : `D-${result.daysRemaining}`}
             </span>
             {#if !result.isOverdue}
-              <span class="text-xs text-slate-500 font-semibold">({result.daysRemaining}일 남음)</span>
+              <span class="text-xs text-slate-500 font-semibold">({result.daysRemaining} {t.daysRemainingSuffix})</span>
             {/if}
           </div>
         </div>
@@ -170,8 +194,8 @@
             </div>
           {:else}
             <div class="rounded-xl border border-slate-100 bg-slate-50/50 p-3">
-              <span class="text-slate-400 block text-[10px] uppercase font-bold">최대 체류 허용</span>
-              <span class="text-sm font-bold text-slate-800 mt-0.5 block">{selectedRule.periodDays}일 (연장 별도)</span>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">{t.maxStayLabel}</span>
+              <span class="text-sm font-bold text-slate-800 mt-0.5 block">{selectedRule.periodDays} {t.daysSuffix}</span>
             </div>
           {/if}
         </div>

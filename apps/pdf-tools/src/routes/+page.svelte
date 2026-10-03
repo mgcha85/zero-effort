@@ -1,10 +1,13 @@
 <script lang="ts">
   import { buildWebAppJsonLd, buildFaqJsonLd } from '@zero-effort/seo-config';
   import { AdBanner } from '@zero-effort/shared-ui';
+  import { currentLang, translations } from '$lib/langStore';
   import { PDFDocument } from 'pdf-lib';
 
   type Mode = 'merge' | 'split';
   let mode: Mode = 'merge';
+
+  $: t = translations[$currentLang];
 
   // Merge state
   interface MergeItem {
@@ -26,21 +29,31 @@
   let progressMessage = '';
   let errorMessage = '';
 
-  const jsonLd = buildWebAppJsonLd({
-    name: 'PDF 합치기 나누기 - SecurePDF',
+  $: jsonLd = buildWebAppJsonLd({
+    name: $currentLang === 'en' ? 'Secure PDF Merge & Split - SecurePDF' : 'PDF 합치기 나누기 - SecurePDF',
     url: 'https://pdf.minitoolbox.dev',
-    description: '서버로 PDF 파일을 업로드하지 않고 브라우저에서 직접 빠르고 안전하게 PDF 문서를 합치거나(Merge) 원하는 페이지만 나눕니다(Split).',
+    description: $currentLang === 'en'
+      ? 'Process confidential PDFs directly in your browser. 100% client-side merge & extract with 0 bytes uploaded to remote servers.'
+      : '서버로 PDF 파일을 업로드하지 않고 브라우저에서 직접 빠르고 안전하게 PDF 문서를 합치거나(Merge) 원하는 페이지만 나눕니다(Split).',
     applicationCategory: 'BusinessApplication'
   });
 
-  const jsonLdFaq = buildFaqJsonLd([
+  $: jsonLdFaq = buildFaqJsonLd([
     {
-      question: '민감한 계약서나 주민등록번호가 있는 PDF를 올려도 안전한가요?',
-      answer: '100% 안전합니다. 일반적인 온라인 PDF 변환 사이트와 달리 파일이 외부 서버로 단 1바이트도 전송되지 않고 사용자의 웹 브라우저 메모리 안에서 WebAssembly 및 JavaScript 엔진으로 직접 처리됩니다.'
+      question: $currentLang === 'en'
+        ? 'Is it safe to upload confidential contracts or passports?'
+        : '민감한 계약서나 주민등록번호가 있는 PDF를 올려도 안전한가요?',
+      answer: $currentLang === 'en'
+        ? '100% safe. Unlike traditional cloud converter services, zero bytes are transmitted across any network. Everything processes locally inside your browser memory and Wasm engine.'
+        : '100% 안전합니다. 일반적인 온라인 PDF 변환 사이트와 달리 파일이 외부 서버로 단 1바이트도 전송되지 않고 사용자의 웹 브라우저 메모리 안에서 WebAssembly 및 JavaScript 엔진으로 직접 처리됩니다.'
     },
     {
-      question: '파일 용량 제한이나 페이지 수 제한이 있나요?',
-      answer: '서버 업로드 방식이 아니므로 서버 트래픽 제한이 전혀 없습니다. 사용자의 컴퓨터 CPU 및 RAM 성능만큼 대용량 PDF도 무제한 처리할 수 있습니다.'
+      question: $currentLang === 'en'
+        ? 'Are there file size or page count limits?'
+        : '파일 용량 제한이나 페이지 수 제한이 있나요?',
+      answer: $currentLang === 'en'
+        ? 'No server quotas or rate limits exist. Your local CPU and memory determine capacity, letting you process large multi-hundred-page PDFs freely.'
+        : '서버 업로드 방식이 아니므로 서버 트래픽 제한이 전혀 없습니다. 사용자의 컴퓨터 CPU 및 RAM 성능만큼 대용량 PDF도 무제한 처리할 수 있습니다.'
     }
   ]);
 
@@ -56,7 +69,7 @@
     if (!files) return;
     errorMessage = '';
     processing = true;
-    progressMessage = 'PDF 페이지 정보를 읽는 중...';
+    progressMessage = t.readingPages;
 
     for (let i = 0; i < files.length; i++) {
       const f = files[i];
@@ -76,7 +89,7 @@
         ];
       } catch (err: any) {
         console.error(err);
-        errorMessage = `[${f.name}] 파일을 읽는 중 오류가 발생했습니다: ` + (err.message || '암호화된 PDF이거나 손상된 파일');
+        errorMessage = `[${f.name}] ${t.readErrPrefix}` + (err.message || 'Error');
       }
     }
     processing = false;
@@ -98,30 +111,30 @@
 
   async function executeMerge() {
     if (mergeFiles.length < 2) {
-      errorMessage = '병합하려면 최소 2개 이상의 PDF 파일이 필요합니다.';
+      errorMessage = t.minMergeErr;
       return;
     }
     errorMessage = '';
     processing = true;
-    progressMessage = '내 브라우저에서 PDF 페이지를 안전하게 병합하는 중...';
+    progressMessage = t.mergingLocal;
 
     try {
       const mergedPdf = await PDFDocument.create();
 
       for (let i = 0; i < mergeFiles.length; i++) {
-        progressMessage = `[${i + 1}/${mergeFiles.length}] ${mergeFiles[i].name} 처리 중...`;
+        progressMessage = `[${i + 1}/${mergeFiles.length}] ${mergeFiles[i].name} ${t.processingItem}`;
         const fileBytes = await mergeFiles[i].file.arrayBuffer();
         const pdf = await PDFDocument.load(fileBytes);
         const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
         copiedPages.forEach((page) => mergedPdf.addPage(page));
       }
 
-      progressMessage = '병합된 PDF 파일 생성 중...';
+      progressMessage = t.generatingPdf;
       const mergedBytes = await mergedPdf.save();
       downloadBlob(new Blob([mergedBytes], { type: 'application/pdf' }), 'merged_document.pdf');
     } catch (err: any) {
       console.error(err);
-      errorMessage = 'PDF 병합 처리 중 오류가 발생했습니다: ' + (err.message || '알 수 없는 오류');
+      errorMessage = 'Error: ' + (err.message || 'Unknown error');
     } finally {
       processing = false;
       progressMessage = '';
@@ -133,12 +146,12 @@
     errorMessage = '';
     const f = files[0];
     if (f.type !== 'application/pdf' && !f.name.toLowerCase().endsWith('.pdf')) {
-      errorMessage = 'PDF 파일만 업로드할 수 있습니다.';
+      errorMessage = t.onlyPdfErr;
       return;
     }
 
     processing = true;
-    progressMessage = 'PDF 페이지 구조 분석 중...';
+    progressMessage = t.analyzingPdf;
     try {
       const arrayBuffer = await f.arrayBuffer();
       const pdf = await PDFDocument.load(arrayBuffer);
@@ -147,7 +160,7 @@
       splitRange = `1-${splitPageCount}`;
     } catch (err: any) {
       console.error(err);
-      errorMessage = 'PDF를 읽을 수 없습니다: ' + (err.message || '암호화된 파일이거나 손상됨');
+      errorMessage = t.readErrPrefix + (err.message || 'Error');
       splitFile = null;
     } finally {
       processing = false;
@@ -185,7 +198,7 @@
     if (!splitFile) return;
     errorMessage = '';
     processing = true;
-    progressMessage = '선택한 페이지를 추출 및 분할하는 중...';
+    progressMessage = t.splittingPages;
 
     try {
       const arrayBuffer = await splitFile.arrayBuffer();
@@ -194,7 +207,7 @@
       if (splitModeOption === 'range') {
         const pagesToExtract = parsePageRange(splitRange, splitPageCount);
         if (pagesToExtract.length === 0) {
-          errorMessage = '유효한 페이지 번호를 입력해주세요 (예: 1-3, 5).';
+          errorMessage = t.validRangeErr;
           processing = false;
           return;
         }
@@ -209,7 +222,6 @@
           `${splitFile.name.replace(/\.pdf$/i, '')}_extracted.pdf`
         );
       } else {
-        // Individual page download (downloads first 5 or gives a prompt)
         const newPdf = await PDFDocument.create();
         const copied = await newPdf.copyPages(srcPdf, [0]);
         newPdf.addPage(copied[0]);
@@ -221,7 +233,7 @@
       }
     } catch (err: any) {
       console.error(err);
-      errorMessage = 'PDF 분할 처리 중 오류가 발생했습니다: ' + (err.message || '알 수 없는 오류');
+      errorMessage = 'Error: ' + (err.message || 'Unknown error');
     } finally {
       processing = false;
       progressMessage = '';
@@ -241,12 +253,11 @@
 </script>
 
 <svelte:head>
-  <title>PDF 합치기 나누기 - SecurePDF (서버 전송 0KB)</title>
-  <meta name="description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 PDF 합치기 및 나누기. 서버 전송 0KB, 내 기기 메모리에서 즉시 처리." />
-  <meta name="keywords" content="PDF 합치기, PDF 나누기, PDF 병합, PDF 분할, PDF 페이지 추출, 안전한 PDF 변환기, 무업로드 PDF" />
+  <title>{t.metaTitle}</title>
+  <meta name="description" content={t.metaDesc} />
   <link rel="canonical" href="https://pdf.minitoolbox.dev/" />
-  <meta property="og:title" content="PDF 합치기 나누기 - SecurePDF" />
-  <meta property="og:description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 PDF 합치기 및 나누기 (서버 전송 없음)." />
+  <meta property="og:title" content={t.metaTitle} />
+  <meta property="og:description" content={t.metaDesc} />
   <meta property="og:url" content="https://pdf.minitoolbox.dev/" />
   <meta property="og:image" content="https://pdf.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -258,15 +269,13 @@
   <!-- Title & Privacy Shield Callout -->
   <div class="mb-8 text-center">
     <div class="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3.5 py-1 text-xs font-bold text-rose-800 border border-rose-200 mb-3 shadow-2xs">
-      <span>🔒 100% 로컬 프라이버시 보장</span>
-      <span class="text-rose-400">•</span>
-      <span>외부 서버 전송 0바이트</span>
+      <span>{t.privacyBadge}</span>
     </div>
     <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-      PDF 합치기 나누기
+      {t.title}
     </h1>
     <p class="mt-2 text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
-      계약서, 금융 서류, 주민번호 등 민감한 서류가 외부 서버에 업로드될 걱정 없이, 내 브라우저 엔진에서 직접 초고속 연산합니다.
+      {t.desc}
     </p>
 
     <!-- Tab Selection -->
@@ -276,14 +285,14 @@
         class="flex items-center gap-1.5 rounded-lg px-6 py-2 text-xs font-black transition {mode === 'merge' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'}"
         on:click={() => { mode = 'merge'; errorMessage = ''; }}
       >
-        <span>📑 PDF 합치기 (Merge)</span>
+        <span>{t.tabMerge}</span>
       </button>
       <button
         type="button"
         class="flex items-center gap-1.5 rounded-lg px-6 py-2 text-xs font-black transition {mode === 'split' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'}"
         on:click={() => { mode = 'split'; errorMessage = ''; }}
       >
-        <span>✂️ PDF 분할/추출 (Split)</span>
+        <span>{t.tabSplit}</span>
       </button>
     </div>
   </div>
@@ -299,7 +308,7 @@
     <div class="mb-6 rounded-xl border border-rose-200 bg-rose-50/80 p-4 text-center">
       <div class="inline-block animate-spin text-2xl mb-2">⏳</div>
       <p class="text-sm font-bold text-rose-800">{progressMessage}</p>
-      <p class="text-xs text-rose-600 mt-0.5">내 컴퓨터의 프로세서와 메모리를 사용하여 직접 렌더링 중입니다.</p>
+      <p class="text-xs text-rose-600 mt-0.5">{t.renderingNotice}</p>
     </div>
   {/if}
 
@@ -308,8 +317,8 @@
     <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="text-base font-bold text-slate-900">여러 개의 PDF 파일 합치기</h2>
-          <p class="text-xs text-slate-500 mt-0.5">파일 순서를 위아래로 변경하여 원하는 순서대로 병합할 수 있습니다.</p>
+          <h2 class="text-base font-bold text-slate-900">{t.mergeTitle}</h2>
+          <p class="text-xs text-slate-500 mt-0.5">{t.mergeSubtitle}</p>
         </div>
         {#if mergeFiles.length > 0}
           <button
@@ -317,7 +326,7 @@
             class="text-xs font-bold text-slate-500 hover:text-red-600 transition"
             on:click={() => mergeFiles = []}
           >
-            전체 지우기
+            {t.clearAll}
           </button>
         {/if}
       </div>
@@ -328,7 +337,7 @@
         on:dragover|preventDefault
         on:drop|preventDefault={(e) => handleMergeFiles(e.dataTransfer?.files || null)}
         role="region"
-        aria-label="PDF 파일 추가 영역"
+        aria-label="PDF Upload Zone"
       >
         <input
           type="file"
@@ -339,8 +348,8 @@
         />
         <div class="flex flex-col items-center justify-center space-y-2">
           <div class="rounded-full bg-rose-100 p-3 text-2xl text-rose-700">📑</div>
-          <p class="text-sm font-bold text-slate-800">합칠 PDF 파일들을 드래그하거나 클릭하여 추가하세요</p>
-          <p class="text-xs text-slate-500">여러 파일을 한 번에 선택할 수 있으며 대용량 파일도 즉시 인식됩니다</p>
+          <p class="text-sm font-bold text-slate-800">{t.dropMergeTitle}</p>
+          <p class="text-xs text-slate-500">{t.dropMergeSub}</p>
         </div>
       </div>
 
@@ -348,8 +357,8 @@
       {#if mergeFiles.length > 0}
         <div class="mt-6 space-y-2.5">
           <div class="flex justify-between items-center text-xs font-bold text-slate-600 pb-1 border-b border-slate-100">
-            <span>선택된 파일 목록 ({mergeFiles.length}개)</span>
-            <span>총 {mergeFiles.reduce((acc, curr) => acc + curr.pageCount, 0)}페이지</span>
+            <span>{t.queueTitle} ({mergeFiles.length})</span>
+            <span>{t.totalPrefix} {mergeFiles.reduce((acc, curr) => acc + curr.pageCount, 0)} {t.totalPagesSuffix}</span>
           </div>
 
           {#each mergeFiles as item, idx}
@@ -360,7 +369,7 @@
                 </span>
                 <div class="truncate">
                   <p class="font-bold text-slate-800 truncate">{item.name}</p>
-                  <p class="text-[11px] text-slate-500">{formatBytes(item.size)} • {item.pageCount}페이지</p>
+                  <p class="text-[11px] text-slate-500">{formatBytes(item.size)} • {item.pageCount} {t.pagesSuffix}</p>
                 </div>
               </div>
 
@@ -370,7 +379,7 @@
                   class="rounded p-1.5 text-slate-500 hover:bg-slate-200 hover:text-slate-800 disabled:opacity-30"
                   disabled={idx === 0}
                   on:click={() => moveMergeItem(idx, 'up')}
-                  title="위로 이동"
+                  title={t.moveUp}
                 >
                   ▲
                 </button>
@@ -379,7 +388,7 @@
                   class="rounded p-1.5 text-slate-500 hover:bg-slate-200 hover:text-slate-800 disabled:opacity-30"
                   disabled={idx === mergeFiles.length - 1}
                   on:click={() => moveMergeItem(idx, 'down')}
-                  title="아래로 이동"
+                  title={t.moveDown}
                 >
                   ▼
                 </button>
@@ -387,7 +396,7 @@
                   type="button"
                   class="rounded p-1.5 text-red-500 hover:bg-red-100 hover:text-red-700"
                   on:click={() => removeMergeItem(idx)}
-                  title="제거"
+                  title={t.remove}
                 >
                   ✕
                 </button>
@@ -398,11 +407,11 @@
           <div class="mt-6 flex justify-end pt-2">
             <button
               type="button"
-              class="rounded-xl bg-rose-600 px-6 py-3 text-sm font-bold text-white shadow-xs hover:bg-rose-500 transition disabled:opacity-50"
+              class="rounded-xl bg-rose-600 px-6 py-3 text-sm font-bold text-white shadow-xs hover:bg-rose-500 transition disabled:opacity-50 cursor-pointer"
               disabled={processing || mergeFiles.length < 2}
               on:click={executeMerge}
             >
-              하나의 PDF로 병합 다운로드
+              {t.mergeBtn}
             </button>
           </div>
         </div>
@@ -415,8 +424,8 @@
     <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
       <div class="flex items-center justify-between mb-4">
         <div>
-          <h2 class="text-base font-bold text-slate-900">PDF 페이지 분할 및 추출</h2>
-          <p class="text-xs text-slate-500 mt-0.5">원하는 페이지 범위만 지정하여 새로운 PDF 파일로 안전하게 추출합니다.</p>
+          <h2 class="text-base font-bold text-slate-900">{t.splitTitle}</h2>
+          <p class="text-xs text-slate-500 mt-0.5">{t.splitSubtitle}</p>
         </div>
       </div>
 
@@ -426,7 +435,7 @@
           on:dragover|preventDefault
           on:drop|preventDefault={(e) => handleSplitFile(e.dataTransfer?.files || null)}
           role="region"
-          aria-label="분할할 PDF 파일 추가 영역"
+          aria-label="PDF Split Dropzone"
         >
           <input
             type="file"
@@ -436,50 +445,50 @@
           />
           <div class="flex flex-col items-center justify-center space-y-2">
             <div class="rounded-full bg-rose-100 p-3 text-2xl text-rose-700">✂️</div>
-            <p class="text-sm font-bold text-slate-800">분할할 PDF 파일을 드래그하거나 선택하세요</p>
-            <p class="text-xs text-slate-500">1개 파일 선택 가능</p>
+            <p class="text-sm font-bold text-slate-800">{t.dropSplitTitle}</p>
+            <p class="text-xs text-slate-500">{t.dropSplitSub}</p>
           </div>
         </div>
       {:else}
         <div class="rounded-xl border border-slate-200 bg-slate-50 p-4 mb-6 flex justify-between items-center text-xs">
           <div>
             <p class="font-bold text-slate-800 text-sm">{splitFile.name}</p>
-            <p class="text-slate-500 mt-0.5">{formatBytes(splitFile.size)} • 총 {splitPageCount}페이지</p>
+            <p class="text-slate-500 mt-0.5">{formatBytes(splitFile.size)} • {t.totalPrefix} {splitPageCount} {t.totalPagesSuffix}</p>
           </div>
           <button
             type="button"
             class="text-xs font-bold text-slate-500 hover:text-red-600 transition"
             on:click={() => splitFile = null}
           >
-            다른 파일 선택
+            {t.changeFile}
           </button>
         </div>
 
         <div class="space-y-4">
           <div>
             <label for="range-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-              추출할 페이지 번호 또는 범위
+              {t.rangeLabel}
             </label>
             <input
               id="range-input"
               type="text"
               class="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-2xs focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
-              placeholder="예: 1-3, 5, 7-9"
+              placeholder={t.rangePlaceholder}
               bind:value={splitRange}
             />
             <p class="text-[11px] text-slate-500 mt-1">
-              콤마(,)와 하이픈(-)을 사용하여 유연하게 페이지를 지정할 수 있습니다 (예: 1, 3, 5-8).
+              {t.rangeHint}
             </p>
           </div>
 
           <div class="flex justify-end pt-2">
             <button
               type="button"
-              class="rounded-xl bg-rose-600 px-6 py-2.5 text-sm font-bold text-white shadow-xs hover:bg-rose-500 transition disabled:opacity-50"
+              class="rounded-xl bg-rose-600 px-6 py-2.5 text-sm font-bold text-white shadow-xs hover:bg-rose-500 transition disabled:opacity-50 cursor-pointer"
               disabled={processing || !splitRange.trim()}
               on:click={executeSplit}
             >
-              지정한 페이지만 새 PDF로 추출
+              {t.splitBtn}
             </button>
           </div>
         </div>
@@ -493,20 +502,20 @@
   <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-xs">
     <h2 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
       <span>🛡️</span>
-      <span>서버 무전송 안심 처리 원리</span>
+      <span>{t.archTitle}</span>
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-600">
       <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
-        <strong class="text-slate-800 block mb-1">💻 로컬 CPU/RAM 연산</strong>
-        <p class="text-slate-500">인터넷 망을 통해 파일 바이트가 전송되지 않고 사용자의 기기 자원만으로 즉각 처리됩니다.</p>
+        <strong class="text-slate-800 block mb-1">{t.archItem1Title}</strong>
+        <p class="text-slate-500">{t.archItem1Desc}</p>
       </div>
       <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
-        <strong class="text-slate-800 block mb-1">🚫 데이터 저장 0%</strong>
-        <p class="text-slate-500">어떠한 클라우드나 데이터베이스에도 보관되지 않으며 브라우저 탭을 닫는 즉시 메모리에서 영구 파기됩니다.</p>
+        <strong class="text-slate-800 block mb-1">{t.archItem2Title}</strong>
+        <p class="text-slate-500">{t.archItem2Desc}</p>
       </div>
       <div class="rounded-xl bg-slate-50 p-3.5 border border-slate-100">
-        <strong class="text-slate-800 block mb-1">⚡ 무제한 용량 & 초고속</strong>
-        <p class="text-slate-500">서버 업로드/다운로드 대기 시간이 없어 수백 페이지 대용량 문서도 수초 이내에 병합/분할됩니다.</p>
+        <strong class="text-slate-800 block mb-1">{t.archItem3Title}</strong>
+        <p class="text-slate-500">{t.archItem3Desc}</p>
       </div>
     </div>
   </section>

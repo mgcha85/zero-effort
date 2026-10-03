@@ -224,20 +224,22 @@
         {lang === 'ko' ? '마스킹할 서류(여권, 계약서, 급여명세서) 이미지 업로드' : lang === 'de' ? 'Dokumenten-Scan hier ablegen oder auswählen' : 'Click or drop document scan (Passport, Lease, Bank statement)'}
       </p>
       <p class="mt-1 text-[11px] text-slate-400">
-        JPG, PNG, WebP • 100% 브라우저 메모리 연산 (서버 전송 없음)
+        {lang === 'ko' ? 'JPG, PNG, WebP • 100% 브라우저 메모리 연산 (서버 전송 없음)' : lang === 'de' ? 'JPG, PNG, WebP • 100% Lokale Verarbeitung im Browser (Kein Server-Upload)' : 'JPG, PNG, WebP • 100% In-Browser Local Memory (0KB Server Upload)'}
       </p>
     </div>
   {:else}
     <!-- Canvas Editor Area -->
     <div class="mt-4">
       <div class="mb-2 flex items-center justify-between text-xs text-slate-500">
-        <span>💡 마우스로 드래그하여 가리고 싶은 영역에 사각형을 그리세요 (마스킹 수: {masks.length}개)</span>
+        <span>
+          {lang === 'ko' ? `💡 마우스로 드래그하여 가리고 싶은 영역에 사각형을 그리세요 (마스킹 수: ${masks.length}개)` : lang === 'de' ? `💡 Mit der Maus ziehen, um sensible Bereiche zu schwärzen (Masken: ${masks.length})` : `💡 Drag your mouse to draw redaction boxes over sensitive data (Masks: ${masks.length})`}
+        </span>
         <button
           type="button"
           on:click={() => fileInput.click()}
           class="text-blue-600 font-semibold hover:underline"
         >
-          {lang === 'ko' ? '다른 파일 선택' : 'Change Document'}
+          {lang === 'ko' ? '다른 파일 선택' : lang === 'de' ? 'Anderes Dokument wählen' : 'Change Document'}
         </button>
       </div>
 

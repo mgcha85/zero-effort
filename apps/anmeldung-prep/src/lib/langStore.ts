@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import type { City, ResidenceType, CivilStatus } from './types';
 
 export type Lang = 'en' | 'de' | 'ko';
 
@@ -15,6 +16,7 @@ export const translations: Record<Lang, {
   selectStatus: string;
   checklistTitle: string;
   checklistSub: string;
+  completedBadge: string;
   requiredBadge: string;
   optionalBadge: string;
   tipsTitle: string;
@@ -34,6 +36,11 @@ export const translations: Record<Lang, {
   a2: string;
   q3: string;
   a3: string;
+  cities: Record<City, string>;
+  residences: Record<ResidenceType, string>;
+  statuses: Record<CivilStatus, string>;
+  metaTitle: string;
+  metaDesc: string;
 }> = {
   en: {
     siteTitle: 'Anmeldung Prep & Safe Masker',
@@ -46,6 +53,7 @@ export const translations: Record<Lang, {
     selectStatus: '3. Civil / Visa Status',
     checklistTitle: 'Your Tailored Document Checklist',
     checklistSub: 'Print or gather all physical original documents before your appointment',
+    completedBadge: 'Completed',
     requiredBadge: 'Mandatory',
     optionalBadge: 'Conditional',
     tipsTitle: 'Crucial Official Tips & Pitfalls',
@@ -64,7 +72,29 @@ export const translations: Record<Lang, {
     q2: 'What is the 14-day legal deadline?',
     a2: 'German law specifies you must register within 14 days of moving in. However, due to severe appointment shortages in cities like Berlin or Munich, booking the appointment itself within 14 days or keeping your booking proof is accepted.',
     q3: 'Is my uploaded scan safe from leaks?',
-    a3: '100% safe. This web application runs entirely inside your browser memory using HTML5 Canvas. Zero bytes are uploaded to the internet.'
+    a3: '100% safe. This web application runs entirely inside your browser memory using HTML5 Canvas. Zero bytes are uploaded to the internet.',
+    cities: {
+      berlin: 'Berlin',
+      munich: 'Munich (München)',
+      hamburg: 'Hamburg',
+      frankfurt: 'Frankfurt am Main',
+      cologne: 'Cologne (Köln)',
+      other: 'Other City in Germany'
+    },
+    residences: {
+      wg_sublet: 'WG / Shared Flat / Sublet',
+      own_apartment: 'Entire Apartment (Direct Lease)',
+      dormitory: 'Student Dormitory (Studentenwerk)',
+      host_family: 'Host Family / Temporary Guest'
+    },
+    statuses: {
+      employed: 'Employed / Work Visa',
+      student: 'Student / Language Learner',
+      single: 'Single Person',
+      married: 'Married with Family'
+    },
+    metaTitle: 'German Anmeldung Checklist & Safe Masker (Bürgeramt)',
+    metaDesc: 'Personalized German Bürgeramt registration checklist and 100% in-browser private document redactor. Zero server uploads.'
   },
   de: {
     siteTitle: 'Anmeldung Prep & Dokumenten-Schwärzung',
@@ -77,6 +107,7 @@ export const translations: Record<Lang, {
     selectStatus: '3. Familien- / Berufsstatus',
     checklistTitle: 'Ihre persönliche Dokumenten-Checkliste',
     checklistSub: 'Bringen Sie alle Unterlagen im Original zum Termin mit',
+    completedBadge: 'Erledigt',
     requiredBadge: 'Erforderlich',
     optionalBadge: 'Bedarfsweise',
     tipsTitle: 'Wichtige Hinweise & Fallstricke',
@@ -95,7 +126,29 @@ export const translations: Record<Lang, {
     q2: 'Gilt die 14-Tage-Frist streng?',
     a2: 'Gesetzlich gilt eine Frist von 14 Tagen ab Einzug. Wegen Terminmangel in Großstädten reicht der Nachweis einer fristgerechten Terminbuchung aus.',
     q3: 'Werden meine Dokumente auf Server hochgeladen?',
-    a3: 'Nein, zu 100% lokal. Die Schwärzung erfolgt ausschließlich in Ihrem Browser-Speicher ohne Datenübertragung.'
+    a3: 'Nein, zu 100% lokal. Die Schwärzung erfolgt ausschließlich in Ihrem Browser-Speicher ohne Datenübertragung.',
+    cities: {
+      berlin: 'Berlin',
+      munich: 'München',
+      hamburg: 'Hamburg',
+      frankfurt: 'Frankfurt am Main',
+      cologne: 'Köln',
+      other: 'Andere Stadt in Deutschland'
+    },
+    residences: {
+      wg_sublet: 'WG / Untermiete (Wohngemeinschaft)',
+      own_apartment: 'Eigene Wohnung (Hauptmieter)',
+      dormitory: 'Studentenwohnheim',
+      host_family: 'Gastfamilie / Vorübergehend'
+    },
+    statuses: {
+      employed: 'Berufstätig / Arbeitsvisum',
+      student: 'Student / Sprachschüler',
+      single: 'Alleinstehend',
+      married: 'Verheiratet mit Familie'
+    },
+    metaTitle: 'Bürgeramt Anmeldung Checkliste & Dokumenten-Schwärzung',
+    metaDesc: 'Personalisierte Checkliste für den Bürgeramt-Termin und 100% lokale Schwärzung im Browser. Keine Server-Uploads.'
   },
   ko: {
     siteTitle: '독일 안멜둥 서류 마스커',
@@ -108,6 +161,7 @@ export const translations: Record<Lang, {
     selectStatus: '3. 신분 / 가족 관계',
     checklistTitle: '내 맞춤 전입신고 서류 체크리스트',
     checklistSub: '관공서(Bürgeramt) 방문 전 원본 서류를 확인하고 체크하세요',
+    completedBadge: '준비 완료',
     requiredBadge: '필수 지참',
     optionalBadge: '해당 시 지참',
     tipsTitle: '관공서 통과 핵심 팁 & 주의사항',
@@ -126,6 +180,28 @@ export const translations: Record<Lang, {
     q2: '입주 후 14일 이내 등록 기한을 넘기면 벌금을 내나요?',
     a2: '법적으로는 14일 이내 등록해야 하지만, 베를린이나 뮌헨처럼 예약이 극도로 밀리는 대도시는 14일 이내에 예약을 신청해 둔 확인 이메일(Terminbestätigung)만 있으면 벌금이 면제됩니다.',
     q3: '업로드한 여권이나 계약서가 인터넷에 유출되지 않나요?',
-    a3: '100% 안전합니다. 일반 웹사이트와 달리 서버로 전송하지 않으며 고객님의 브라우저(HTML5 Canvas) 안에서만 마스킹되고 직접 다운로드됩니다.'
+    a3: '100% 안전합니다. 일반 웹사이트와 달리 서버로 전송하지 않으며 고객님의 브라우저(HTML5 Canvas) 안에서만 마스킹되고 직접 다운로드됩니다.',
+    cities: {
+      berlin: 'Berlin (베를린)',
+      munich: 'München (뮌헨)',
+      hamburg: 'Hamburg (함부르크)',
+      frankfurt: 'Frankfurt am Main (프랑크푸르트)',
+      cologne: 'Köln (쾰른)',
+      other: '기타 독일 도시 (Other City)'
+    },
+    residences: {
+      wg_sublet: 'WG / 쯔비셴 (셰어하우스, 서브렛)',
+      own_apartment: '단독 임대 계약 (아파트 전체)',
+      dormitory: '대학 기숙사 (Studentenwerk)',
+      host_family: '홈스테이 / 임시 거주'
+    },
+    statuses: {
+      employed: '직장인 / 취업비자 (Employed)',
+      student: '학생 / 어학연수 (Student)',
+      single: '미혼 단독 전입 (Single)',
+      married: '기혼 가족 동반 (Married)'
+    },
+    metaTitle: '독일 안멜둥 서류 마스커 - Anmeldung Prep & Safe Redaction',
+    metaDesc: '독일 관공서(Bürgeramt) 전입신고 필수 서류 맞춤 체크리스트 및 계약서/여권 민감정보 100% 브라우저 로컬 안심 마스킹 도구.'
   }
 };

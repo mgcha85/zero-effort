@@ -71,18 +71,18 @@
 </script>
 
 <svelte:head>
-  <title>독일 안멜둥 서류 마스커 - Anmeldung Prep & Safe Redaction (Bürgeramt)</title>
+  <title>{translations[$currentLang].metaTitle}</title>
   <meta
     name="description"
-    content="독일 관공서(Bürgeramt) 전입신고 필수 서류 맞춤 체크리스트 및 계약서/여권 민감정보 100% 브라우저 로컬 안심 마스킹 도구."
+    content={translations[$currentLang].metaDesc}
   />
   <meta
     name="keywords"
-    content="독일 전입신고, 안멜둥 서류, anmeldung checklist, bürgeramt termin, wohnungsgeberbestätigung, 독일 집주인 확인서, 여권 마스킹, 계약서 개인정보 가리기"
+    content="anmeldung checklist, bürgeramt termin, wohnungsgeberbestätigung, german registration, bürgeramt anmeldung, anmeldung documents, safe document redactor"
   />
   <link rel="canonical" href="https://anmeldung.minitoolbox.dev/" />
-  <meta property="og:title" content="독일 안멜둥 서류 마스커 - Anmeldung Prep & Safe Masker" />
-  <meta property="og:description" content="독일 전입신고 서류 체크리스트 및 브라우저 로컬 안심 서류 마스킹." />
+  <meta property="og:title" content={translations[$currentLang].metaTitle} />
+  <meta property="og:description" content={translations[$currentLang].metaDesc} />
   <meta property="og:url" content="https://anmeldung.minitoolbox.dev/" />
   <meta property="og:image" content="https://anmeldung.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -117,12 +117,12 @@
           bind:value={selectedCity}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-hidden"
         >
-          <option value="berlin">Berlin (베를린)</option>
-          <option value="munich">München (뮌헨)</option>
-          <option value="hamburg">Hamburg (함부르크)</option>
-          <option value="frankfurt">Frankfurt am Main (프랑크푸르트)</option>
-          <option value="cologne">Köln (쾰른)</option>
-          <option value="other">Other City in Germany (기타 도시)</option>
+          <option value="berlin">{translations[$currentLang].cities.berlin}</option>
+          <option value="munich">{translations[$currentLang].cities.munich}</option>
+          <option value="hamburg">{translations[$currentLang].cities.hamburg}</option>
+          <option value="frankfurt">{translations[$currentLang].cities.frankfurt}</option>
+          <option value="cologne">{translations[$currentLang].cities.cologne}</option>
+          <option value="other">{translations[$currentLang].cities.other}</option>
         </select>
       </div>
 
@@ -136,10 +136,10 @@
           bind:value={selectedResidence}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-hidden"
         >
-          <option value="wg_sublet">WG / Sublet (셰어하우스, 쯔비셴)</option>
-          <option value="own_apartment">Direct Lease (단독 임대 계약)</option>
-          <option value="dormitory">Student Dorm (대학 기숙사)</option>
-          <option value="host_family">Host Family / Guest (홈스테이)</option>
+          <option value="wg_sublet">{translations[$currentLang].residences.wg_sublet}</option>
+          <option value="own_apartment">{translations[$currentLang].residences.own_apartment}</option>
+          <option value="dormitory">{translations[$currentLang].residences.dormitory}</option>
+          <option value="host_family">{translations[$currentLang].residences.host_family}</option>
         </select>
       </div>
 
@@ -153,10 +153,10 @@
           bind:value={selectedStatus}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-semibold text-slate-800 focus:border-blue-500 focus:outline-hidden"
         >
-          <option value="employed">Employed / Work Visa (직장인/취업비자)</option>
-          <option value="student">Student / Language Learner (학생/어학연수)</option>
-          <option value="single">Single (미혼 단독 전입)</option>
-          <option value="married">Married with Family (기혼 가족 동반)</option>
+          <option value="employed">{translations[$currentLang].statuses.employed}</option>
+          <option value="student">{translations[$currentLang].statuses.student}</option>
+          <option value="single">{translations[$currentLang].statuses.single}</option>
+          <option value="married">{translations[$currentLang].statuses.married}</option>
         </select>
       </div>
     </div>
@@ -170,7 +170,7 @@
         <p class="text-xs text-slate-500">{translations[$currentLang].checklistSub}</p>
       </div>
       <div class="text-xs font-bold text-blue-900 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-        준비 완료: {getCompletedCount()} / {checklist.length}
+        {translations[$currentLang].completedBadge}: {getCompletedCount()} / {checklist.length}
       </div>
     </div>
 
