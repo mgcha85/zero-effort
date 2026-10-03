@@ -16,8 +16,14 @@
 - [x] Podman-compose 8개 서비스 완전 통합
 - [x] 투명 알파 파비콘 자동 추출 파이프라인 (`scripts/process_transparent_favicons.py`)
 - [x] KST 00시 텔레그램 일일 방문자수 브리핑 크론봇 (`scripts/telegram_daily_briefing.py`)
+- [x] 전체 8대 웹앱 및 허브 포털 언어 완전 분리(i18n) 구축
 
-## Phase 2: SEO 및 수익화 세팅
-- [ ] Google Search Console 사이트맵 일괄 등록
-- [ ] Google AdSense 승인 신청 및 `PUBLIC_ADSENSE_CLIENT_ID` 환경변수 세팅
-- [ ] 다국어 번역 사전(i18n) 완성도 100% 점검
+## Phase 2: SEO, 마케팅 및 수익화 최적화 (진행 중)
+- [x] 통합 마케팅 & SEO 전략서 수립 (`docs/GROWTH_AND_SEO_STRATEGY.md`)
+- [ ] Google Search Console (DNS TXT 속성) 등록 및 `sitemap.xml` 제출
+- [ ] Bing Webmaster Tools & IndexNow 연동
+- [ ] 네이버 서치어드바이저 사이트 소유권 확인
+- [ ] Google Rich Results Test (JSON-LD FAQPage, WebApplication 구조화 데이터 검증)
+- [ ] Google AdSense 승인 신청 (`minitoolbox.dev`)
+- [ ] Product Hunt & Hacker News (Show HN) 런칭 준비
+- [ ] 타겟 서브레딧 (`r/berlin`, `r/digitalnomad`, `r/japanlife` 등) 가치 기반 시딩
