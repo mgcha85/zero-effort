@@ -242,8 +242,14 @@
 
 <svelte:head>
   <title>안심 PDF 병합 및 분할기 - 서버 전송 없이 내 PC 브라우저에서 100% 직접 처리</title>
-  <meta name="description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 안심 PDF 병합(합치기) 및 페이지 분할(자르기). 서버 업로드 없이 내 PC CPU/RAM으로 초고속 무제한 변환." />
+  <meta name="description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 안심 PDF 병합(합치기) 및 페이지 분할(자르기). 서버 업로드 없이 내 PC CPU/RAM으로 초고속 직접 변환." />
   <meta name="keywords" content="PDF 합치기, PDF 병합, PDF 분할, PDF 나누기, PDF 페이지 추출, 안전한 PDF 변환기, 무업로드 PDF" />
+  <link rel="canonical" href="https://zero-effort-pdf.vercel.app/" />
+  <meta property="og:title" content="안심 PDF 병합 및 분할기 - 서버 전송 없이 내 PC 브라우저에서 100% 직접 처리" />
+  <meta property="og:description" content="개인정보 유출 걱정 없는 100% 브라우저 기반 안심 PDF 병합(합치기) 및 페이지 분할(자르기)." />
+  <meta property="og:url" content="https://zero-effort-pdf.vercel.app/" />
+  <meta property="og:image" content="https://zero-effort-pdf.vercel.app/icon-512.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
