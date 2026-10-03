@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zero-effort-schengen.vercel.app/sitemap.xml

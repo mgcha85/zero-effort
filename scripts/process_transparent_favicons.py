@@ -88,6 +88,8 @@ if __name__ == '__main__':
         ('apps/pdf-tools', 30, 0.8, 0.50),
         ('apps/size-converter', 35, 0.8, 0.50),
         ('apps/caro-game', 40, 0.8, 0.50),
+        ('apps/schengen-calculator', 30, 0.8, 0.50),
     ]
     for app, tol, blur, cy in apps:
         process_app_favicon(app, tolerance=tol, blur_radius=blur, center_y_ratio=cy)
+

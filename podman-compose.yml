@@ -49,3 +49,16 @@ services:
     environment:
       - APP_ENV=${APP_ENV:-dev}
 
+  schengen-calc:
+    build:
+      context: .
+      dockerfile: apps/schengen-calculator/Containerfile
+    image: zero-effort-schengen:latest
+    container_name: schengen-web
+    restart: always
+    ports:
+      - "${SCHENGEN_PORT:-3005}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-dev}
+
+
