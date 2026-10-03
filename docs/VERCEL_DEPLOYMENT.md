@@ -8,14 +8,14 @@
 
 | 웹사이트 | 대상 국가 | Root Directory | Vercel 권장 리전 | 도메인 예시 |
 | :--- | :--- | :--- | :--- | :--- |
-| **Cờ Caro Online** | 베트남 🇻🇳 | `apps/caro-game` | `sin1` (Singapore) | `zero-effort-caro.vercel.app` |
-| **Global Size Converter**| 글로벌 / 동남아 🌏 | `apps/size-converter` | Global Edge | `zero-effort-size.vercel.app` |
-| **제로업로드 미디어 툴** | 대한민국 🇰🇷 | `apps/wasm-media-tools` | `icn1` (Seoul, Korea) | `zero-effort-media.vercel.app` |
-| **PDF 합치기 나누기** | 글로벌 🌐 | `apps/pdf-tools` | Global Edge | `zero-effort-pdf.vercel.app` |
-| **솅겐 90/180 체류일수 계산기** | 유럽 / 글로벌 🇪🇺 | `apps/schengen-calculator` | `fra1` (Frankfurt) | `zero-effort-schengen.vercel.app` |
-| **독일 안멜둥 서류 & 마스킹** | 독일 🇩🇪 | `apps/anmeldung-prep` | `fra1` (Frankfurt) | `zero-effort-anmeldung.vercel.app` |
-| **일본 이력서 와레키 자동완성** | 일본 🇯🇵 | `apps/rirekisho-builder` | `hnd1` (Tokyo) | `zero-effort-rirekisho.vercel.app` |
-| **동남아 비자런 플래너** | 동남아 / 태국 / 발리 🇹🇭🇮🇩 | `apps/visarun-planner` | `sin1` (Singapore) | `zero-effort-visarun.vercel.app` |
+| **Cờ Caro Online** | 베트남 🇻🇳 | `apps/caro-game` | `sin1` (Singapore) | `caro.minitoolbox.dev` |
+| **Global Size Converter**| 글로벌 / 동남아 🌏 | `apps/size-converter` | Global Edge | `size.minitoolbox.dev` |
+| **제로업로드 미디어 툴** | 대한민국 🇰🇷 | `apps/wasm-media-tools` | `icn1` (Seoul, Korea) | `media.minitoolbox.dev` |
+| **PDF 합치기 나누기** | 글로벌 🌐 | `apps/pdf-tools` | Global Edge | `pdf.minitoolbox.dev` |
+| **솅겐 90/180 체류일수 계산기** | 유럽 / 글로벌 🇪🇺 | `apps/schengen-calculator` | `fra1` (Frankfurt) | `schengen.minitoolbox.dev` |
+| **독일 안멜둥 서류 & 마스킹** | 독일 🇩🇪 | `apps/anmeldung-prep` | `fra1` (Frankfurt) | `anmeldung.minitoolbox.dev` |
+| **일본 이력서 와레키 자동완성** | 일본 🇯🇵 | `apps/rirekisho-builder` | `hnd1` (Tokyo) | `rirekisho.minitoolbox.dev` |
+| **동남아 비자런 플래너** | 동남아 / 태국 / 발리 🇹🇭🇮🇩 | `apps/visarun-planner` | `sin1` (Singapore) | `visarun.minitoolbox.dev` |
 
 ---
 

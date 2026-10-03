@@ -390,11 +390,11 @@
   <title>Cờ Caro Online - Chơi Đấu Trực Tuyến 1:1 Với Bạn Bè & AI</title>
   <meta name="description" content="Tạo phòng thi đấu cờ Caro 1:1 trực tiếp với bạn bè qua liên kết P2P hoặc đấu với AI. Tải ngay không cần cài đặt, không lag, miễn phí 100%." />
   <meta name="keywords" content="cờ caro online, chơi cờ caro bạn bè, tạo phòng cờ caro, cờ caro zalo, 베트남 오목, caro gomoku" />
-  <link rel="canonical" href="https://zero-effort-caro.vercel.app/" />
+  <link rel="canonical" href="https://caro.minitoolbox.dev/" />
   <meta property="og:title" content="Cờ Caro Online - Chơi Đấu Trực Tuyến 1:1 Với Bạn Bè & AI" />
   <meta property="og:description" content="Tạo phòng thi đấu cờ Caro 1:1 trực tiếp với bạn bè qua liên kết P2P hoặc đấu với AI. Miễn phí 100%." />
-  <meta property="og:url" content="https://zero-effort-caro.vercel.app/" />
-  <meta property="og:image" content="https://zero-effort-caro.vercel.app/icon-512.png" />
+  <meta property="og:url" content="https://caro.minitoolbox.dev/" />
+  <meta property="og:image" content="https://caro.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLdApp}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}

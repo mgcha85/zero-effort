@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zero-effort-visarun.vercel.app/sitemap.xml
+Sitemap: https://visarun.minitoolbox.dev/sitemap.xml

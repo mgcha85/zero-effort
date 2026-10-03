@@ -193,11 +193,11 @@
   <title>{t.title} - Shopee, Lazada & TikTok Shop Size Chart</title>
   <meta name="description" content="{t.sub}" />
   <meta name="keywords" content="shopee shoe size chart, korean to us shoe size, taobao size chart, lazada size converter, tiktok shop sizing" />
-  <link rel="canonical" href="https://zero-effort-size.vercel.app/" />
+  <link rel="canonical" href="https://size.minitoolbox.dev/" />
   <meta property="og:title" content="{t.title} - Shopee, Lazada & TikTok Shop Size Chart" />
   <meta property="og:description" content="{t.sub}" />
-  <meta property="og:url" content="https://zero-effort-size.vercel.app/" />
-  <meta property="og:image" content="https://zero-effort-size.vercel.app/icon-512.png" />
+  <meta property="og:url" content="https://size.minitoolbox.dev/" />
+  <meta property="og:image" content="https://size.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}

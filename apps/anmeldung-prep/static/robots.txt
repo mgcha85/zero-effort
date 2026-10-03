@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zero-effort-anmeldung.vercel.app/sitemap.xml
+Sitemap: https://anmeldung.minitoolbox.dev/sitemap.xml

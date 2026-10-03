@@ -259,11 +259,11 @@
   <title>제로업로드 안심 사진 압축 & 규격 리사이즈 도구</title>
   <meta name="description" content="서버 전송 0KB, 개인정보 100% 보호. 취업 이력서 3x4cm, 여권 3.5x4.5cm 사진 규격 리사이즈 및 이미지 용량(KB/MB) 압축. ZIP 일괄 다운로드 지원." />
   <meta name="keywords" content="사진 용량 줄이기, 이미지 압축, 이력서 사진 3x4 리사이즈, 여권사진 규격, 정부24 사진 용량 줄이기, 사진 zip 압축, 무업로드 사진 편집" />
-  <link rel="canonical" href="https://zero-effort-media.vercel.app/" />
+  <link rel="canonical" href="https://media.minitoolbox.dev/" />
   <meta property="og:title" content="제로업로드 안심 사진 압축 & 규격 리사이즈 도구" />
   <meta property="og:description" content="서버 전송 0KB, 개인정보 100% 보호. 취업 이력서 및 여권 사진 규격 리사이즈 & 용량 압축." />
-  <meta property="og:url" content="https://zero-effort-media.vercel.app/" />
-  <meta property="og:image" content="https://zero-effort-media.vercel.app/icon-512.png" />
+  <meta property="og:url" content="https://media.minitoolbox.dev/" />
+  <meta property="og:image" content="https://media.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}

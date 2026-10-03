@@ -144,7 +144,7 @@
 
   const jsonLd = buildWebAppJsonLd({
     name: 'Schengen 90/180 Day Rollover Tracker',
-    url: 'https://zero-effort-schengen.vercel.app',
+    url: 'https://schengen.minitoolbox.dev',
     description: 'Accurate EU 90/180-day rolling window calculator for non-EU travelers and digital nomads. Calculate remaining days, rollover simulations, and departure deadlines with zero server tracking.',
     applicationCategory: 'TravelApplication'
   });
@@ -175,11 +175,11 @@
     name="keywords"
     content="schengen calculator, schengen 90 180 rule, rolling window calculator, schengen visa tracker, digital nomad visa calculator, europe stay calculator, schengen overstay check"
   />
-  <link rel="canonical" href="https://zero-effort-schengen.vercel.app/" />
+  <link rel="canonical" href="https://schengen.minitoolbox.dev/" />
   <meta property="og:title" content="Schengen 90/180 Day Rollover Tracker" />
   <meta property="og:description" content="Accurate rolling window calculator for European Schengen travel. Free, private, and zero server uploads." />
-  <meta property="og:url" content="https://zero-effort-schengen.vercel.app/" />
-  <meta property="og:image" content="https://zero-effort-schengen.vercel.app/icon-512.png" />
+  <meta property="og:url" content="https://schengen.minitoolbox.dev/" />
+  <meta property="og:image" content="https://schengen.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}

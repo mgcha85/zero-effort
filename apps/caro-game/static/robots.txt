@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zero-effort-caro.vercel.app/sitemap.xml
+Sitemap: https://caro.minitoolbox.dev/sitemap.xml

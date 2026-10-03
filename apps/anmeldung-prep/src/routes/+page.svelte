@@ -49,7 +49,7 @@
 
   const jsonLd = buildWebAppJsonLd({
     name: 'German Anmeldung Prep & Safe Document Masker',
-    url: 'https://zero-effort-anmeldung.vercel.app',
+    url: 'https://anmeldung.minitoolbox.dev',
     description: 'Personalized German Bürgeramt registration checklist and 100% in-browser private document redactor. Zero server uploads.',
     applicationCategory: 'ProductivityApplication'
   });
@@ -80,11 +80,11 @@
     name="keywords"
     content="독일 전입신고, 안멜둥 서류, anmeldung checklist, bürgeramt termin, wohnungsgeberbestätigung, 독일 집주인 확인서, 여권 마스킹, 계약서 개인정보 가리기"
   />
-  <link rel="canonical" href="https://zero-effort-anmeldung.vercel.app/" />
+  <link rel="canonical" href="https://anmeldung.minitoolbox.dev/" />
   <meta property="og:title" content="독일 안멜둥 서류 마스커 - Anmeldung Prep & Safe Masker" />
   <meta property="og:description" content="독일 전입신고 서류 체크리스트 및 브라우저 로컬 안심 서류 마스킹." />
-  <meta property="og:url" content="https://zero-effort-anmeldung.vercel.app/" />
-  <meta property="og:image" content="https://zero-effort-anmeldung.vercel.app/icon-512.png" />
+  <meta property="og:url" content="https://anmeldung.minitoolbox.dev/" />
+  <meta property="og:image" content="https://anmeldung.minitoolbox.dev/icon-512.png" />
   <meta name="twitter:card" content="summary_large_image" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
