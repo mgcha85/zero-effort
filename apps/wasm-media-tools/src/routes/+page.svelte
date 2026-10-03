@@ -24,7 +24,7 @@
   const jsonLdFaq = buildFaqJsonLd([
     {
       question: '정부24나 대입/취업 사이트의 100KB, 500KB 용량 제한을 맞출 수 있나요?',
-      answer: '네! [이력서 3x4 사진] 또는 [정부24 서류 규격] 프리셋을 클릭하시면 업로드 제한 용량 이하로 자동 리사이즈 및 압축됩니다.'
+      answer: '네! [취업/이력서 사진] 또는 [정부24 서류 규격] 프리셋을 클릭하시면 업로드 제한 용량 이하로 자동 리사이즈 및 압축됩니다.'
     },
     {
       question: '주민등록증이나 개인정보가 담긴 서류를 올려도 안전한가요?',
@@ -81,11 +81,9 @@
       let targetH = img.height;
 
       if (selectedPreset === 'resume') {
-        // 3x4 ratio (standard 354x472 px)
         targetW = 354;
         targetH = 472;
       } else if (selectedPreset === 'passport') {
-        // 3.5x4.5 ratio (standard 413x531 px)
         targetW = 413;
         targetH = 531;
       } else if (selectedPreset === 'gov24_1mb' && targetW > 1600) {
@@ -141,18 +139,17 @@
   <title>정부24 • 이력서 사진 용량 줄이기 - 무업로드 안심 압축기</title>
   <meta name="description" content="서버 전송 0KB, 개인정보 100% 보호. 취업 이력서 3x4 사진, 공공기관 제출 서류 용량 초과 해결. 브라우저에서 0.1초 만에 무료 변환." />
   <meta name="keywords" content="이력서 사진 용량 줄이기, 증명사진 3x4 규격 변환, 정부24 첨부서류 용량 줄이기, 이미지 용량 줄이기, 무업로드 사진 압축" />
-  <!-- Naver Search Advisor Verification Slot -->
   <meta name="naver-site-verification" content="" />
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
-  <!-- Title -->
+  <!-- Title with Soft Mint Badge -->
   <div class="mb-8 text-center">
-    <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800 mb-3">
+    <div class="inline-flex items-center gap-1.5 rounded-full bg-mint-100 px-3.5 py-1 text-xs font-bold text-mint-800 border border-mint-200/80 mb-3 shadow-2xs">
       <span>🔒 대한민국 공공기관 & 취업 제출 전용</span>
-      <span>•</span>
+      <span class="text-mint-400">•</span>
       <span>서버 전송 없음</span>
     </div>
     <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -163,51 +160,54 @@
     </p>
   </div>
 
-  <!-- Fast Presets for Korea -->
-  <div class="mb-6 rounded-2xl bg-white border border-slate-200 p-4 shadow-sm">
-    <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">⚡ 한국형 원클릭 제출 규격 프리셋</span>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
+  <!-- Fast Presets for Korea in Soft Mint Card -->
+  <div class="mb-6 rounded-2xl bg-white/95 border border-mint-200 p-5 shadow-xs">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs font-bold text-mint-800 uppercase tracking-wider">⚡ 한국형 원클릭 제출 규격 프리셋</span>
+      <span class="text-[11px] text-slate-400 font-medium">자동 규격 & 용량 리사이징</span>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-semibold">
       <button
         type="button"
-        class="rounded-xl p-2.5 border text-center transition {selectedPreset === 'resume' ? 'border-emerald-600 bg-emerald-50 text-emerald-800 ring-2 ring-emerald-500' : 'border-slate-200 hover:bg-slate-50 text-slate-700'}"
+        class="rounded-xl p-3 border text-center transition {selectedPreset === 'resume' ? 'border-mint-600 bg-mint-50/90 text-mint-900 ring-2 ring-mint-400 shadow-2xs' : 'border-slate-200/80 bg-white hover:bg-mint-50/40 text-slate-700'}"
         on:click={() => setPreset('resume')}
       >
-        <span class="block font-bold">📄 취업/이력서 사진</span>
-        <span class="text-[11px] text-slate-500">3x4cm (100KB 이하)</span>
+        <span class="block font-bold text-sm">📄 취업/이력서</span>
+        <span class="text-[11px] text-slate-500 mt-0.5 block">3x4cm (100KB 이하)</span>
       </button>
 
       <button
         type="button"
-        class="rounded-xl p-2.5 border text-center transition {selectedPreset === 'passport' ? 'border-emerald-600 bg-emerald-50 text-emerald-800 ring-2 ring-emerald-500' : 'border-slate-200 hover:bg-slate-50 text-slate-700'}"
+        class="rounded-xl p-3 border text-center transition {selectedPreset === 'passport' ? 'border-mint-600 bg-mint-50/90 text-mint-900 ring-2 ring-mint-400 shadow-2xs' : 'border-slate-200/80 bg-white hover:bg-mint-50/40 text-slate-700'}"
         on:click={() => setPreset('passport')}
       >
-        <span class="block font-bold">🛂 여권/주민등록증</span>
-        <span class="text-[11px] text-slate-500">3.5x4.5cm</span>
+        <span class="block font-bold text-sm">🛂 여권/주민증</span>
+        <span class="text-[11px] text-slate-500 mt-0.5 block">3.5x4.5cm</span>
       </button>
 
       <button
         type="button"
-        class="rounded-xl p-2.5 border text-center transition {selectedPreset === 'gov24_1mb' ? 'border-emerald-600 bg-emerald-50 text-emerald-800 ring-2 ring-emerald-500' : 'border-slate-200 hover:bg-slate-50 text-slate-700'}"
+        class="rounded-xl p-3 border text-center transition {selectedPreset === 'gov24_1mb' ? 'border-mint-600 bg-mint-50/90 text-mint-900 ring-2 ring-mint-400 shadow-2xs' : 'border-slate-200/80 bg-white hover:bg-mint-50/40 text-slate-700'}"
         on:click={() => setPreset('gov24_1mb')}
       >
-        <span class="block font-bold">🏛️ 정부24 서류 첨부</span>
-        <span class="text-[11px] text-slate-500">1MB 이하 압축</span>
+        <span class="block font-bold text-sm">🏛️ 정부24 서류</span>
+        <span class="text-[11px] text-slate-500 mt-0.5 block">1MB 이하 압축</span>
       </button>
 
       <button
         type="button"
-        class="rounded-xl p-2.5 border text-center transition {selectedPreset === 'custom' ? 'border-emerald-600 bg-emerald-50 text-emerald-800 ring-2 ring-emerald-500' : 'border-slate-200 hover:bg-slate-50 text-slate-700'}"
+        class="rounded-xl p-3 border text-center transition {selectedPreset === 'custom' ? 'border-mint-600 bg-mint-50/90 text-mint-900 ring-2 ring-mint-400 shadow-2xs' : 'border-slate-200/80 bg-white hover:bg-mint-50/40 text-slate-700'}"
         on:click={() => setPreset('custom')}
       >
-        <span class="block font-bold">⚙️ 사용자 지정 품질</span>
-        <span class="text-[11px] text-slate-500">WebP / JPG / PNG</span>
+        <span class="block font-bold text-sm">⚙️ 사용자 지정</span>
+        <span class="text-[11px] text-slate-500 mt-0.5 block">품질 슬라이더</span>
       </button>
     </div>
   </div>
 
-  <!-- Upload Area -->
+  <!-- Upload Area with Soft Mint Accent -->
   <div
-    class="relative rounded-2xl border-2 border-dashed border-slate-300 bg-white p-8 text-center transition hover:border-emerald-500 shadow-sm"
+    class="relative rounded-2xl border-2 border-dashed border-mint-300 bg-white/95 p-8 text-center transition hover:border-mint-500 hover:bg-mint-50/30 shadow-xs"
     on:dragover|preventDefault
     on:drop={handleDrop}
     role="region"
@@ -220,19 +220,19 @@
       on:change={handleFileSelect}
     />
     <div class="flex flex-col items-center justify-center space-y-3">
-      <div class="rounded-full bg-emerald-50 p-4 text-3xl">📥</div>
+      <div class="rounded-full bg-mint-100 p-4 text-3xl shadow-2xs">📥</div>
       <div>
         <p class="text-sm font-bold text-slate-800">
           증명사진이나 서류 이미지를 드래그하거나 클릭하여 선택하세요
         </p>
-        <p class="text-xs text-slate-400 mt-1">서버 업로드 대기 없이 즉시 변환됩니다 (최대 용량 무제한)</p>
+        <p class="text-xs text-mint-700/80 font-medium mt-1">서버 업로드 대기 없이 즉시 변환됩니다 (최대 용량 무제한)</p>
       </div>
     </div>
   </div>
 
   <!-- Settings & Result Area -->
   {#if file}
-    <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-md sm:p-8">
+    <div class="mt-6 rounded-2xl border border-mint-200 bg-white p-6 shadow-sm sm:p-8">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
         <!-- Controls -->
         <div class="space-y-4">
@@ -240,7 +240,7 @@
             <label for="format-select" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">출력 파일 포맷</label>
             <select
               id="format-select"
-              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm focus:border-emerald-500 focus:outline-none"
+              class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-800 shadow-xs focus:border-mint-500 focus:ring-1 focus:ring-mint-500 focus:outline-none"
               bind:value={format}
               on:change={applyPresetAndProcess}
             >
@@ -253,33 +253,33 @@
           <div>
             <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
               <span>압축 품질 조절</span>
-              <span>{quality}%</span>
+              <span class="text-mint-700">{quality}%</span>
             </div>
             <input
               type="range"
               min="10"
               max="100"
-              class="w-full accent-emerald-600"
+              class="w-full accent-mint-600"
               bind:value={quality}
               on:input={applyPresetAndProcess}
             />
           </div>
         </div>
 
-        <!-- Comparison Stats -->
-        <div class="rounded-xl bg-slate-50 p-4 border border-slate-100 flex flex-col justify-center space-y-3">
+        <!-- Comparison Stats with Soft Mint Theme -->
+        <div class="rounded-xl bg-mint-50/70 p-4 border border-mint-200/70 flex flex-col justify-center space-y-3">
           <div class="flex justify-between items-center text-xs">
             <span class="text-slate-500">원본 용량:</span>
             <span class="font-bold text-slate-700">{formatBytes(originalSize)}</span>
           </div>
           <div class="flex justify-between items-center text-xs">
             <span class="text-slate-500">압축 후 용량:</span>
-            <span class="font-bold text-emerald-600 text-sm">{formatBytes(compressedSize)}</span>
+            <span class="font-bold text-mint-700 text-sm">{formatBytes(compressedSize)}</span>
           </div>
           {#if originalSize > 0 && compressedSize > 0}
-            <div class="flex justify-between items-center text-xs border-t pt-2 border-slate-200">
+            <div class="flex justify-between items-center text-xs border-t pt-2 border-mint-200">
               <span class="text-slate-500">용량 절감율:</span>
-              <span class="font-black text-emerald-700">
+              <span class="font-black text-mint-800">
                 {Math.max(0, Math.round(((originalSize - compressedSize) / originalSize) * 100))}% 용량 감소
               </span>
             </div>
@@ -291,7 +291,7 @@
       <div class="mt-6 flex justify-end">
         <button
           type="button"
-          class="rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white shadow-md hover:bg-emerald-500 transition disabled:opacity-50"
+          class="rounded-xl bg-mint-600 px-6 py-2.5 text-sm font-bold text-white shadow-xs hover:bg-mint-700 transition disabled:opacity-50"
           on:click={downloadCompressed}
           disabled={processing || !compressedBlob}
         >
@@ -303,17 +303,17 @@
 
   <AdBanner />
 
-  <!-- Korea SEO Guide Section -->
-  <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+  <!-- Korea SEO Guide Section with Mint border -->
+  <section class="mt-8 rounded-2xl border border-mint-200 bg-white/95 p-6 shadow-xs">
     <h2 class="text-lg font-bold text-slate-900 mb-3">자주 묻는 규격 질문</h2>
     <div class="space-y-3 text-xs text-slate-600 leading-relaxed">
-      <div class="rounded-lg bg-slate-50 p-3">
+      <div class="rounded-xl bg-mint-50/60 p-3.5 border border-mint-100">
         <strong class="text-slate-800">Q. 공공기관/취업 사이트에서 사진 등록 시 "용량 초과" 에러가 뜨는 이유?</strong>
-        <p class="mt-1 text-slate-500">대부분의 시스템은 100KB, 500KB 또는 1MB 이하의 용량 제한이 있습니다. [취업/이력서 사진] 프리셋을 누르면 자동으로 100KB 내외로 줄어들어 바로 등록됩니다.</p>
+        <p class="mt-1 text-slate-600">대부분의 시스템은 100KB, 500KB 또는 1MB 이하의 용량 제한이 있습니다. [취업/이력서 사진] 프리셋을 누르면 자동으로 100KB 내외로 줄어들어 바로 등록됩니다.</p>
       </div>
-      <div class="rounded-lg bg-slate-50 p-3">
+      <div class="rounded-xl bg-mint-50/60 p-3.5 border border-mint-100">
         <strong class="text-slate-800">Q. 주민등록번호나 얼굴 사진이 유출되지 않나요?</strong>
-        <p class="mt-1 text-slate-500">본 도구는 사용자 PC의 브라우저 엔진(HTML5 Canvas)에서 100% 연산되며, 외부 인터넷 서버로 단 1바이트의 파일 데이터도 전송되지 않으므로 안심하고 사용하실 수 있습니다.</p>
+        <p class="mt-1 text-slate-600">본 도구는 사용자 PC의 브라우저 엔진(HTML5 Canvas)에서 100% 연산되며, 외부 인터넷 서버로 단 1바이트의 파일 데이터도 전송되지 않으므로 안심하고 사용하실 수 있습니다.</p>
       </div>
     </div>
   </section>
