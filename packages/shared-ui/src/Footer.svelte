@@ -46,6 +46,13 @@
   function closeModal() {
     activeModal = null;
   }
+  const labels = {
+    ko: { contact: '연락처', terms: '이용약관', privacy: '개인정보처리방침', refund: '환불 정책' },
+    en: { contact: 'Contact', terms: 'Terms of Service', privacy: 'Privacy Policy', refund: 'Refund Policy' },
+    vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật', refund: 'Chính sách hoàn tiền' }
+  };
+
+  $: curLabels = labels[lang] || labels.ko;
 </script>
 
 <footer class="mt-auto border-t border-slate-200/80 bg-white/70 backdrop-blur-xs text-xs text-slate-500">
@@ -53,19 +60,19 @@
     <!-- Links -->
     <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-5 font-medium text-slate-600">
       <a href="mailto:contact@chadata.kr" class="hover:underline hover:text-slate-900 transition">
-        연락처
+        {curLabels.contact}
       </a>
       <span class="text-slate-300">|</span>
       <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('terms')}>
-        이용약관
+        {curLabels.terms}
       </button>
       <span class="text-slate-300">|</span>
       <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('privacy')}>
-        개인정보처리방침
+        {curLabels.privacy}
       </button>
       <span class="text-slate-300">|</span>
       <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('refund')}>
-        환불 정책
+        {curLabels.refund}
       </button>
     </div>
 

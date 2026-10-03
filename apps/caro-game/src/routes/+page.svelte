@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { buildWebAppJsonLd, buildFaqJsonLd } from '@zero-effort/seo-config';
   import { AdBanner } from '@zero-effort/shared-ui';
+  import { currentLang, translations } from '$lib/langStore';
 
   const BOARD_SIZE = 15;
   type Player = 'X' | 'O' | null;
@@ -14,8 +15,29 @@
   let winningCells: [number, number][] = [];
   let gameMode: GameMode = 'ai';
   let soundEnabled = true;
-  let statusMessage = 'Lượt chơi: X (Bạn)';
   let copied = false;
+
+  // Key for reactive status message
+  let statusKey: 'your_turn' | 'ai_thinking' | 'opponent_turn' | 'win_x' | 'win_o' | 'draw' | 'room_wait' | 'room_created' | 'room_not_found' | 'peer_disconnected' | 'connecting' | 'custom' = 'your_turn';
+  let customStatus = '';
+
+  $: t = translations[$currentLang];
+
+  $: displayStatus = getStatusText(statusKey, $currentLang);
+
+  function getStatusText(key: typeof statusKey, _l: string): string {
+    if (key === 'your_turn') return t.turnYour;
+    if (key === 'ai_thinking') return t.turnAiThinking;
+    if (key === 'opponent_turn') return t.turnOpponent;
+    if (key === 'win_x') return t.winMessage('X');
+    if (key === 'win_o') return t.winMessage('O');
+    if (key === 'draw') return t.drawMessage;
+    if (key === 'room_created') return t.roomCreated;
+    if (key === 'room_not_found') return t.roomNotFound;
+    if (key === 'peer_disconnected') return t.peerDisconnected;
+    if (key === 'connecting') return t.connectingRoom(roomId);
+    return customStatus || t.turnPlayer(currentPlayer);
+  }
 
   // P2P Multiplayer state
   let peer: any = null;
@@ -28,7 +50,7 @@
   const jsonLdApp = buildWebAppJsonLd({
     name: 'Cờ Caro Online - Chơi Cờ Caro Miễn Phí Với AI & Bạn Bè (P2P)',
     url: 'https://caroonline.vn',
-    description: 'Chơi cờ Caro (Gomoku) trực tuyến miễn phí 100% trên trình duyệt. Hỗ trợ tạo phòng đấu 1:1 thời gian thực với bạn bè qua Zalo, không cần cài app.',
+    description: 'Chơi cờ Caro (Gomoku) trực tuyến miễn phí 100% trên trình duyệt. Hỗ trợ tạo phòng đấu 1:1 thời gian thực với bạn bè qua liên kết P2P, không cần cài app.',
     applicationCategory: 'GameApplication',
     operatingSystem: 'All'
   });
@@ -36,7 +58,7 @@
   const jsonLdFaq = buildFaqJsonLd([
     {
       question: 'Làm thế nào để chơi cờ Caro với bạn bè từ xa?',
-      answer: 'Rất đơn giản! Chỉ cần bấm [Tạo Phòng Online], sau đó gửi liên kết phòng qua Zalo hoặc Messenger cho bạn bè. Khi bạn bè bấm vào link, hai người sẽ được kết nối trực tiếp (P2P) để thi đấu ngay lập tức.'
+      answer: 'Rất đơn giản! Chỉ cần bấm [Tạo Phòng Online], sau đó gửi liên kết phòng cho bạn bè. Khi bạn bè bấm vào link, hai người sẽ được kết nối trực tiếp (P2P) để thi đấu ngay lập tức.'
     },
     {
       question: 'Chơi online có tốn tiền hay cần tải phần mềm không?',
@@ -93,13 +115,13 @@
     myRole = 'X';
     roomId = Math.random().toString(36).substring(2, 8).toUpperCase();
     roomUrl = `${window.location.origin}${window.location.pathname}?room=${roomId}`;
-    statusMessage = 'Đang mở phòng đấu...';
+    statusKey = 'connecting';
 
     const { default: Peer } = await import('peerjs');
     peer = new Peer(`caro-room-${roomId}`);
 
     peer.on('open', () => {
-      statusMessage = 'Đã tạo phòng! Hãy gửi link cho bạn bè để bắt đầu.';
+      statusKey = 'room_created';
     });
 
     peer.on('connection', (connection: any) => {
@@ -109,7 +131,7 @@
 
     peer.on('error', (err: any) => {
       console.error('Peer error:', err);
-      statusMessage = 'Lỗi kết nối phòng. Vui lòng thử tạo lại phòng mới.';
+      statusKey = 'room_not_found';
     });
   }
 
@@ -120,7 +142,7 @@
     myRole = 'O';
     roomId = targetRoomId.toUpperCase();
     roomUrl = `${window.location.origin}${window.location.pathname}?room=${roomId}`;
-    statusMessage = `Đang kết nối vào phòng ${roomId}...`;
+    statusKey = 'connecting';
 
     const { default: Peer } = await import('peerjs');
     peer = new Peer();
@@ -132,7 +154,7 @@
 
     peer.on('error', (err: any) => {
       console.error('Peer join error:', err);
-      statusMessage = 'Không tìm thấy phòng hoặc chủ phòng đã thoát.';
+      statusKey = 'room_not_found';
     });
   }
 
@@ -140,9 +162,7 @@
     conn.on('open', () => {
       isConnectedPeer = true;
       resetBoard();
-      statusMessage = isHost
-        ? 'Đối thủ đã vào phòng! Lượt của bạn (X).'
-        : 'Đã kết nối đối thủ! Lượt đi đầu tiên thuộc về X.';
+      statusKey = isHost ? 'your_turn' : 'opponent_turn';
       playTone(587.33, 0.2); // D5 chime
     });
 
@@ -151,13 +171,14 @@
         applyRemoteMove(data.r, data.c, data.player);
       } else if (data.type === 'RESTART') {
         resetBoard();
-        statusMessage = 'Đối thủ đã tạo ván mới!';
+        customStatus = t.opponentRestart;
+        statusKey = 'custom';
       }
     });
 
     conn.on('close', () => {
       isConnectedPeer = false;
-      statusMessage = 'Đối thủ đã ngắt kết nối.';
+      statusKey = 'peer_disconnected';
     });
   }
 
@@ -167,9 +188,9 @@
     winner = null;
     winningCells = [];
     if (gameMode === 'online') {
-      statusMessage = currentPlayer === myRole ? 'Lượt của bạn!' : 'Lượt của đối thủ...';
+      statusKey = currentPlayer === myRole ? 'your_turn' : 'opponent_turn';
     } else {
-      statusMessage = 'Lượt chơi: X (Bạn)';
+      statusKey = 'your_turn';
     }
     playTone(440, 0.1);
   }
@@ -221,7 +242,7 @@
     if (winLine) {
       winner = currentPlayer;
       winningCells = winLine;
-      statusMessage = `🎉 Người chơi ${currentPlayer} chiến thắng!`;
+      statusKey = currentPlayer === 'X' ? 'win_x' : 'win_o';
       playTone(880, 0.3);
 
       if (gameMode === 'online' && conn && conn.open) {
@@ -232,7 +253,7 @@
 
     if (board.every(row => row.every(cell => cell !== null))) {
       winner = 'Draw';
-      statusMessage = 'Hòa cờ!';
+      statusKey = 'draw';
       if (gameMode === 'online' && conn && conn.open) {
         conn.send({ type: 'MOVE', r, c, player: currentPlayer });
       }
@@ -247,14 +268,17 @@
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 
     if (gameMode === 'online') {
-      statusMessage = currentPlayer === myRole ? 'Lượt của bạn!' : 'Lượt của đối thủ...';
+      statusKey = currentPlayer === myRole ? 'your_turn' : 'opponent_turn';
     } else if (gameMode === 'ai') {
-      statusMessage = `Lượt chơi: ${currentPlayer} ${currentPlayer === 'O' ? '(Máy suy nghĩ...)' : ''}`;
       if (currentPlayer === 'O') {
+        statusKey = 'ai_thinking';
         setTimeout(makeAiMove, 250);
+      } else {
+        statusKey = 'your_turn';
       }
     } else {
-      statusMessage = `Lượt chơi: ${currentPlayer}`;
+      customStatus = t.turnPlayer(currentPlayer);
+      statusKey = 'custom';
     }
   }
 
@@ -268,19 +292,19 @@
     if (winLine) {
       winner = p;
       winningCells = winLine;
-      statusMessage = `🎉 Người chơi ${p} chiến thắng!`;
+      statusKey = p === 'X' ? 'win_x' : 'win_o';
       playTone(880, 0.3);
       return;
     }
 
     if (board.every(row => row.every(cell => cell !== null))) {
       winner = 'Draw';
-      statusMessage = 'Hòa cờ!';
+      statusKey = 'draw';
       return;
     }
 
     currentPlayer = p === 'X' ? 'O' : 'X';
-    statusMessage = currentPlayer === myRole ? 'Lượt của bạn!' : 'Lượt của đối thủ...';
+    statusKey = currentPlayer === myRole ? 'your_turn' : 'opponent_turn';
   }
 
   function makeAiMove() {
@@ -337,11 +361,18 @@
     }
   }
 
-  function shareZalo() {
+  function shareLinkDirect() {
     if (typeof window !== 'undefined') {
       const shareLink = roomUrl || window.location.href;
-      const url = encodeURIComponent(shareLink);
-      window.open(`https://chat.zalo.me/?url=${url}`, '_blank');
+      if (navigator.share) {
+        navigator.share({
+          title: t.siteTitle,
+          text: t.heroDesc,
+          url: shareLink
+        }).catch(() => copyLink());
+      } else {
+        copyLink();
+      }
     }
   }
 
@@ -357,11 +388,8 @@
 
 <svelte:head>
   <title>Cờ Caro Online - Chơi Đấu Trực Tuyến 1:1 Với Bạn Bè & AI</title>
-  <meta name="description" content="Tạo phòng thi đấu cờ Caro 1:1 trực tiếp với bạn bè qua Zalo hoặc đấu với AI. Tải ngay không cần cài đặt, không lag, miễn phí 100%." />
-  <meta name="keywords" content="cờ caro online, chơi cờ caro bạn bè, tạo phòng cờ caro, cờ caro zalo, cờ caro 2 người p2p" />
-  <meta property="og:title" content="Vào chơi Cờ Caro 1:1 với mình ngay!" />
-  <meta property="og:description" content="Nhấp vào liên kết để bắt đầu ván cờ Caro trực tiếp. Không cần tải app." />
-  <meta property="og:locale" content="vi_VN" />
+  <meta name="description" content="Tạo phòng thi đấu cờ Caro 1:1 trực tiếp với bạn bè qua liên kết P2P hoặc đấu với AI. Tải ngay không cần cài đặt, không lag, miễn phí 100%." />
+  <meta name="keywords" content="cờ caro online, chơi cờ caro bạn bè, tạo phòng cờ caro, cờ caro zalo, 베트남 오목, caro gomoku" />
   {@html `<script type="application/ld+json">${jsonLdApp}</script>`}
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
@@ -371,53 +399,53 @@
   <div class="mb-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
     <div>
       <div class="inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-0.5 text-xs font-bold text-red-800 mb-2">
-        <span>🇻🇳 Cờ Caro Trực Tuyến 1:1 (P2P Real-time)</span>
+        <span>{t.badgeTop}</span>
       </div>
-      <h1 class="text-2xl font-black text-slate-900 sm:text-3xl">Cờ Caro Online (15x15)</h1>
-      <p class="text-sm text-slate-500">Đấu trực tiếp với bạn bè qua Zalo / Messenger hoặc luyện cờ với AI</p>
+      <h1 class="text-2xl font-black text-slate-900 sm:text-3xl">{t.heroTitle}</h1>
+      <p class="text-sm text-slate-500">{t.heroDesc}</p>
     </div>
 
     <!-- Mode Selector -->
     <div class="flex flex-wrap items-center gap-2">
       <button
         type="button"
-        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-sm transition {gameMode === 'online' ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
+        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-xs transition {gameMode === 'online' ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
         on:click={() => switchMode('online')}
       >
-        🌐 Tạo Phòng 1:1 (Bạn Bè)
+        {t.btnOnline}
       </button>
 
       <button
         type="button"
-        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-sm transition {gameMode === 'ai' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
+        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-xs transition {gameMode === 'ai' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
         on:click={() => switchMode('ai')}
       >
-        🤖 Đấu AI
+        {t.btnAi}
       </button>
 
       <button
         type="button"
-        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-sm transition {gameMode === 'local2p' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
+        class="rounded-lg border px-3 py-1.5 text-xs font-semibold shadow-xs transition {gameMode === 'local2p' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-slate-700 hover:bg-slate-50'}"
         on:click={() => switchMode('local2p')}
       >
-        👥 Chơi Chung Máy
+        {t.btnLocal}
       </button>
 
       <button
         type="button"
-        class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition"
+        class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 shadow-xs hover:bg-slate-50 transition"
         on:click={() => soundEnabled = !soundEnabled}
-        title="Bật/Tắt âm thanh"
+        title={t.btnSound}
       >
         {soundEnabled ? '🔊' : '🔇'}
       </button>
 
       <button
         type="button"
-        class="rounded-lg bg-slate-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 transition"
+        class="rounded-lg bg-slate-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs hover:bg-slate-800 transition"
         on:click={requestNewGame}
       >
-        Ván Mới
+        {t.btnNewGame}
       </button>
     </div>
   </div>
@@ -428,13 +456,13 @@
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div>
           <span class="inline-block rounded-md bg-white/20 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider">
-            Phòng Đấu: #{roomId || '---'}
+            {t.roomTitle}: #{roomId || '---'}
           </span>
           <p class="text-xs text-white/90 mt-1">
             {#if isConnectedPeer}
-              🟢 Đã kết nối với đối thủ! Bạn cầm quân: <strong class="text-amber-200 text-sm">[{myRole}]</strong>
+              {t.roomConnected} <strong class="text-amber-200 text-sm">[{myRole}]</strong>
             {:else}
-              ⏳ Đang đợi đối thủ vào phòng... Hãy copy link bên cạnh và gửi cho bạn bè!
+              {t.roomWait}
             {/if}
           </p>
         </div>
@@ -442,17 +470,17 @@
         <div class="flex items-center gap-2">
           <button
             type="button"
-            class="rounded-lg bg-white px-3.5 py-1.5 text-xs font-black text-emerald-800 shadow hover:bg-emerald-50 transition"
+            class="rounded-lg bg-white px-3.5 py-1.5 text-xs font-black text-emerald-800 shadow-xs hover:bg-emerald-50 transition"
             on:click={copyLink}
           >
-            {copied ? '✅ Đã Copy Link!' : '📋 Copy Link Phòng'}
+            {copied ? t.btnCopied : t.btnCopyLink}
           </button>
           <button
             type="button"
-            class="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-black text-white shadow hover:bg-blue-700 transition"
-            on:click={shareZalo}
+            class="rounded-lg bg-blue-600 px-3.5 py-1.5 text-xs font-black text-white shadow-xs hover:bg-blue-700 transition"
+            on:click={shareLinkDirect}
           >
-            💬 Gửi Qua Zalo
+            {t.btnShareZalo}
           </button>
         </div>
       </div>
@@ -460,9 +488,9 @@
   {/if}
 
   <!-- Status Bar -->
-  <div class="mb-4 rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm">
+  <div class="mb-4 rounded-xl border border-slate-200 bg-white p-3 text-center shadow-xs">
     <span class="text-sm font-bold {winner ? 'text-emerald-600 animate-pulse' : 'text-slate-700'}">
-      {statusMessage}
+      {displayStatus}
     </span>
   </div>
 
@@ -496,22 +524,22 @@
 
   <!-- Rules Section -->
   <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h2 class="text-lg font-bold text-slate-900 mb-3">Tính năng thi đấu trực tuyến P2P thời gian thực</h2>
+    <h2 class="text-lg font-bold text-slate-900 mb-3">{t.rulesTitle}</h2>
     <p class="text-sm text-slate-600 leading-relaxed mb-4">
-      Không cần đăng nhập, không cần máy chủ trung gian nặng nề. Công nghệ WebRTC P2P kết nối trực tiếp hai trình duyệt với nhau qua đường truyền UDP siêu tốc, mang lại trải nghiệm đánh cờ mượt mà tức thì như đang ngồi cùng một bàn cờ thật.
+      {t.rulesDesc}
     </p>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-600">
       <div class="rounded-xl bg-slate-50 p-3 border border-slate-100">
-        <h4 class="font-bold text-slate-800 mb-1">1. Bấm Tạo Phòng</h4>
-        <p>Hệ thống tự động cấp một mã phòng ngẫu nhiên và đường link thi đấu độc quyền.</p>
+        <h4 class="font-bold text-slate-800 mb-1">{t.step1Title}</h4>
+        <p>{t.step1Desc}</p>
       </div>
       <div class="rounded-xl bg-slate-50 p-3 border border-slate-100">
-        <h4 class="font-bold text-slate-800 mb-1">2. Gửi Link Qua Zalo</h4>
-        <p>Gửi liên kết cho đối thủ qua Zalo, Messenger hoặc bất kỳ ứng dụng trò chuyện nào.</p>
+        <h4 class="font-bold text-slate-800 mb-1">{t.step2Title}</h4>
+        <p>{t.step2Desc}</p>
       </div>
       <div class="rounded-xl bg-slate-50 p-3 border border-slate-100">
-        <h4 class="font-bold text-slate-800 mb-1">3. Vào Đấu Tức Thì</h4>
-        <p>Đối thủ mở link trên điện thoại hoặc máy tính là ván đấu tự động khởi tranh.</p>
+        <h4 class="font-bold text-slate-800 mb-1">{t.step3Title}</h4>
+        <p>{t.step3Desc}</p>
       </div>
     </div>
   </section>
