@@ -3,8 +3,8 @@
   import { Footer } from '@zero-effort/shared-ui';
 </script>
 
-<div class="flex min-h-screen flex-col bg-sky-50/50 text-slate-800">
-  <header class="border-b border-sky-100 bg-white/90 backdrop-blur-md sticky top-0 z-30 shadow-xs">
+<div class="flex min-h-screen flex-col bg-white text-slate-800">
+  <header class="border-b border-slate-100 bg-white/95 backdrop-blur-md sticky top-0 z-30 shadow-xs">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
       <div class="flex items-center space-x-2">
         <img src="/favicon.png" alt="로고" class="h-8 w-8 rounded-lg object-contain" />

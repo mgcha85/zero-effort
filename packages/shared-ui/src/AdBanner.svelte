@@ -20,8 +20,8 @@
   });
 </script>
 
-<div class="my-6 flex justify-center overflow-hidden min-h-[90px] w-full items-center bg-gray-50/50 rounded-lg border border-dashed border-gray-200 dark:bg-gray-900/50 dark:border-gray-800">
-  {#if client && slot}
+{#if client && slot}
+  <div class="my-6 flex justify-center overflow-hidden min-h-[90px] w-full items-center bg-gray-50/50 rounded-lg border border-dashed border-gray-200 dark:bg-gray-900/50 dark:border-gray-800">
     <ins
       class="adsbygoogle"
       style="display:block; width: 100%;"
@@ -30,9 +30,5 @@
       data-ad-format={format}
       data-full-width-responsive={responsive}
     ></ins>
-  {:else}
-    <div class="text-xs text-gray-400 font-mono py-4">
-      [Ad Space: AdSense Client / Slot not configured]
-    </div>
-  {/if}
-</div>
+  </div>
+{/if}
