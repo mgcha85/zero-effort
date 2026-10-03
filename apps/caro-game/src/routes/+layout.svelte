@@ -16,7 +16,7 @@
         <span class="text-2xl">⚔️</span>
         <div class="flex flex-col">
           <span class="text-base font-black tracking-tight text-indigo-700 leading-tight">
-            {$translations[$currentLang].siteTitle}
+            {translations[$currentLang].siteTitle}
           </span>
           <span class="text-[10px] text-slate-400 font-medium">Cờ Caro Online</span>
         </div>
@@ -52,7 +52,7 @@
         </div>
 
         <span class="hidden sm:inline-block rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800">
-          {$translations[$currentLang].freeBadge}
+          {translations[$currentLang].freeBadge}
         </span>
       </div>
     </div>
