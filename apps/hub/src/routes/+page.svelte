@@ -1,11 +1,13 @@
 <script lang="ts">
   import { TOOLS, type ToolItem } from '$lib/tools';
   import { currentLang, translations } from '$lib/langStore';
+  import { setFaviconByRoute } from '$lib/faviconStore';
   import { AdBanner } from '@zero-effort/shared-ui';
 
   let selectedCategory: string = 'all';
   let searchQuery: string = '';
 
+  $: setFaviconByRoute('/', selectedCategory);
   $: t = translations[$currentLang];
 
   $: filteredTools = TOOLS.filter(tool => {

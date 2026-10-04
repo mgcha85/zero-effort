@@ -38,9 +38,9 @@
     activeModal = null;
   }
   const labels = {
-    ko: { contact: '연락처', terms: '이용약관', privacy: '개인정보처리방침' },
-    en: { contact: 'Contact', terms: 'Terms of Service', privacy: 'Privacy Policy' },
-    vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật' }
+    ko: { contact: '연락처', terms: '이용약관', privacy: '개인정보처리방침', refund: '환불/취소 정책' },
+    en: { contact: 'Contact', terms: 'Terms of Service', privacy: 'Privacy Policy', refund: 'Refund Policy' },
+    vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật', refund: 'Chính sách hoàn tiền' }
   };
 
   $: curLabels = labels[lang] || labels.ko;
@@ -54,18 +54,24 @@
         {curLabels.contact}
       </a>
       <span class="text-slate-300">|</span>
-      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('terms')}>
+      <a href="https://minitoolbox.dev/terms" class="hover:underline hover:text-slate-900 transition">
         {curLabels.terms}
-      </button>
+      </a>
       <span class="text-slate-300">|</span>
-      <button type="button" class="hover:underline hover:text-slate-900 transition" on:click={() => openModal('privacy')}>
+      <a href="https://minitoolbox.dev/privacy" class="hover:underline hover:text-slate-900 transition">
         {curLabels.privacy}
-      </button>
+      </a>
+      <span class="text-slate-300">|</span>
+      <a href="https://minitoolbox.dev/refund" class="hover:underline hover:text-slate-900 transition">
+        {curLabels.refund}
+      </a>
     </div>
 
-    <!-- Copyright (Clean minimal style) -->
-    <div class="mt-3 text-center text-[11px] text-slate-400">
-      <p>© {new Date().getFullYear()} ZeroEffort. All rights reserved.</p>
+    <!-- Required Business Info (Rule 11) -->
+    <div class="mt-3 text-center text-[10px] text-slate-400 space-y-0.5 leading-normal">
+      <p>통신판매업 신고번호: 제 2021-평택안출-0261호 | 사업자등록번호: 219-03-78291</p>
+      <p>상호명: 차데이터리서치 | 대표자: 차민규 | 주소: 경기도 평택시 도대길 100-13</p>
+      <p>© {new Date().getFullYear()} MiniToolbox · ZeroEffort. All rights reserved.</p>
     </div>
   </div>
 </footer>
