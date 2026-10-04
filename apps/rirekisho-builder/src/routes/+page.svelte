@@ -188,18 +188,75 @@
     }
     return `${w.label} ${m}月 ${d}日 生 (満 ${age} 歳)`;
   }
+
+  $: metaDesc = $currentLang === 'ja'
+    ? 'JIS規格の履歴書をブラウザ上で簡単に無料作成・A4印刷。生年月日から小学校・中学校・高校・大学の入学・卒業年度（和暦・西暦）を自動計算。サーバー送信0KBの完全ローカル仕様。'
+    : $currentLang === 'en'
+    ? 'Free online Japanese JIS Standard resume builder. Automatic Wareki (Reiwa, Heisei, Showa) calculation for all school admission & graduation years. 100% in-browser private execution.'
+    : 'JIS규격 일본 이력서(履歴書) 무료 자동완성. 생년월일만 넣으면 일본 학사일정에 맞춰 소학교/중학교/고등학교/대학교 입학·졸업 와레키(令和・平成・昭和) 자동 계산. 100% 브라우저 로컬 안전 출력.';
+
+  $: metaTitle = `${t.siteTitle} | ${t.subBrand}`;
+
+  $: jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t.siteTitle,
+    alternateName: 'JIS Japanese Resume Builder',
+    url: 'https://rirekisho.minitoolbox.dev/',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'All',
+    description: metaDesc,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'JPY'
+    }
+  });
+
+  $: jsonLdFaq = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: $currentLang === 'ja' ? '入力した個人情報はサーバーに保存されますか？' : 'Is my personal data sent to any server?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: $currentLang === 'ja' ? 'いいえ。すべてのデータ処理とPDF生成はブラウザ内部（LocalStorage）で完結し、外部サーバーへの通信は一切行われません。' : 'No. All data processing and PDF generation occurs 100% locally in your browser with zero server uploads.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: $currentLang === 'ja' ? '和暦（元号）の計算は正確ですか？' : 'Is the Japanese era (Wareki) calculation accurate?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: $currentLang === 'ja' ? 'はい。昭和・平成・令和の改元日および日本の4月入学・3月卒業の学制に完全準拠して自動算出します。' : 'Yes. It strictly follows the official Japanese school calendar (April entrance, March graduation) and exact era transitions (Showa, Heisei, Reiwa).'
+        }
+      }
+    ]
+  });
 </script>
 
 <svelte:head>
-  <title>{t.siteTitle} | {t.subBrand}</title>
-  <meta
-    name="description"
-    content={$currentLang === 'ja'
-      ? 'JIS規格の履歴書をブラウザ上で簡単に無料作成・A4印刷。生年月日から小学校・中学校・高校・大学の入学・卒業年度（和暦・西暦）を自動計算。サーバー送信0KBの完全ローカル仕様。'
-      : $currentLang === 'en'
-      ? 'Free online Japanese JIS Standard resume builder. Automatic Wareki (Reiwa, Heisei, Showa) calculation for all school admission & graduation years. 100% in-browser private execution.'
-      : 'JIS규격 일본 이력서(履歴書) 무료 자동완성. 생년월일만 넣으면 일본 학사일정에 맞춰 소학교/중학교/고등학교/대학교 입학·졸업 와레키(令和・平成・昭和) 자동 계산. 100% 브라우저 로컬 안전 출력.'}
-  />
+  <title>{metaTitle}</title>
+  <meta name="description" content={metaDesc} />
+  <meta name="keywords" content="履歴書 作成, JIS規格 履歴書, 和暦 計算, 履歴書 無料, 日本 履歴書, JIS resume builder, wareki calculator, 일본 이력서 양식, 일본 취업 이력서" />
+  <link rel="canonical" href="https://rirekisho.minitoolbox.dev/" />
+
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:url" content="https://rirekisho.minitoolbox.dev/" />
+  <meta property="og:image" content="https://rirekisho.minitoolbox.dev/icon-512.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MiniToolbox" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={metaTitle} />
+  <meta name="twitter:description" content={metaDesc} />
+  <meta name="twitter:image" content="https://rirekisho.minitoolbox.dev/icon-512.png" />
+
+  {@html `<script type="application/ld+json">${jsonLd}</script>`}
+  {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-6 sm:px-6">

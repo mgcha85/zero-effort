@@ -32,11 +32,55 @@
     { id: 'utility', label: t.categories.utility },
     { id: 'entertainment', label: t.categories.entertainment }
   ];
+
+  $: jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'MiniToolbox',
+    alternateName: 'MiniToolbox.dev',
+    url: 'https://minitoolbox.dev/',
+    description: t.metaDesc,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://minitoolbox.dev/?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  });
+
+  $: jsonLdOrg = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '차데이터리서치 (Cha Data Research)',
+    url: 'https://minitoolbox.dev/',
+    logo: 'https://minitoolbox.dev/icon-512.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@chadata.kr',
+      contactType: 'customer support'
+    }
+  });
 </script>
 
 <svelte:head>
   <title>{t.metaTitle}</title>
   <meta name="description" content={t.metaDesc} />
+  <meta name="keywords" content="온라인 도구 모음, PDF 변환 도구, 웹 미디어 변환기, 비자 계산기, 쉥겐 계산기, 안멜둥 서식, 일본 이력서 생성, 무료 웹 유틸리티, private web tools" />
+  <link rel="canonical" href="https://minitoolbox.dev/" />
+
+  <meta property="og:title" content={t.metaTitle} />
+  <meta property="og:description" content={t.metaDesc} />
+  <meta property="og:url" content="https://minitoolbox.dev/" />
+  <meta property="og:image" content="https://minitoolbox.dev/icon-512.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MiniToolbox" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={t.metaTitle} />
+  <meta name="twitter:description" content={t.metaDesc} />
+  <meta name="twitter:image" content="https://minitoolbox.dev/icon-512.png" />
+
+  {@html `<script type="application/ld+json">${jsonLd}</script>`}
+  {@html `<script type="application/ld+json">${jsonLdOrg}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">

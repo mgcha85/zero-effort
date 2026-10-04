@@ -73,18 +73,75 @@
         return { text: t.overdueStatus, bg: 'bg-red-100 text-red-900 border-red-400 font-black' };
     }
   }
+
+  $: metaDesc = $currentLang === 'en'
+    ? 'Southeast Asia Visa Run & 90-Day Report D-Day Planner. Thailand TM.47, Bali VoA, Vietnam visa exemptions. Prevent overstay fines with 1-click .ics calendar alerts.'
+    : $currentLang === 'th'
+    ? 'เครื่องมือวางแผนการเดินทางวีซ่ารันและการรายงานตัว 90 วันในเอเชียตะวันออกเฉียงใต้ คำนวณวันครบกำหนดและส่งออกการแจ้งเตือนปฏิทิน (.ics)'
+    : '태국 90일 거주신고(TM.47), 발리 도착비자(VoA), 베트남 무비자 비자런 D-Day 역산기. 오버스테이 방지 및 온라인 접수 가능 기간 알림, 1클릭 캘린더(.ics) 내보내기.';
+
+  $: metaTitle = `${t.siteTitle} | ${t.subBrand}`;
+
+  $: jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: t.siteTitle,
+    alternateName: 'Southeast Asia Visa Run & 90-Day D-Day Tracker',
+    url: 'https://visarun.minitoolbox.dev/',
+    applicationCategory: 'TravelApplication',
+    operatingSystem: 'All',
+    description: metaDesc,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD'
+    }
+  });
+
+  $: jsonLdFaq = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: $currentLang === 'ko' ? '태국 90일 리포트(TM.47)는 언제부터 신고할 수 있나요?' : 'When can I file Thailand 90-Day Report (TM.47)?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: $currentLang === 'ko' ? '만료일 기준 15일 전부터 7일 후까지 출입국관리사무소 또는 온라인으로 신청 가능합니다.' : 'You can file 15 days before up to 7 days after the due date at immigration or online.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: $currentLang === 'ko' ? '캘린더 내보내기 기능에 비용이 드나요?' : 'Is the .ics calendar alert export free?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: $currentLang === 'ko' ? '완전 무료이며 브라우저 로컬에서 .ics 파일을 생성하여 Google 캘린더, Apple 캘린더에 바로 등록할 수 있습니다.' : 'It is 100% free. The .ics calendar file is generated directly in your browser for instant import into Google Calendar or Apple Calendar.'
+        }
+      }
+    ]
+  });
 </script>
 
 <svelte:head>
-  <title>{t.siteTitle} | {t.subBrand}</title>
-  <meta
-    name="description"
-    content={$currentLang === 'en'
-      ? 'Southeast Asia Visa Run & 90-Day Report D-Day Planner. Thailand TM.47, Bali VoA, Vietnam visa exemptions. Prevent overstay fines with 1-click .ics calendar alerts.'
-      : $currentLang === 'th'
-      ? 'เครื่องมือวางแผนการเดินทางวีซ่ารันและการรายงานตัว 90 วันในเอเชียตะวันออกเฉียงใต้ คำนวณวันครบกำหนดและส่งออกการแจ้งเตือนปฏิทิน (.ics)'
-      : '태국 90일 거주신고(TM.47), 발리 도착비자(VoA), 베트남 무비자 비자런 D-Day 역산기. 오버스테이 방지 및 온라인 접수 가능 기간 알림, 1클릭 캘린더(.ics) 내보내기.'}
-  />
+  <title>{metaTitle}</title>
+  <meta name="description" content={metaDesc} />
+  <meta name="keywords" content="비자런 계산기, 태국 90일 신고, 발리 도착비자, 베트남 무비자, visa run planner, thailand 90 day report, bali voa extension, vietnam visa run, overstay tracker" />
+  <link rel="canonical" href="https://visarun.minitoolbox.dev/" />
+
+  <meta property="og:title" content={metaTitle} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:url" content="https://visarun.minitoolbox.dev/" />
+  <meta property="og:image" content="https://visarun.minitoolbox.dev/icon-512.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MiniToolbox" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={metaTitle} />
+  <meta name="twitter:description" content={metaDesc} />
+  <meta name="twitter:image" content="https://visarun.minitoolbox.dev/icon-512.png" />
+
+  {@html `<script type="application/ld+json">${jsonLd}</script>`}
+  {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
