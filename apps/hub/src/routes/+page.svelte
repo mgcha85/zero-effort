@@ -59,6 +59,19 @@
       contactType: 'customer support'
     }
   });
+
+  $: jsonLdFaq = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: t.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a
+      }
+    }))
+  });
 </script>
 
 <svelte:head>
@@ -81,6 +94,7 @@
 
   {@html `<script type="application/ld+json">${jsonLd}</script>`}
   {@html `<script type="application/ld+json">${jsonLdOrg}</script>`}
+  {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
@@ -199,6 +213,22 @@
         <div class="space-y-1.5">
           <h4 class="font-bold text-slate-900 text-sm">{item.title}</h4>
           <p>{item.desc}</p>
+        </div>
+      {/each}
+    </div>
+  </section>
+
+  <!-- FAQ Section for Search Engine Rich Snippets & User Trust -->
+  <section class="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-xs">
+    <h2 class="text-base font-black text-slate-900 mb-4 flex items-center space-x-2">
+      <span>❓</span>
+      <span>{t.faqTitle}</span>
+    </h2>
+    <div class="space-y-4">
+      {#each t.faqs as faq}
+        <div class="rounded-xl bg-slate-50 p-4 border border-slate-100">
+          <h3 class="text-xs font-bold text-slate-900 mb-1.5">Q. {faq.q}</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">A. {faq.a}</p>
         </div>
       {/each}
     </div>

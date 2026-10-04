@@ -39,6 +39,21 @@ export const translations = {
         desc: '각 도구는 독립적인 서브도메인(pdf., size., anmeldung. 등)을 통해 전 세계 어디서든 가장 빠른 에지 CDN 네트워크로 제공됩니다.'
       }
     ],
+    faqTitle: '자주 묻는 질문 (FAQ)',
+    faqs: [
+      {
+        q: '정말로 제 파일이 서버로 전송되지 않나요?',
+        a: '네. MiniToolbox의 모든 유틸리티는 WebAssembly, HTML5 Canvas, 브라우저 pdf-lib 라이브러리를 통해 100% 사용자의 PC/스마트폰 메모리에서만 동작합니다. 개발자 도구(F12)의 네트워크 탭을 확인해보셔도 파일 데이터가 외부로 1바이트도 전송되지 않음을 직접 확인하실 수 있습니다.'
+      },
+      {
+        q: '모든 도구가 무료인가요? 결제나 가입이 필요한가요?',
+        a: '회원가입, 신용카드 등록, 파일 개수 제한이 전혀 없는 100% 무료 서비스입니다. 복잡한 설치 없이 브라우저에서 즉시 실행됩니다.'
+      },
+      {
+        q: '스마트폰 모바일 브라우저에서도 사용 가능한가요?',
+        a: '아이폰 Safari, 안드로이드 Chrome 등 모바일 웹 브라우저 환경에서도 모든 기능(사진 리사이징, PDF 분할, 솅겐 계산기 등)이 동일하게 반응형으로 동작합니다.'
+      }
+    ],
     metaTitle: 'MiniToolbox.dev | 제로-업로드 프라이버시 마이크로 웹툴 포털',
     metaDesc: '서버 전송 0KB 완전 로컬 마이크로 유틸리티 포털. PDF 합치기/나누기, 서류 사진 리사이즈, 솅겐 체류일수 계산, 독일 안멜둥 서류 마스킹, 일본 이력서 와레키 자동완성, 동남아 비자런 D-Day 플래너.'
   },
@@ -74,6 +89,21 @@ export const translations = {
       {
         title: '3. Dedicated Subdomain Routing',
         desc: 'Each tool operates on its dedicated edge subdomain (pdf., size., anmeldung., etc.) delivering sub-second load times worldwide.'
+      }
+    ],
+    faqTitle: 'Frequently Asked Questions (FAQ)',
+    faqs: [
+      {
+        q: 'Are my files really never uploaded to any server?',
+        a: 'Yes, 100% guaranteed. All tools on MiniToolbox run locally in your browser memory using WebAssembly, Canvas API, and pdf-lib. You can inspect the browser DevTools (F12) Network tab to verify that 0 bytes of file payloads leave your device.'
+      },
+      {
+        q: 'Is it completely free? Do I need to create an account?',
+        a: 'All tools are permanently free with no account creation, no signups, and no paywalls or file conversion limits.'
+      },
+      {
+        q: 'Can I use these tools on mobile devices?',
+        a: 'Yes. MiniToolbox is fully responsive and optimized for mobile browsers including iOS Safari and Android Chrome.'
       }
     ],
     metaTitle: 'MiniToolbox.dev | Zero-Upload Privacy Micro Webtools Hub',
