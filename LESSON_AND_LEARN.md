@@ -10,8 +10,11 @@
   2. **네이버 서치어드바이저 소유확인 & Vercel 주의사항**:
      - 네이버는 HTML 파일 방식(`naver[hash].html`)과 HTML 메타태그(`naver-site-verification`) 두 가지를 제공.
      - Vercel의 `cleanUrls: true` 옵션이 켜져 있으면 `naver[hash].html` 요청이 308 리다이렉트되어 파일 검증이 실패할 수 있으므로, HTML 메타태그 방식을 반드시 병행 적용해야 안전함.
-  3. **Vercel Hobby 계정 24시간 배포 제한(100회/일)**:
-     - 단시간에 다수의 서브앱 푸시/배포가 몰리면 `api-deployments-young-hobby-team-24h` 한도에 걸림. 코드는 GitHub `main`에 안전하게 병합되어 있으므로 쿼터 롤오버 시 자동 반영됨.
+     - 소유확인 시 보안문자(CAPTCHA) 입력 후 즉시 완료.
+     - 사이트맵 제출 및 웹 페이지 수집 요청 시 상대 경로(`sitemap.xml`, `/`)가 아니라 **도메인을 포함한 전체 URL(`https://minitoolbox.dev/sitemap.xml`, `https://minitoolbox.dev/`)**을 입력해야 입력창 유효성 검증(붉은 밑줄)을 통과함.
+  3. **Vercel 모노레포 루트 배포 & 24시간 배포 제한(100회/일)**:
+     - 서브 프로젝트의 `rootDirectory`가 `apps/hub`로 설정된 경우, `apps/hub` 내부에서 CLI 배포 시 경로 이중 중첩(`apps/hub/apps/hub`) 오류가 발생하므로 레포지토리 루트에서 `.vercel`을 참조하여 `vercel --prod`로 배포해야 함.
+     - 배포 완료 즉시 `curl -sL https://minitoolbox.dev | grep naver`로 메타태그 실서버 200 노출 확인 완료.
   4. **전 서브앱 표준 SEO 스펙**:
      - 모든 앱 `app.html`에 Google & Naver 인증 태그 일괄 삽입.
      - `canonical`, OpenGraph(`og:*`), Twitter Card, JSON-LD Schema(`WebSite`, `WebApplication`, `FAQPage`, `Organization`) 구조화 데이터 완비.
