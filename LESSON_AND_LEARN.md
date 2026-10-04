@@ -1,5 +1,19 @@
 # LESSON AND LEARN
 
+## 2026-10-04: 구글 애널리틱스 4 (GA4) 신규 생성, 전역 연동 및 실시간 트래픽 검증
+
+- **현상 & 작업**:
+  - GA4 무료 계정이 없는 상태에서 브라우저 자동화(CDP `:9222`)를 통해 계정(`MiniToolbox`), 속성(`MiniToolbox`), 웹 데이터 스트림(`https://minitoolbox.dev`)을 자동 생성.
+  - 고유 측정 ID **`G-0PT14QDEK4`** 발급 확인.
+  - 모노레포 9개 전체 앱(`apps/*/src/app.html`)의 `<head>`에 `gtag.js` 전역 스니펫 삽입.
+  - 프로덕션 빌드 & Vercel 배포 완료 후 `minitoolbox.dev` 접속 테스트로 GA4 실시간 보고서(`realtime/overview`) 데이터 수집 정상 동작 확인.
+- **핵심 원리 & 주의점**:
+  - **GA4 Angular/Material 위저드 DOM 특성**:
+    - Step 1의 입력 필드가 이후 단계에서도 DOM에 숨겨진 채 남아있으므로 `locator('input:visible')` 또는 `debug-id`(`property-next-step-button`, `create-stream-button`)로 정확히 타겟팅해야 타임아웃 방지.
+    - 데이터 스트림 생성 후 슬라이더 서랍 내 iframe(`tagmanager.google.com`)이 포인터 이벤트를 가로챌 수 있으므로 하위 프레임 콘텐츠에서 직접 `G-XXXXXXXXXX` 추출.
+  - **모노레포 전 서브앱 적용**:
+    - 허브뿐 아니라 8개 독립 서브앱 모두에 동일 측정 ID를 주입하여 도메인 간 이동 및 서브패스 트래픽을 단일 GA4 속성에서 통합 집계 가능.
+
 ## 2026-10-04: 글로벌 검색엔진(Bing/ChatGPT Search, 네이버 서치어드바이저) 등록 및 전 사이트 SEO 표준화
 
 - **현상 & 작업**:
