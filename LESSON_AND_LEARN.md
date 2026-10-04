@@ -1,5 +1,21 @@
 # LESSON AND LEARN
 
+## 2026-10-04: 글로벌 커뮤니티 배포 및 백링크 시딩 (Product Hunt, Reddit)
+
+- **작업 & 성과**:
+  - **Hacker News 제출 제한 원인 파악**: 신규/저카르마 계정 또는 도메인 첫 제출 시 스팸 방지 필터에 걸려 제출 차단(`Sorry, your account isn't able to submit this site`).
+  - **Brave CDP(:9222) 브라우저 자동화 마케팅 실행**:
+    1. **Product Hunt**:
+       - Google OAuth 로그인 및 온보딩 자동 완료.
+       - 제품 정보(태그라인, 500자 요약, Developer Tools 태그, 첫 메이커 코멘트, 로고/갤러리) 등록 완료.
+       - 드래프트 생성 완료: `https://www.producthunt.com/products/minitoolbox?launch=minitoolbox` (원하는 일자/시간에 즉시 런칭 스케줄 가능).
+    2. **Reddit (r/SideProject)**:
+       - 서브레딧별 규칙(r/InternetIsBeautiful: 링크 필수, r/webdev: 토요일만 가능) 분석 후, 사이드 프로젝트 공유 전용인 `r/SideProject`에 포스팅 발행 완료.
+       - 라이브 게시물 링크: `https://www.reddit.com/r/SideProject/comments/1wx7ptt/i_built_minitoolbox_8_free_privacyfirst_web/`
+       - 검색엔진 크롤러가 수집할 수 있는 **첫 외부 유기적 백링크(Organic Backlink)** 확보 성공.
+  - **SEO 구조화 데이터 고도화**:
+    - 허브 페이지에 `FAQPage` JSON-LD 스키마 및 반응형 FAQ 아코디언 UI 반영, Vercel 배포 완료 (`curl` 검증 완료).
+
 ## 2026-10-04: 구글 애널리틱스 4 (GA4) 신규 생성, 전역 연동 및 실시간 트래픽 검증
 
 - **현상 & 작업**:
