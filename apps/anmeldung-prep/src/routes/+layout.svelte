@@ -1,10 +1,28 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
   import { Footer } from '@zero-effort/shared-ui';
   import { currentLang, type Lang, translations } from '$lib/langStore';
 
+  onMount(() => {
+    try {
+      const saved = localStorage.getItem('anmeldung_lang') as Lang;
+      if (saved && ['en', 'de', 'ko'].includes(saved)) {
+        currentLang.set(saved);
+        return;
+      }
+      const nav = (navigator.language || '').toLowerCase();
+      if (nav.startsWith('de')) currentLang.set('de');
+      else if (nav.startsWith('ko')) currentLang.set('ko');
+      else currentLang.set('en');
+    } catch (e) {}
+  });
+
   function setLang(l: Lang) {
     currentLang.set(l);
+    try {
+      localStorage.setItem('anmeldung_lang', l);
+    } catch (e) {}
   }
 </script>
 
@@ -62,5 +80,5 @@
     <slot />
   </main>
 
-  <Footer lang={$currentLang === 'ko' ? 'ko' : 'en'} />
+  <Footer lang={$currentLang} />
 </div>

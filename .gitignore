@@ -19,3 +19,9 @@ Thumbs.db
 
 # Podman / Docker
 .podman/
+
+# Vercel & Python
+.vercel/
+__pycache__/
+*.pyc
+

@@ -1,3 +1,14 @@
+import type { HubLang } from './langStore';
+
+export interface ToolLocale {
+  name: string;
+  tagline: string;
+  description: string;
+  badge: string;
+  categoryLabel: string;
+  features: string[];
+}
+
 export interface ToolItem {
   id: string;
   name: string;
@@ -19,6 +30,7 @@ export interface ToolItem {
   targetRegionEn: string;
   features: string[];
   featuresEn: string[];
+  i18n?: Partial<Record<HubLang, ToolLocale>>;
 }
 
 export const TOOLS: ToolItem[] = [
@@ -42,7 +54,33 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Global 🌐',
     targetRegionEn: 'Global 🌐',
     features: ['다중 PDF 하나로 병합', '원하는 페이지만 추출/분할', '드래그 앤 드롭 순서 변경', '브라우저 로컬 즉시 다운로드'],
-    featuresEn: ['Merge multiple PDFs into one', 'Extract or split specific pages', 'Drag & drop reordering', 'Instant local browser download']
+    featuresEn: ['Merge multiple PDFs into one', 'Extract or split specific pages', 'Drag & drop reordering', 'Instant local browser download'],
+    i18n: {
+      de: {
+        name: 'Sicherer PDF-Merger & Extraktor',
+        tagline: '100% Lokale PDF-Verarbeitung im Browser ohne Server-Upload',
+        description: 'Verbinden und trennen Sie vertrauliche Verträge und Dokumente sicher in Ihrem Browser-Speicher.',
+        badge: '🔒 0KB Server-Upload',
+        categoryLabel: 'Datenschutz-Tools',
+        features: ['Mehrere PDFs zusammenfügen', 'Einzelne Seiten extrahieren', 'Seiten per Drag & Drop sortieren', 'Sofortiger lokaler Download']
+      },
+      vi: {
+        name: 'Ghép & Tách File PDF Bảo Mật',
+        tagline: 'Trình chỉnh sửa PDF siêu tốc 100% trên trình duyệt (0KB tải lên)',
+        description: 'Xử lý hợp đồng, tài liệu tài chính bảo mật tuyệt đối không gửi lên máy chủ bên thứ ba.',
+        badge: '🔒 Không Tải Lên Máy Chủ',
+        categoryLabel: 'Tiện Ích Bảo Mật',
+        features: ['Ghép nhiều file PDF thành một', 'Trích xuất hoặc tách từng trang', 'Kéo thả sắp xếp thứ tự trang', 'Tải về trực tiếp tức thì']
+      },
+      ja: {
+        name: '安全なPDF結合・ページ抽出ツール',
+        tagline: 'サーバー送信0KBの完全ブラウザ完結PDF編集',
+        description: '機密書類や個人情報を含むPDFをクラウドに預けず、ブラウザメモリ内で安全に結合・ページ分割します。',
+        badge: '🔒 サーバー送信ゼロ保証',
+        categoryLabel: 'セキュリティ・書類',
+        features: ['複数PDFを1つに統合', '特定ページの抽出・分割', 'ドラッグ＆ドロップで並び替え', 'ブラウザから即時保存']
+      }
+    }
   },
   {
     id: 'wasm-media',
@@ -64,7 +102,33 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Korea 🇰🇷',
     targetRegionEn: 'Korea / Global',
     features: ['정부24 / 공공기관 제출 규격', '이력서 증명사진 (3x4cm)', 'WebP / JPEG 무손실 압축', 'EXIF 메타데이터 제거'],
-    featuresEn: ['Gov submission standards', 'Resume photo sizing (3x4cm)', 'WebP / JPEG lossless compression', 'EXIF metadata stripper']
+    featuresEn: ['Gov submission standards', 'Resume photo sizing (3x4cm)', 'WebP / JPEG lossless compression', 'EXIF metadata stripper'],
+    i18n: {
+      de: {
+        name: 'Lokaler Foto-Resizer & Komprimierer',
+        tagline: 'Sichere Bildkomprimierung und Passfoto-Skalierung im Browser',
+        description: 'Passfotos und Ausweisbilder ohne Upload im Browser auf Standardmaße anpassen und komprimieren.',
+        badge: '🔒 100% Lokale Verarbeitung',
+        categoryLabel: 'Datenschutz-Tools',
+        features: ['Standard Passfoto-Formate', 'Bewerbungsfoto-Zuschnitt', 'WebP/JPEG Komprimierung', 'EXIF-Metadaten entfernen']
+      },
+      vi: {
+        name: 'Nén & Đổi Cỡ Ảnh Không Cần Tải Lên',
+        tagline: 'Công cụ nén ảnh thẻ, ảnh hộ chiếu an toàn trên trình duyệt',
+        description: 'Nén và đổi kích thước ảnh hồ sơ, hộ chiếu bảo mật 100% không sợ rò rỉ dữ liệu cá nhân.',
+        badge: '🔒 Xử Lý Cục Bộ',
+        categoryLabel: 'Tiện Ích Bảo Mật',
+        features: ['Chuẩn ảnh hộ chiếu quốc tế', 'Ảnh thẻ xin việc làm (3x4cm)', 'Nén ảnh WebP/JPEG tối ưu', 'Xóa siêu dữ liệu EXIF']
+      },
+      ja: {
+        name: '完全ローカル 画像圧縮・証明写真リサイズ',
+        tagline: '証明写真（3x4cm）・パスポート規格対応の安全な画像編集',
+        description: '履歴書や公的申請の写真、高解像度画像をサーバーにアップロードせずブラウザ上で圧縮・リサイズします。',
+        badge: '🔒 100%ローカル処理',
+        categoryLabel: 'セキュリティ・書類',
+        features: ['公的機関・パスポート規格対応', '履歴書用証明写真サイズ（3x4cm）', 'WebP/JPEG可逆圧縮', 'EXIF位置情報の自動削除']
+      }
+    }
   },
   {
     id: 'anmeldung-prep',
@@ -86,7 +150,33 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Germany 🇩🇪',
     targetRegionEn: 'Germany 🇩🇪',
     features: ['Bürgeramt 필수 서류 체크리스트', '온라인 테어민(Termin) 예약 링크', '브라우저 캔버스 블랙아웃 마스킹', '1클릭 보안 PDF/PNG 저장'],
-    featuresEn: ['Bürgeramt appointment checklist', 'Direct online Termin links', 'In-browser blackout masking', '1-click secure PDF/PNG export']
+    featuresEn: ['Bürgeramt appointment checklist', 'Direct online Termin links', 'In-browser blackout masking', '1-click secure PDF/PNG export'],
+    i18n: {
+      de: {
+        name: 'Bürgeramt Anmeldung & Dokumenten-Schwärzung',
+        tagline: 'Unterlagen-Checkliste und sichere Schwärzung für Mietvertrag & Ausweis',
+        description: 'Verpassen Sie keine Pflichtdokumente (Wohnungsgeberbestätigung gem. § 19 BMG) und schwärzen Sie sensible Daten vor der Weitergabe.',
+        badge: '🇩🇪 Bürgeramt Pflichtcheck',
+        categoryLabel: 'Behörden & Verwaltung',
+        features: ['6-Punkte Vermieterbescheinigung Prüfung', 'Direktlinks zur Terminbuchung', 'Lokale Dokumenten-Schwärzung', '1-Klick Export ohne Server']
+      },
+      vi: {
+        name: 'Chuẩn Bị Giấy Tờ Đăng Ký Tạm Trú Đức (Anmeldung)',
+        tagline: 'Danh mục kiểm tra giấy tờ Bürgeramt và che mờ thông tin hợp đồng nhà',
+        description: 'Kiểm tra đầy đủ hồ sơ Wohnungsgeberbestätigung và bảo mật số hộ chiếu, số tài khoản trước khi in nộp.',
+        badge: '🇩🇪 Cần Thiết Tại Đức',
+        categoryLabel: 'Hành Chính Quốc Tế',
+        features: ['Danh mục kiểm tra giấy tờ Bürgeramt', 'Kiểm tra 6 điều kiện giấy xác nhận chủ nhà', 'Công cụ che thông tin nhạy cảm', 'Lưu file bảo mật 1 chạm']
+      },
+      ja: {
+        name: 'ドイツ住民登録（Anmeldung）書類チェック＆黒塗り',
+        tagline: '役所（Bürgeramt）提出書類チェックリスト＆契約書個人情報マスキング',
+        description: 'ドイツの住民登録に必要な家主確認書（Wohnungsgeberbestätigung）等の必須書類確認と、賃貸契約書の機密情報を安全に黒塗り保存します。',
+        badge: '🇩🇪 ドイツ生活必須',
+        categoryLabel: '海外行政・手続き',
+        features: ['Bürgeramt必須書類チェックリスト', '家主確認書6大必須項目チェック', 'ブラウザ内黒塗りマスキング機能', '安全な1クリック保存']
+      }
+    }
   },
   {
     id: 'schengen-calc',
@@ -99,20 +189,46 @@ export const TOOLS: ToolItem[] = [
     categoryLabelEn: 'Travel / Visa',
     icon: '🇪🇺',
     faviconPath: '/favicons/schengen.png',
-    tagline: '유럽 29개국 솅겐 조약 무비자 90일 역산 롤오버 계산기',
-    taglineEn: 'Rolling 90/180 Days Schengen Visa Calculator',
-    description: '복잡한 180일 롤링 윈도우 규정을 과거 체류일정과 계획일정 기반으로 역산하여 오버스테이 벌금 및 입국 거부를 원천 차단합니다.',
-    descriptionEn: 'Accurately compute remaining days in Schengen area based on official rolling 180-day rules.',
-    badge: '✈️ 디지털 노마드 필수',
-    badgeEn: '✈️ Digital Nomad Essential',
+    tagline: '유럽 솅겐 조약 무비자 90/180일 정밀 계산 및 오버스테이 방지',
+    taglineEn: 'Precise Rolling 90/180 Day Window Calculator for Europe',
+    description: '솅겐 협약국의 복수 입출국 일정을 타임라인으로 시뮬레이션하여 불법 체류 위험 없는 안전한 잔여 체류 가능 일수를 계산합니다.',
+    descriptionEn: 'Calculate your exact remaining days in the Schengen area based on the official 90/180-day rolling rule.',
+    badge: '🇪🇺 유럽 여행/워홀 필수',
+    badgeEn: '🇪🇺 EU Travel Essential',
     targetRegion: 'Europe 🇪🇺',
     targetRegionEn: 'Europe 🇪🇺',
-    features: ['복수 출입국 일정 시뮬레이션', '실시간 잔여일수 & D-Day 알림', '1클릭 캘린더(.ics) 내보내기', '오버스테이 위험일 즉시 경고'],
-    featuresEn: ['Multi-entry trip simulations', 'Real-time remaining days & alerts', '1-click calendar (.ics) sync', 'Immediate overstay hazard warning']
+    features: ['180일 롤링 윈도우 정밀 알고리즘', '직관적인 인터랙티브 타임라인', '오버스테이 위험 실시간 경고', '브라우저 로컬 자동 저장'],
+    featuresEn: ['180-day rolling window algorithm', 'Interactive visual timeline', 'Overstay risk warning alerts', 'Local browser persistent storage'],
+    i18n: {
+      de: {
+        name: 'Schengen 90/180 Tage Rechner',
+        tagline: 'Präzise Berechnung der legalen Aufenthaltsdauer im Schengen-Raum',
+        description: 'Offizielle 90/180-Tage-Regel der EU-Kommission: Simulieren Sie Ein- und Ausreisedaten ohne Risiko eines Overstays.',
+        badge: '🇪🇺 EU Reise-Rechner',
+        categoryLabel: 'Reisen & Visum',
+        features: ['Offizieller 180-Tage Rolling-Window Algorithmus', 'Interaktive visuelle Zeitleiste', 'Echtzeit Overstay-Warnungen', 'Automatische lokale Speicherung']
+      },
+      vi: {
+        name: 'Công Cụ Tính Ngày Lưu Trú Schengen 90/180',
+        tagline: 'Theo dõi thời hạn visa khối Schengen chính xác cho du khách và nomad',
+        description: 'Tính toán chính xác số ngày được phép ở lại châu Âu theo quy tắc trượt 90 ngày trong 180 ngày của EU.',
+        badge: '🇪🇺 Du Lịch Châu Âu',
+        categoryLabel: 'Du Lịch / Visa',
+        features: ['Thuật toán chuẩn quy tắc 90/180 ngày', 'Dòng thời gian tương tác trực quan', 'Cảnh báo nguy cơ quá hạn thị thực', 'Lưu dữ liệu an toàn trên máy']
+      },
+      ja: {
+        name: 'シェンゲン協定 90/180日 滞在日数計算機',
+        tagline: 'ヨーロッパ・シェンゲン域内の合法滞在可能日数を正確にシミュレーション',
+        description: 'EU公式の「過去180日間のうち最大90日」ルールに基づき、複数回の出入国スケジュールからオーバーステイのリスクを自動判定します。',
+        badge: '🇪🇺 欧州渡航・ノマド必携',
+        categoryLabel: '海外旅行・ビザ',
+        features: ['公式180日間ローリング計算', '直感的なタイムライン表示', '不法滞在リスクの事前警告', 'ローカル自動保存']
+      }
+    }
   },
   {
     id: 'visarun-planner',
-    name: '동남아 비자런 & 90일 체류신고',
+    name: '동남아 비자런 & D-Day 플래너',
     nameEn: 'Southeast Asia Visa Run Planner',
     subdomain: 'visarun',
     url: 'https://visarun.minitoolbox.dev',
@@ -121,81 +237,143 @@ export const TOOLS: ToolItem[] = [
     categoryLabelEn: 'Travel / Visa',
     icon: '🌴',
     faviconPath: '/favicons/visarun.png',
-    tagline: '태국 TM.47 거주보고 · 발리 VoA · 베트남 무비자 알림 & 캘린더',
-    taglineEn: 'Thailand TM.47, Bali VoA & Vietnam Border Runs',
-    description: '태국 90일 온라인 신고 가능 기간(15일 전 ~ 7일 전) D-Day 알림 및 동남아 장기 체류 비자런 일정을 스마트폰 캘린더로 연동합니다.',
-    descriptionEn: 'Track Thailand 90-day TM.47 deadlines, Bali VoA extensions and export push alerts to your calendar.',
-    badge: '🇹🇭 태국/발리 체류자 필수',
-    badgeEn: '🇹🇭 SE Asia Expat Essential',
-    targetRegion: 'SE Asia 🇹🇭🇮🇩',
-    targetRegionEn: 'SE Asia 🇹🇭🇮🇩',
-    features: ['태국 TM.47 온라인 신고 기간 알림', '발리 VoA (30+30일) 체류 카운터', '오버스테이 벌금 방지 알림', '공식 이민국 포털 원클릭 이동'],
-    featuresEn: ['Thailand TM.47 online window countdown', 'Bali VoA (30+30d) extension tracker', 'Overstay fine prevention alerts', '1-click official immigration links']
+    tagline: '태국 90일 리포트(TM.47) 및 동남아 비자 만료일 역산기',
+    taglineEn: 'Thailand TM.47 & SEA Visa Expiry Date Calculator',
+    description: '태국 TM.47 거주신고 기간, 베트남 무비자 45일, 발리 30일 VoA 연장 마감일을 계산하여 캘린더 등록 및 오버스테이 벌금을 예방합니다.',
+    descriptionEn: 'Track Thailand TM.47 reporting, Vietnam 45-day visa-free, and Bali VoA expiration dates.',
+    badge: '🌴 디지털 노마드 필수',
+    badgeEn: '🌴 Digital Nomad Essential',
+    targetRegion: 'SE Asia 🌴',
+    targetRegionEn: 'SE Asia 🌴',
+    features: ['태국 TM.47 온라인 신고 가능 기간', '동남아 국가별 비자 규정 프리셋', 'Google Calendar D-Day 등록 (.ics)', '오버스테이 벌금 방지 알림'],
+    featuresEn: ['Thailand TM.47 online window', 'Country visa rules presets', 'Google Calendar (.ics) export', 'Overstay fine avoidance alerts'],
+    i18n: {
+      de: {
+        name: 'Südostasien Visarun & TM.47 Planer',
+        tagline: 'Fristen-Rechner für Thailand TM.47, Vietnam und Bali',
+        description: 'Berechnen Sie Stichtage für Thailand 90-Tage-Meldungen und Visumsverlängerungen zur Vermeidung von Strafgebühren.',
+        badge: '🌴 Nomad-Werkzeug',
+        categoryLabel: 'Reisen & Visum',
+        features: ['Thailand TM.47 Meldefenster', 'Visabestimmungen nach Ländern', 'Kalender-Export (.ics)', 'Strafen-Warnungen']
+      },
+      vi: {
+        name: 'Lên Kế Hoạch Visa Run & Hạn Lưu Trú ĐNA',
+        tagline: 'Tính ngày gia hạn visa Thái Lan (TM.47), Việt Nam, Bali cho nomad',
+        description: 'Nhắc nhở hạn khai báo cư trú 90 ngày Thái Lan, thời hạn miễn thị thực Việt Nam 45 ngày và ngày xuất nhập cảnh tối ưu.',
+        badge: '🌴 Tiện Ích Digital Nomad',
+        categoryLabel: 'Du Lịch / Visa',
+        features: ['Thời hạn khai báo TM.47 online', 'Quy định visa các nước Đông Nam Á', 'Xuất lịch Google Calendar (.ics)', 'Tránh tiền phạt quá hạn visa']
+      },
+      ja: {
+        name: '東南アジア ビザラン＆滞在期限プランナー',
+        tagline: 'タイ90日レポート（TM.47）・ベトナム・バリのビザ期限＆オーバーステイ防止',
+        description: 'タイの90日居住届出期間やベトナム45日免税、バリ島到着ビザの期限を逆算し、カレンダー登録と過料発生を防ぎます。',
+        badge: '🌴 海外ノマド必須',
+        categoryLabel: '海外旅行・ビザ',
+        features: ['タイTM.47オンライン届出期間計算', '各国ビザ規定プリセット', 'カレンダー登録用.ics出力', '過料（Overstay）予防']
+      }
+    }
   },
   {
     id: 'rirekisho-builder',
     name: '일본 이력서 와레키 자동완성',
-    nameEn: 'Japan Resume JIS Builder',
+    nameEn: 'Japan JIS Resume (Rirekisho) Builder',
     subdomain: 'rirekisho',
     url: 'https://rirekisho.minitoolbox.dev',
     category: 'career',
     categoryLabel: '취업 / 커리어',
-    categoryLabelEn: 'Career & Jobs',
+    categoryLabelEn: 'Career / Resume',
     icon: '📄',
     faviconPath: '/favicons/rirekisho.png',
-    tagline: 'JIS 규격 A4 PDF 출력 & 일본 연호(令和·平成) 학력 자동 계산',
-    taglineEn: 'JIS Standard A4 Resume Builder with Wareki Eras',
-    description: '생년월일만 넣으면 일본 4월 학제 기준 초·중·고·대학교 입학/졸업 연도 및 연호를 자동 계산하며 표준 JIS A4로 즉시 인쇄/PDF 저장합니다.',
-    descriptionEn: 'Generate authentic Japanese JIS standard resumes with automatic Wareki era and academic year computation.',
-    badge: '🇯🇵 일본 취업/워홀 필수',
-    badgeEn: '🇯🇵 Japan Work/Visa Essential',
+    tagline: '생년월일 기반 와레키(令・平・昭) 학력/경력 자동 계산 및 JIS 이력서 생성',
+    taglineEn: 'Automatic Wareki (Reiwa/Heisei) Calendar JIS Resume Maker',
+    description: '생년월일만 입력하면 소학교부터 대학교 입학·졸업 연도를 일본 연호(令和/平成/昭和)로 자동 변환하여 표준 JIS B4/A4 규격 이력서를 생성합니다.',
+    descriptionEn: 'Auto-calculate school graduation years in official Japanese Wareki and generate standard JIS resumes.',
+    badge: '🇯🇵 일본 취업/이직 필수',
+    badgeEn: '🇯🇵 Japan Career Essential',
     targetRegion: 'Japan 🇯🇵',
     targetRegionEn: 'Japan 🇯🇵',
-    features: ['일본 연호(令和·平成·昭和) 자동변환', '4월 학제 입학/졸업 연도 자동계산', '증명사진(40x30mm) 로컬 첨부', '표준 JIS A4 1클릭 PDF 인쇄'],
-    featuresEn: ['Wareki (Reiwa/Heisei/Showa) auto-converter', 'April fiscal school year calculation', 'Photo attachment (40x30mm)', 'Standard JIS A4 1-click print']
+    features: ['학력/경력 와레키 연도 원클릭 자동완성', '증명사진 삽입 및 여백 자동 조절', '일본 표준 JIS 규격 2페이지 레이아웃', '인쇄 최적화 및 1클릭 PDF 출력'],
+    featuresEn: ['Auto-calculate school years in Wareki', 'Photo insertion with auto-fit', 'Standard JIS 2-page layout', 'Print-optimized 1-click PDF']
   },
   {
     id: 'size-converter',
-    name: '글로벌 신발 치수 변환기',
+    name: '글로벌 신발/의류 치수 변환기',
     nameEn: 'Global Shoe & Clothing Size Converter',
     subdomain: 'size',
     url: 'https://size.minitoolbox.dev',
     category: 'utility',
-    categoryLabel: '생활 유틸리티',
-    categoryLabelEn: 'Daily Utility',
+    categoryLabel: '직구 / 생활',
+    categoryLabelEn: 'Shopping Utility',
     icon: '👟',
     faviconPath: '/favicons/size.png',
-    tagline: '해외 직구 맞춤 KR / US / UK / EU / JP 실시간 치수 변환',
-    taglineEn: 'Instant Cross-Border Size Calculator',
-    description: '동남아(Shopee, Lazada), 미국(Amazon), 유럽 직구 시 헷갈리는 신발 및 의류 치수를 오차 없이 즉시 상호 환산합니다.',
-    descriptionEn: 'Convert shoe and clothing sizes across US, UK, EU, JP, and KR sizing systems with brand size charts.',
-    badge: '🛍️ 해외직구 필수',
-    badgeEn: '🛍️ Cross-Border Shopper',
-    targetRegion: 'Global 🌏',
-    targetRegionEn: 'Global 🌏',
-    features: ['남성 / 여성 / 아동 신발 치수', 'US / UK / EU / CM 실시간 비교', '해외 직구 사이즈 가이드', '오프라인 캐싱 지원'],
-    featuresEn: ['Men / Women / Kids shoe sizes', 'US / UK / EU / CM side-by-side', 'Global brand sizing guide', 'Offline instant caching']
+    tagline: '해외직구(US, UK, EU, JP, KR, CM) 실패 없는 신발/의류 치수 원클릭 변환',
+    taglineEn: 'Instant Multi-Standard Shoe & Clothing Size Converter',
+    description: '미국, 영국, 유럽, 일본, 한국, 센티미터(CM) 간의 신발 치수와 브랜드별 실측 차이를 실시간으로 환산합니다.',
+    descriptionEn: 'Accurate international conversion between US, UK, EU, JP, KR, and Centimeter sizing.',
+    badge: '🛍️ 해외직구 실패 방지',
+    badgeEn: '🛍️ Smart Cross-Border Shopping',
+    targetRegion: 'Global 🌐',
+    targetRegionEn: 'Global 🌐',
+    features: ['남성/여성/키즈 세부 카테고리', 'US / UK / EU / JP / KR / CM 실시간 환산', '주요 브랜드(나이키, 아디다스 등) 팁', '결과 링크 1초 공유 기능'],
+    featuresEn: ['Men / Women / Kids categories', 'US / UK / EU / JP / KR / CM conversion', 'Popular brand sizing advice', '1-second shareable URL links']
   },
   {
     id: 'caro-game',
-    name: '베트남 오목 온라인 (Cờ Caro)',
-    nameEn: 'Caro Online (Gomoku)',
+    name: '베트남 오목 P2P (Cờ Caro)',
+    nameEn: 'Cờ Caro (Vietnamese Gomoku) P2P',
     subdomain: 'caro',
     url: 'https://caro.minitoolbox.dev',
     category: 'entertainment',
-    categoryLabel: '게임 / 엔터테인먼트',
-    categoryLabelEn: 'Entertainment & Game',
-    icon: '♟️',
+    categoryLabel: '게임 / 엔터',
+    categoryLabelEn: 'Games / Fun',
+    icon: '🎮',
     faviconPath: '/favicons/caro.png',
-    tagline: '무서버 WebRTC P2P 실시간 1:1 대국 & AI 오목 대결',
-    taglineEn: 'Serverless P2P Real-Time Multiplayer Caro',
-    description: '베트남 국민 보드게임인 15x15 오목(Cờ Caro)을 서버 비용 없이 브라우저 간 WebRTC DataChannel 직접 연결로 플레이합니다.',
-    descriptionEn: 'Play authentic 15x15 Caro with smart AI bot or invite friends with zero-server WebRTC P2P link.',
-    badge: '🎮 무설치 P2P 대국',
-    badgeEn: '🎮 Zero-Install P2P Duel',
+    tagline: 'WebRTC P2P 기반 서버 없는 실시간 온라인 베트남 오목 대국',
+    taglineEn: 'Serverless Real-Time P2P Vietnamese Gomoku via WebRTC',
+    description: '서버를 거치지 않고 브라우저와 브라우저가 직접 연결(P2P)되어 딜레이 없이 친구와 즐기는 100% 무료 5목 게임입니다.',
+    descriptionEn: 'Play traditional Vietnamese Gomoku peer-to-peer directly with friends via WebRTC. Zero lag.',
+    badge: '🇻🇳 베트남 전통 보드게임',
+    badgeEn: '🇻🇳 Vietnamese Board Game',
     targetRegion: 'Vietnam 🇻🇳',
-    targetRegionEn: 'Vietnam 🇻🇳',
-    features: ['초대 링크 원클릭 1:1 P2P 대국', '지능형 AI 봇 대결 모드', '무설치 초경량 브라우저 실행', '모바일 터치 최적화 UI'],
-    featuresEn: ['1-click WebRTC invite link', 'Smart AI single-player bot', 'Zero-install ultra-lightweight', 'Mobile touch-optimized layout']
+    targetRegionEn: 'Vietnam / Global',
+    features: ['WebRTC 브라우저 간 P2P 직접 연결', '초대 링크 생성으로 즉시 대국 시작', '반응형 바둑판 및 턴 타이머', '채팅 및 돌 색상 선택 지원'],
+    featuresEn: ['Serverless WebRTC P2P connection', '1-click shareable invite link', 'Responsive board with turn timers', 'In-game chat and piece colors']
   }
 ];
+
+export function getLocalizedTool(tool: ToolItem, lang: HubLang) {
+  if (lang === 'en') {
+    return {
+      name: tool.nameEn,
+      tagline: tool.taglineEn,
+      description: tool.descriptionEn,
+      badge: tool.badgeEn,
+      categoryLabel: tool.categoryLabelEn,
+      features: tool.featuresEn,
+      targetRegion: tool.targetRegionEn
+    };
+  }
+  if (lang === 'ko') {
+    return {
+      name: tool.name,
+      tagline: tool.tagline,
+      description: tool.description,
+      badge: tool.badge,
+      categoryLabel: tool.categoryLabel,
+      features: tool.features,
+      targetRegion: tool.targetRegion
+    };
+  }
+  // de, vi, ja
+  const override = tool.i18n?.[lang];
+  return {
+    name: override?.name || tool.nameEn,
+    tagline: override?.tagline || tool.taglineEn,
+    description: override?.description || tool.descriptionEn,
+    badge: override?.badge || tool.badgeEn,
+    categoryLabel: override?.categoryLabel || tool.categoryLabelEn,
+    features: override?.features || tool.featuresEn,
+    targetRegion: tool.targetRegionEn
+  };
+}

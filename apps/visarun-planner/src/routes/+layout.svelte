@@ -1,10 +1,28 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
   import { Footer } from '@zero-effort/shared-ui';
   import { currentLang, type Lang, translations } from '$lib/langStore';
 
+  onMount(() => {
+    try {
+      const saved = localStorage.getItem('visarun_lang') as Lang;
+      if (saved && ['ko', 'en', 'th'].includes(saved)) {
+        currentLang.set(saved);
+        return;
+      }
+      const nav = (navigator.language || '').toLowerCase();
+      if (nav.startsWith('ko')) currentLang.set('ko');
+      else if (nav.startsWith('th')) currentLang.set('th');
+      else currentLang.set('en');
+    } catch (e) {}
+  });
+
   function setLang(l: Lang) {
     currentLang.set(l);
+    try {
+      localStorage.setItem('visarun_lang', l);
+    } catch (e) {}
   }
 </script>
 
@@ -26,19 +44,19 @@
         <div class="flex items-center rounded-lg bg-slate-100 p-0.5 border border-slate-200 text-xs font-semibold">
           <button
             type="button"
-            class="px-2 py-1 rounded-md transition {$currentLang === 'ko' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
-            on:click={() => setLang('ko')}
-            title="한국어"
-          >
-            🇰🇷 KR
-          </button>
-          <button
-            type="button"
             class="px-2 py-1 rounded-md transition {$currentLang === 'en' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
             on:click={() => setLang('en')}
             title="English"
           >
             🇬🇧 EN
+          </button>
+          <button
+            type="button"
+            class="px-2 py-1 rounded-md transition {$currentLang === 'ko' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
+            on:click={() => setLang('ko')}
+            title="한국어"
+          >
+            🇰🇷 KR
           </button>
           <button
             type="button"
@@ -61,5 +79,5 @@
     <slot />
   </main>
 
-  <Footer lang={$currentLang === 'ko' ? 'ko' : 'en'} />
+  <Footer lang={$currentLang} />
 </div>

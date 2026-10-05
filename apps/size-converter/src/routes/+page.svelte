@@ -2,11 +2,12 @@
   import { onMount } from 'svelte';
   import { buildWebAppJsonLd, buildFaqJsonLd } from '@zero-effort/seo-config';
   import { AdBanner } from '@zero-effort/shared-ui';
+  import { currentLang as langStore, type Lang } from '$lib/langStore';
 
   type Gender = 'men' | 'women';
-  type Lang = 'en' | 'vi' | 'ko';
 
   let currentLang: Lang = 'en';
+  $: langStore.set(currentLang);
   let detectedCountry = '';
   let gender: Gender = 'men';
   let inputVal: number = 260; // mm default

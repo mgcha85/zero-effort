@@ -2,7 +2,19 @@
   export let isOpen = false;
   export let title = '';
   export let content = '';
+  export let lang: string = 'ko';
   export let onClose = () => {};
+
+  const closeLabels: Record<string, string> = {
+    ko: '닫기',
+    en: 'Close',
+    de: 'Schließen',
+    vi: 'Đóng',
+    ja: '閉じる',
+    es: 'Cerrar',
+    th: 'ปิด'
+  };
+  $: closeText = closeLabels[lang] || closeLabels.en;
 </script>
 
 {#if isOpen}
@@ -15,7 +27,7 @@
           type="button"
           class="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
           on:click={onClose}
-          aria-label="Close"
+          aria-label={closeText}
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -35,7 +47,7 @@
           class="rounded-lg bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600"
           on:click={onClose}
         >
-          닫기
+          {closeText}
         </button>
       </div>
     </div>

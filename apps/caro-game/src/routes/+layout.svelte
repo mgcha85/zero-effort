@@ -1,10 +1,28 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
   import { Footer } from '@zero-effort/shared-ui';
   import { currentLang, type Lang, translations } from '$lib/langStore';
 
+  onMount(() => {
+    try {
+      const saved = localStorage.getItem('caro_lang') as Lang;
+      if (saved && ['vi', 'ko', 'en'].includes(saved)) {
+        currentLang.set(saved);
+        return;
+      }
+      const nav = (navigator.language || '').toLowerCase();
+      if (nav.startsWith('vi')) currentLang.set('vi');
+      else if (nav.startsWith('ko')) currentLang.set('ko');
+      else if (nav.startsWith('en')) currentLang.set('en');
+    } catch (e) {}
+  });
+
   function setLang(l: Lang) {
     currentLang.set(l);
+    try {
+      localStorage.setItem('caro_lang', l);
+    } catch (e) {}
   }
 </script>
 
@@ -13,7 +31,7 @@
   <header class="border-b border-slate-200 bg-white shadow-xs sticky top-0 z-30">
     <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
       <div class="flex items-center space-x-2">
-        <img src="/favicon.png" alt="로고" class="h-8 w-8 rounded-lg object-contain" />
+        <img src="/favicon.png" alt="Caro Game" class="h-8 w-8 rounded-lg object-contain" />
         <div class="flex flex-col">
           <span class="text-base font-black tracking-tight text-indigo-700 leading-tight">
             {translations[$currentLang].siteTitle}

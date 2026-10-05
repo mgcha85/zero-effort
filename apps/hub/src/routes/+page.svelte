@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TOOLS, type ToolItem } from '$lib/tools';
+  import { TOOLS, getLocalizedTool, type ToolItem } from '$lib/tools';
   import { currentLang, translations } from '$lib/langStore';
   import { setFaviconByRoute } from '$lib/faviconStore';
   import { AdBanner } from '@zero-effort/shared-ui';
@@ -8,18 +8,16 @@
   let searchQuery: string = '';
 
   $: setFaviconByRoute('/', selectedCategory);
-  $: t = translations[$currentLang];
+  $: t = translations[$currentLang] || translations.en;
 
   $: filteredTools = TOOLS.filter(tool => {
     const matchCat = selectedCategory === 'all' || tool.category === selectedCategory;
-    const nameMatch = $currentLang === 'en' ? tool.nameEn : tool.name;
-    const descMatch = $currentLang === 'en' ? tool.descriptionEn : tool.description;
-    const taglineMatch = $currentLang === 'en' ? tool.taglineEn : tool.tagline;
+    const loc = getLocalizedTool(tool, $currentLang);
 
     const matchQuery = !searchQuery || 
-      nameMatch.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      descMatch.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      taglineMatch.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      loc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      loc.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      loc.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
       tool.subdomain.toLowerCase().includes(searchQuery.toLowerCase());
     return matchCat && matchQuery;
   });
@@ -141,6 +139,7 @@
   <!-- Tools Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {#each filteredTools as tool (tool.id)}
+      {@const loc = getLocalizedTool(tool, $currentLang)}
       <a
         href={tool.url}
         target="_blank"
@@ -151,21 +150,21 @@
           <!-- Header: Icon & Badges -->
           <div class="flex items-start justify-between mb-4">
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50 border border-slate-200/80 shadow-2xs group-hover:scale-105 transition">
-              <img src={tool.faviconPath} alt={$currentLang === 'en' ? tool.nameEn : tool.name} class="h-8 w-8 object-contain" />
+              <img src={tool.faviconPath} alt={loc.name} class="h-8 w-8 object-contain" />
             </div>
             <div class="flex flex-col items-end space-y-1">
               <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                {$currentLang === 'en' ? tool.targetRegionEn : tool.targetRegion}
+                {loc.targetRegion}
               </span>
               <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-100">
-                {$currentLang === 'en' ? tool.badgeEn : tool.badge}
+                {loc.badge}
               </span>
             </div>
           </div>
 
           <!-- Tool Title & Subdomain -->
           <h2 class="text-base font-black text-slate-900 group-hover:text-indigo-600 transition flex items-center space-x-1.5">
-            <span>{$currentLang === 'en' ? tool.nameEn : tool.name}</span>
+            <span>{loc.name}</span>
             <svg class="h-3.5 w-3.5 text-slate-400 opacity-0 group-hover:opacity-100 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
@@ -175,12 +174,12 @@
           </span>
 
           <p class="mt-2 text-xs text-slate-600 leading-relaxed font-normal">
-            {$currentLang === 'en' ? tool.descriptionEn : tool.description}
+            {loc.description}
           </p>
 
           <!-- Feature Bullets -->
           <ul class="mt-4 space-y-1 border-t border-slate-100 pt-3 text-[11px] text-slate-500">
-            {#each ($currentLang === 'en' ? tool.featuresEn : tool.features) as feat}
+            {#each loc.features as feat}
               <li class="flex items-center space-x-1.5">
                 <span class="text-indigo-500">✓</span>
                 <span>{feat}</span>

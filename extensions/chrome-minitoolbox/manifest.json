@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "MiniToolbox - 100% Client-Side Privacy Web Tools",
+  "version": "1.0.0",
+  "description": "Instant access to zero-upload, client-side web tools: PDF merge, Schengen calculator, passport photo, and more.",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    },
+    "default_title": "MiniToolbox Quick Launcher"
+  },
+  "permissions": []
+}

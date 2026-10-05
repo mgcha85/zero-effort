@@ -1,4 +1,4 @@
-export type SupportedLang = 'ko' | 'vi' | 'en';
+export type SupportedLang = 'ko' | 'vi' | 'en' | 'de' | 'ja' | 'es';
 
 export const translations = {
   ko: {
@@ -36,9 +36,45 @@ export const translations = {
     shareResult: 'Share Result',
     calculate: 'Calculate',
     reset: 'Reset'
+  },
+  de: {
+    appNameCaro: 'Caro & Xiangqi Online - Sofort P2P Spielen',
+    appNameSize: 'Internationaler Schuh- & Konfektionsgrößen-Rechner',
+    appNameWasm: 'Lokales Dateikomprimierungs-Tool (WASM)',
+    terms: 'Nutzungsbedingungen',
+    privacy: 'Datenschutzerklärung',
+    refund: 'Erstattungsrichtlinie',
+    copySuccess: 'In die Zwischenablage kopiert!',
+    shareResult: 'Ergebnis teilen',
+    calculate: 'Berechnen',
+    reset: 'Zurücksetzen'
+  },
+  ja: {
+    appNameCaro: '五目並べ & 将棋 オンライン - P2P無料対局',
+    appNameSize: '海外通販 靴・服サイズ換算ツール',
+    appNameWasm: '完全ローカル ファイル圧縮・変換ツール (WASM)',
+    terms: '利用規約',
+    privacy: 'プライバシーポリシー',
+    refund: '返金・キャンセルポリシー',
+    copySuccess: 'クリップボードにコピーしました！',
+    shareResult: '結果を共有',
+    calculate: '換算する',
+    reset: 'リセット'
+  },
+  es: {
+    appNameCaro: 'Caro & Xiangqi Online - Juegos P2P',
+    appNameSize: 'Conversor Internacional de Tallas de Calzado y Ropa',
+    appNameWasm: 'Compresor de Archivos Seguro y Local (WASM)',
+    terms: 'Términos de servicio',
+    privacy: 'Política de privacidad',
+    refund: 'Política de reembolso',
+    copySuccess: '¡Copiado al portapapeles!',
+    shareResult: 'Compartir resultado',
+    calculate: 'Calcular',
+    reset: 'Restablecer'
   }
 } as const;
 
 export function t(lang: SupportedLang, key: keyof typeof translations['ko']): string {
-  return translations[lang]?.[key] || translations['en']?.[key] || key;
+  return (translations[lang] as any)?.[key] || translations['en']?.[key] || key;
 }

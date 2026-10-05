@@ -1,14 +1,27 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import { Footer } from '@zero-effort/shared-ui';
-  import { currentLang, translations } from '$lib/langStore';
+  import { currentLang, translations, initLang, setLang, type HubLang } from '$lib/langStore';
   import { currentFavicon, setFaviconByRoute } from '$lib/faviconStore';
 
-  $: t = translations[$currentLang];
+  onMount(() => {
+    initLang();
+  });
+
+  $: t = translations[$currentLang] || translations.en;
   $: if ($page.url.pathname !== '/') {
     setFaviconByRoute($page.url.pathname);
   }
+
+  const langs: { id: HubLang; label: string; flag: string }[] = [
+    { id: 'en', label: 'English', flag: '🇬🇧' },
+    { id: 'de', label: 'Deutsch', flag: '🇩🇪' },
+    { id: 'vi', label: 'Tiếng Việt', flag: '🇻🇳' },
+    { id: 'ja', label: '日本語', flag: '🇯🇵' },
+    { id: 'ko', label: '한국어', flag: '🇰🇷' }
+  ];
 </script>
 
 <div class="flex min-h-screen flex-col bg-slate-50/60 text-slate-800">
@@ -26,22 +39,21 @@
       </a>
 
       <div class="flex items-center space-x-2 sm:space-x-3">
-        <!-- Language Switcher -->
-        <div class="flex items-center rounded-lg bg-slate-100 p-0.5 border border-slate-200 text-xs font-semibold">
-          <button
-            type="button"
-            class="px-2 py-1 rounded-md transition {$currentLang === 'ko' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'}"
-            on:click={() => ($currentLang = 'ko')}
+        <!-- 5-Language Dropdown / Switcher -->
+        <div class="relative inline-flex items-center rounded-lg bg-slate-100 p-0.5 border border-slate-200 text-xs font-semibold">
+          <select
+            value={$currentLang}
+            on:change={(e) => setLang(e.currentTarget.value as HubLang)}
+            class="bg-transparent pl-2 pr-6 py-1 text-slate-800 font-semibold cursor-pointer focus:outline-hidden appearance-none"
+            aria-label="Language"
           >
-            🇰🇷 한국어
-          </button>
-          <button
-            type="button"
-            class="px-2 py-1 rounded-md transition {$currentLang === 'en' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'}"
-            on:click={() => ($currentLang = 'en')}
-          >
-            🇬🇧 English
-          </button>
+            {#each langs as item}
+              <option value={item.id}>
+                {item.flag} {item.label}
+              </option>
+            {/each}
+          </select>
+          <span class="pointer-events-none absolute right-2 text-slate-400 text-[10px]">▼</span>
         </div>
 
         <span class="hidden sm:inline-flex items-center text-xs font-bold text-slate-800 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-200">

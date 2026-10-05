@@ -1,7 +1,28 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount } from 'svelte';
   import { Footer } from '@zero-effort/shared-ui';
-  import { currentLang, translations } from '$lib/langStore';
+  import { currentLang, type PdfLang, translations } from '$lib/langStore';
+
+  onMount(() => {
+    try {
+      const saved = localStorage.getItem('pdf_lang') as PdfLang;
+      if (saved && ['en', 'ko'].includes(saved)) {
+        currentLang.set(saved);
+        return;
+      }
+      const nav = (navigator.language || '').toLowerCase();
+      if (nav.startsWith('ko')) currentLang.set('ko');
+      else currentLang.set('en');
+    } catch (e) {}
+  });
+
+  function setLang(l: PdfLang) {
+    currentLang.set(l);
+    try {
+      localStorage.setItem('pdf_lang', l);
+    } catch (e) {}
+  }
 
   $: t = translations[$currentLang];
 </script>
@@ -23,14 +44,14 @@
           <button
             type="button"
             class="px-2 py-1 rounded-md transition {$currentLang === 'en' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'}"
-            on:click={() => ($currentLang = 'en')}
+            on:click={() => setLang('en')}
           >
             🇬🇧 EN
           </button>
           <button
             type="button"
             class="px-2 py-1 rounded-md transition {$currentLang === 'ko' ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'}"
-            on:click={() => ($currentLang = 'ko')}
+            on:click={() => setLang('ko')}
           >
             🇰🇷 KO
           </button>
