@@ -44,7 +44,7 @@ export const translations = {
   en: {
     portalBadge: 'Global Micro Webtools Hub',
     zeroUploadBadge: '🔒 Zero-Upload Guaranteed (0KB)',
-    heroBadge: '🚀 8 Lightweight Client-Side Micro Webapps',
+    heroBadge: '🚀 12 Lightweight Client-Side Micro Webapps',
     heroTitlePrefix: 'Fast, Free & ',
     heroTitleHighlight: 'Zero-Upload',
     heroTitleSuffix: ' Utilities',
@@ -96,7 +96,7 @@ export const translations = {
   ko: {
     portalBadge: '글로벌 마이크로 웹툴 포털',
     zeroUploadBadge: '🔒 서버 업로드 0KB 보장',
-    heroBadge: '🚀 8개의 초경량 독립 마이크로 웹앱 허브',
+    heroBadge: '🚀 12개의 초경량 독립 마이크로 웹앱 허브',
     heroTitlePrefix: '작지만 강력한, ',
     heroTitleHighlight: 'Zero-Upload',
     heroTitleSuffix: ' 도구 모음',

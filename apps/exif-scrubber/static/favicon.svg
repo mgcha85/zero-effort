@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF"/>
+      <stop offset="100%" stop-color="#DBEAFE"/>
+    </linearGradient>
+    <linearGradient id="shoeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="8" y="8" width="112" height="112" rx="24" fill="url(#bgGrad)" stroke="#93C5FD" stroke-width="3" filter="url(#shadow)"/>
+
+  <!-- Ruler tape lines at top -->
+  <g stroke="#60A5FA" stroke-width="2" stroke-linecap="round">
+    <line x1="24" y1="26" x2="104" y2="26"/>
+    <line x1="30" y1="26" x2="30" y2="33"/>
+    <line x1="44" y1="26" x2="44" y2="38"/>
+    <line x1="58" y1="26" x2="58" y2="33"/>
+    <line x1="72" y1="26" x2="72" y2="38"/>
+    <line x1="86" y1="26" x2="86" y2="33"/>
+    <line x1="100" y1="26" x2="100" y2="38"/>
+  </g>
+
+  <!-- Sneaker Silhouette -->
+  <path d="M24 88 C32 88, 40 88, 50 88 C64 88, 80 88, 104 88 C104 82, 100 72, 88 64 C80 58, 68 54, 60 52 C54 50, 48 56, 42 66 C36 74, 28 78, 24 88 Z" fill="url(#shoeGrad)"/>
+  
+  <!-- Sole Accent -->
+  <rect x="22" y="88" width="84" height="8" rx="4" fill="#1E40AF"/>
+</svg>
