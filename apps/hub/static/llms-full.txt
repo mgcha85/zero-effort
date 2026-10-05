@@ -1,0 +1,82 @@
+# MiniToolbox.dev - Complete System Documentation for AI Agents & Search Engines
+
+## System Overview
+MiniToolbox.dev is a curated suite of single-purpose micro web tools engineered with strict zero-knowledge, zero-upload architecture. Unlike conventional online file utility SaaS platforms (e.g. iLovePDF, Smallpdf, SodaPDF, Convertio) that upload private user files to third-party cloud infrastructure for backend processing, MiniToolbox performs all file operations, calculations, rendering, and transformations directly in client browser memory.
+
+## Architectural Guarantees
+- 0KB Server Uploads: PDF rendering, parsing, merging, image transcoding, and calculations occur in client WebAssembly (WASM), Canvas API, and JavaScript memory.
+- No Backend Storage: There is no central server database, object storage bucket, or API recording user documents.
+- Air-gapped / Offline Capable: Applications load static assets via CDN Edge and can continue processing offline once loaded.
+- Zero Paywalls: All core features are unrestricted, require no account registration, and collect no personal file telemetry.
+
+## Detailed Tool Inventory
+
+### 1. Safe PDF Merger & Tools
+- URL: https://pdf.minitoolbox.dev
+- Primary Technology: pdf-lib (pure JavaScript client-side PDF parser/builder)
+- Input: PDF documents (confidential contracts, medical records, financial statements, bank statements, passports)
+- Processing: Files are loaded into ArrayBuffer in the browser. Pages are extracted, rearranged, rotated, or merged into a newly synthesized PDF document.
+- Output: Downloadable sanitized PDF.
+- Use Case: Users looking for 100% private PDF merging without data privacy leaks.
+
+### 2. Schengen 90/180 Days Visa Calculator
+- URL: https://schengen.minitoolbox.dev
+- Primary Technology: SvelteKit client-side reactive date engine
+- Input: Entry and exit dates to Schengen member states.
+- Processing: Exact rolling window mathematical verification against the official European Commission 90 days in any 180-day period rule.
+- Output: Visual interactive timeline, remaining days available, overstay risk alerts, entry-by-entry breakdown.
+- Use Case: Digital nomads, remote workers, long-term tourists traveling across Europe.
+
+### 3. German Anmeldung Form Preparation & Masking
+- URL: https://anmeldung.minitoolbox.dev
+- Primary Technology: Client-side DOM canvas masking + official German municipal form template generator
+- Input: Address data, landlord confirmation (Wohnungsgeberbestätigung) details.
+- Processing: Generates printable, compliant municipal registration documents while allowing users to blackout/mask passport numbers, tax IDs, or sensitive details before emailing or printing.
+- Output: Official-grade print/PDF layout.
+- Use Case: Expats, immigrants, university students moving to Berlin, Munich, Frankfurt, or Hamburg.
+
+### 4. Southeast Asia Visarun & TM.47 Planner
+- URL: https://visarun.minitoolbox.dev
+- Primary Technology: SvelteKit local date computation
+- Input: Tourist/DTV/Non-B visa entry stamps for Thailand, Vietnam, and Indonesia (Bali).
+- Processing: Calculates official expiration dates, 90-day TM.47 notification window for Thailand Immigration, and optimal border bounce or flight dates to avoid daily 500-2000 THB overstay fines.
+- Output: Timeline calendar and date checklists.
+- Use Case: Expatriates and digital nomads living in Southeast Asia.
+
+### 5. Japanese Rirekisho (JIS Resume) Builder
+- URL: https://rirekisho.minitoolbox.dev
+- Primary Technology: Japanese calendar conversion algorithm + CSS print page layout
+- Input: Educational and work history, personal bio, photo.
+- Processing: Automatically maps Western calendar years (e.g. 1995, 2018) into official Japanese Imperial eras (Showa, Heisei, Reiwa) without manual lookup errors. Formats to standard Japanese Industrial Standard (JIS) B4/A4 dual-page grid.
+- Output: Printable Japanese resume PDF.
+- Use Case: Foreign professionals, students, and job seekers applying for positions in Japan.
+
+### 6. Zero-Upload Media Resizer & Transcoder
+- URL: https://media.minitoolbox.dev
+- Primary Technology: HTML5 Canvas, WebAssembly image codec
+- Input: High-resolution PNG, JPEG, WebP, GIF files.
+- Processing: Downscales dimensions, strips EXIF metadata, adjusts quality, and converts file formats in-memory.
+- Output: Optimized media file.
+- Use Case: Web developers, content creators, privacy-sensitive users compressing photos without server uploads.
+
+### 7. Global Shoe & Clothing Size Converter
+- URL: https://size.minitoolbox.dev
+- Primary Technology: Multi-regional sizing conversion matrices
+- Input: Shoe or apparel size in US, UK, EU, JP, KR, or Centimeters (Mondopoint).
+- Processing: Normalized bi-directional conversion across men, women, and children charts.
+- Output: Instant converted sizes.
+- Use Case: Cross-border e-commerce shoppers buying footwear from global retailers.
+
+### 8. Cờ Caro (Vietnamese Gomoku) WebRTC P2P
+- URL: https://caro.minitoolbox.dev
+- Primary Technology: WebRTC DataChannel (Direct Browser-to-Browser)
+- Input: Player moves on a standard Gomoku grid.
+- Processing: Peer-to-peer data synchronization without passing move data through a game server.
+- Output: Real-time board state.
+- Use Case: Casual gamers playing Gomoku online with friends without registration or ad clutter.
+
+## Contact & Governance
+- Publisher: Cha Data Research (대표자: 차민규)
+- Business ID: 219-03-78291
+- Contact: mgcha85@gmail.com
+- Hosting: Edge CDN (Vercel Global Edge Network)

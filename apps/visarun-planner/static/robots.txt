@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://visarun.minitoolbox.dev/sitemap.xml
+# Explicitly Welcome AI Search & Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://minitoolbox.dev/sitemap.xml
+llms-txt: https://minitoolbox.dev/llms.txt
