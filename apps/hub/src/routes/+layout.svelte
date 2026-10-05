@@ -17,7 +17,9 @@
 
   const langs: { id: HubLang; label: string; flag: string }[] = [
     { id: 'en', label: 'English', flag: '🇬🇧' },
+    { id: 'fr', label: 'Français', flag: '🇫🇷' },
     { id: 'de', label: 'Deutsch', flag: '🇩🇪' },
+    { id: 'es', label: 'Español', flag: '🇪🇸' },
     { id: 'vi', label: 'Tiếng Việt', flag: '🇻🇳' },
     { id: 'ja', label: '日本語', flag: '🇯🇵' },
     { id: 'ko', label: '한국어', flag: '🇰🇷' }

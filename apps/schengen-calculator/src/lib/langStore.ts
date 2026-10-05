@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-export type Lang = 'en' | 'ko' | 'es' | 'de';
+export type Lang = 'en' | 'ko' | 'es' | 'de' | 'fr';
 
 export const currentLang = writable<Lang>('en');
 
@@ -213,5 +213,48 @@ export const translations: Record<Lang, {
     a2: '29 europäische Staaten wie Deutschland, Frankreich, Italien, Spanien, die Schweiz und Österreich. Großbritannien und Irland gehören nicht dazu.',
     q3: 'Sind meine Reisedaten sicher?',
     a3: 'Ja, 100%. Alles bleibt in Ihrem Browser und wird niemals an externe Server übertragen.'
+  }
+,
+  fr: {
+    siteTitle: 'Calculateur Règle 90/180 Schengen',
+    badge: '100% Côté Client • 0KB Téléversement Serveur',
+    heroTitle: 'Calculateur de Séjour Règle 90/180 Jours Schengen',
+    heroSub: 'Calculateur glissant précis pour voyageurs non-UE, nomades digitaux et touristes. Calculez les jours restants et les dates limites de départ avec zéro suivi serveur.',
+    privacyBadge: '🔒 Toutes vos données de voyage restent stockées localement dans votre navigateur (LocalStorage). Zéro fuite serveur.',
+    addTrip: 'Ajouter un Séjour dans l\'Espace Schengen',
+    entryDate: 'Date d\'entrée',
+    exitDate: 'Date de sortie',
+    country: 'Pays (Facultatif)',
+    note: 'Remarque / Motif (Facultatif)',
+    addBtn: '+ Ajouter le séjour',
+    loadSample: 'Charger un exemple',
+    clearAll: 'Tout effacer',
+    myTrips: 'Historique de mes séjours',
+    noTrips: 'Aucun séjour enregistré. Ajoutez vos dates ci-dessus ou chargez un exemple.',
+    duration: 'Durée',
+    days: 'jours',
+    delete: 'Supprimer',
+    simTitle: 'Simulation de Statut & Jours Restants',
+    simSub: 'Vérifiez votre conformité à une date de référence choisie sur la fenêtre glissante de 180 jours.',
+    refDateLabel: 'Date de référence pour le calcul',
+    statusToday: 'Statut à la date choisie',
+    usedDays: 'Jours consommés (sur 90)',
+    remainingDays: 'Jours restants autorisés',
+    overstayAlert: '⚠️ Dépassement détecté ! Vous dépassez le quota autorisé de 90 jours.',
+    maxContinuousStay: 'Séjour continu maximum possible',
+    latestExit: 'Date limite de sortie recommandée',
+    completeReset: 'Remise à zéro complète du quota 90j',
+    downloadIcs: '📅 Exporter les rappels de départ (.ICS)',
+    timelineTitle: 'Visualisation Chronologique (Fenêtre 180 Jours)',
+    timelineSub: 'Aperçu jour par jour de vos périodes de présence et d\'absence.',
+    inSchengen: 'Dans Schengen',
+    outSchengen: 'Hors Schengen',
+    faqTitle: 'Foire Aux Questions (FAQ)',
+    q1: 'Q. Comment fonctionne exactement la règle des 90/180 jours de l\'espace Schengen ?',
+    a1: 'A. Tout ressortissant non-UE exempté de visa court séjour peut séjourner au maximum 90 jours sur toute période glissante de 180 jours. Chaque jour passé dans Schengen est vérifié par rapport aux 179 jours précédents.',
+    q2: 'Q. Les dates d\'entrée et de sortie comptent-elles comme des journées entières ?',
+    a2: 'A. Oui. Le jour d\'arrivée et le jour de départ comptent chacun pour un jour complet dans le quota des 90 jours.',
+    q3: 'Q. Mes données de passeport ou de dates de voyage sont-elles envoyées à un serveur ?',
+    a3: 'A. Non, absolument aucun octet n\'est envoyé sur un serveur. Tout est calculé dans votre navigateur.'
   }
 };

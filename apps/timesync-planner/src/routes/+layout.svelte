@@ -7,7 +7,7 @@
   onMount(() => {
     try {
       const saved = localStorage.getItem('timesync_lang') as TimeSyncLang;
-      if (saved && ['en', 'fr', 'de', 'es', 'ko'].includes(saved)) {
+      if (saved && ['en', 'fr', 'de', 'es', 'ko', 'ja', 'vi'].includes(saved)) {
         currentLang.set(saved);
         return;
       }
@@ -15,6 +15,8 @@
       if (nav.startsWith('fr')) currentLang.set('fr');
       else if (nav.startsWith('de')) currentLang.set('de');
       else if (nav.startsWith('es')) currentLang.set('es');
+      else if (nav.startsWith('ja')) currentLang.set('ja');
+      else if (nav.startsWith('vi')) currentLang.set('vi');
       else if (nav.startsWith('ko')) currentLang.set('ko');
       else currentLang.set('en');
     } catch (e) {}
@@ -78,6 +80,22 @@
             title="Español"
           >
             🇪🇸 ES
+          </button>
+          <button
+            type="button"
+            class="px-2 py-1 rounded-md transition {$currentLang === 'ja' ? 'bg-white text-indigo-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
+            on:click={() => setLang('ja')}
+            title="日本語"
+          >
+            🇯🇵 JA
+          </button>
+          <button
+            type="button"
+            class="px-2 py-1 rounded-md transition {$currentLang === 'vi' ? 'bg-white text-indigo-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
+            on:click={() => setLang('vi')}
+            title="Tiếng Việt"
+          >
+            🇻🇳 VI
           </button>
           <button
             type="button"

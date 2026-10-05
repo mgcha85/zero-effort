@@ -7,12 +7,13 @@
   onMount(() => {
     try {
       const saved = localStorage.getItem('schengen_lang') as Lang;
-      if (saved && ['en', 'ko', 'es', 'de'].includes(saved)) {
+      if (saved && ['en', 'ko', 'es', 'de', 'fr'].includes(saved)) {
         currentLang.set(saved);
         return;
       }
       const nav = (navigator.language || '').toLowerCase();
-      if (nav.startsWith('de')) currentLang.set('de');
+      if (nav.startsWith('fr')) currentLang.set('fr');
+      else if (nav.startsWith('de')) currentLang.set('de');
       else if (nav.startsWith('es')) currentLang.set('es');
       else if (nav.startsWith('ko')) currentLang.set('ko');
       else currentLang.set('en');
@@ -59,6 +60,14 @@
             title="한국어"
           >
             🇰🇷 KR
+          </button>
+          <button
+            type="button"
+            class="px-2 py-1 rounded-md transition {$currentLang === 'fr' ? 'bg-white text-blue-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'}"
+            on:click={() => setLang('fr')}
+            title="Français"
+          >
+            🇫🇷 FR
           </button>
           <button
             type="button"

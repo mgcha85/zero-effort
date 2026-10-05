@@ -59,6 +59,66 @@
       tableTitle: '글로벌 신발 규격 대조표',
       footLen: '발 길이',
       badge: '🌏 해외직구 필수 도구'
+    },
+    fr: {
+      title: 'Convertisseur International de Pointure & Taille',
+      sub: 'Conversion précise des pointures pour vos achats transfrontaliers sur Shopee, Lazada, TikTok Shop et Taobao',
+      genderLabel: 'Genre',
+      men: 'Homme',
+      women: 'Femme',
+      standardLabel: 'Votre système de pointure connu',
+      valLabel: 'Valeur de pointure',
+      resultHeader: 'Résultats Équivalents Internationaux',
+      shareBtn: 'Partager cette pointure',
+      copiedBtn: 'Lien copié !',
+      tableTitle: 'Matrice Universelle de Conversion des Pointures',
+      footLen: 'Longueur du pied',
+      badge: '🌏 Prêt pour l\'e-commerce mondial'
+    },
+    de: {
+      title: 'Internationaler Schuh- & Kleidergrößen-Umrechner',
+      sub: 'Präzise Größenumrechnung für weltweites Online-Shopping auf Shopee, Lazada, TikTok Shop & Taobao',
+      genderLabel: 'Geschlecht',
+      men: 'Herren',
+      women: 'Damen',
+      standardLabel: 'Bekanntes Größensystem',
+      valLabel: 'Größenwert',
+      resultHeader: 'Internationale Vergleichsgrößen',
+      shareBtn: 'Größe teilen',
+      copiedBtn: 'Link kopiert!',
+      tableTitle: 'Universelle Schuhgrößen-Vergleichstabelle',
+      footLen: 'Fußlänge',
+      badge: '🌏 Internationales E-Commerce Tool'
+    },
+    es: {
+      title: 'Conversor Internacional de Tallas de Calzado y Ropa',
+      sub: 'Conversión exacta de tallas para compras internacionales en Shopee, Lazada, TikTok Shop y Taobao',
+      genderLabel: 'Género',
+      men: 'Hombre',
+      women: 'Mujer',
+      standardLabel: 'Tu estándar de talla conocido',
+      valLabel: 'Valor de talla',
+      resultHeader: 'Equivalencias Internacionales de Talla',
+      shareBtn: 'Compartir esta talla',
+      copiedBtn: '¡Enlace copiado!',
+      tableTitle: 'Matriz Universal de Conversión de Calzado',
+      footLen: 'Longitud del pie',
+      badge: '🌏 Listo para comercio internacional'
+    },
+    ja: {
+      title: '海外靴・服サイズ換算ツール (日米欧中)',
+      sub: 'Shopee、Lazada、Taobao、Amazonでの海外通販に必須。センチ(cm)・インチ・欧米サイズを一発相互変換',
+      genderLabel: '性別',
+      men: 'メンズ',
+      women: 'レディース',
+      standardLabel: 'ご存知のサイズ規格',
+      valLabel: 'サイズ数値',
+      resultHeader: '各国サイズ換算結果',
+      shareBtn: 'このサイズを共有',
+      copiedBtn: 'リンクをコピーしました！',
+      tableTitle: '国際靴サイズ対照一覧表',
+      footLen: '足長 (cm)',
+      badge: '🌏 海外通販・個人輸入最適化'
     }
   };
 

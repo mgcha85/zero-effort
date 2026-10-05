@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-export type TimeSyncLang = 'en' | 'fr' | 'de' | 'es' | 'ko';
+export type TimeSyncLang = 'en' | 'fr' | 'de' | 'es' | 'ko' | 'ja' | 'vi';
 
 export const currentLang = writable<TimeSyncLang>('en');
 
@@ -129,5 +129,56 @@ export const translations = {
     a1: 'A. 네! 브라우저 표준 IANA 타임존 데이터베이스(Intl API)를 직접 사용하여 유럽/북미의 서머타임 변동을 1초의 오차 없이 자동 계산합니다.',
     q2: 'Q. 회의 일정이나 검색한 도시 정보가 서버에 남나요?',
     a2: 'A. 일절 남지 않습니다. 100% 기기 로컬 메모리에서만 동작하므로 기밀 비즈니스 회의 조율도 안심하고 진행하실 수 있습니다.'
+  }
+,
+  ja: {
+    siteTitle: 'ノマド タイムシンク',
+    badge: '100% ローカル処理 • サーバー送信0KB',
+    heroTitle: '世界時差＆ゴールデンミーティングアワー算出',
+    heroSub: 'パリ、ニューヨーク、ロンドン、東京などの時差をスライダーで直感比較。全員が稼働可能な共通時間を完全ローカルで算出します。',
+    privacyBadge: '🔒 すべての計算はブラウザのメモリ内で完結し、外部サーバーに一切送信されません。',
+    selectedCities: '比較対象都市',
+    addCityBtn: '+ 都市を追加',
+    referenceCity: '基準都市（スライダーまたは時間をクリックして同期）',
+    goldenHoursTitle: '🌟 ゴールデン稼働重複時間帯 (Golden Hours)',
+    goldenHoursDesc: '選択された全都市の現地時間が活動・勤務時間（08:00 – 19:00）に重なる最適な会議時間です。',
+    noGoldenHours: '全都市が重なる日中時間帯がありません。早朝や夜間のフレキシブル枠をご確認ください。',
+    goldenSlotFound: '最適な共通時間帯を発見:',
+    copyScheduleBtn: '📋 会議スケジュールをコピー',
+    downloadIcsBtn: '📅 .ICSカレンダーを保存',
+    copiedText: 'クリップボードにコピーしました！',
+    legendWork: '通常勤務時間 (09-18時)',
+    legendFlex: '活動可能時間 (07-09, 18-22時)',
+    legendSleep: '睡眠・深夜 (22-07時)',
+    faqTitle: 'よくある質問 (FAQ)',
+    q1: 'Q. サマータイム（夏時間）は自動反映されますか？',
+    a1: 'A. はい。ブラウザ標準の公式IANAタイムゾーンデータベースを利用して、夏時間と冬時間を完全自動計算します。',
+    q2: 'Q. 選択した都市や会議情報は保存されますか？',
+    a2: 'A. いいえ、サーバーへの保存や通信は一切行われません。'
+  },
+  vi: {
+    siteTitle: 'Nomad TimeSync',
+    badge: '100% Xử Lý Trình Duyệt • 0KB Gửi Máy Chủ',
+    heroTitle: 'Bộ Đồng Bộ Múi Giờ & Tìm Giờ Vàng Họp Quốc Tế',
+    heroSub: 'Tìm khung giờ làm việc chung tức thì giữa Paris, New York, San Francisco, London và Châu Á cho các nhóm làm việc từ xa.',
+    privacyBadge: '🔒 Mọi phép tính thực hiện hoàn toàn trong bộ nhớ máy của bạn, không gửi bất kỳ dữ liệu nào.',
+    selectedCities: 'Danh Sách Thành Phố So Sánh',
+    addCityBtn: '+ Thêm Thành Phố',
+    referenceCity: 'Thành phố chuẩn (Kéo thanh trượt hoặc nhấp vào giờ để đồng bộ)',
+    goldenHoursTitle: '🌟 Khung Giờ Vàng Làm Việc Chung (Golden Hours)',
+    goldenHoursDesc: 'Khoảng thời gian mà tất cả các địa điểm được chọn đều nằm trong giờ làm việc hợp lý (08:00 – 19:00 giờ địa phương).',
+    noGoldenHours: 'Không tìm thấy khung giờ trùng khớp hoàn toàn. Hãy xem xét các khung giờ linh hoạt.',
+    goldenSlotFound: 'Đã tìm thấy giờ họp lý tưởng:',
+    copyScheduleBtn: '📋 Sao Chép Tóm Tắt Lịch Họp',
+    downloadIcsBtn: '📅 Tải Lịch .ICS',
+    copiedText: 'Đã sao chép vào bộ nhớ tạm!',
+    legendWork: 'Giờ làm việc (09-18h)',
+    legendFlex: 'Giờ linh hoạt (07-09h, 18-22h)',
+    legendSleep: 'Giờ nghỉ ngơi (22-07h)',
+    faqTitle: 'Câu Hỏi Thường Gặp',
+    q1: 'Q. Công cụ có tự động tính giờ mùa hè (DST) không?',
+    a1: 'A. Có. Công cụ sử dụng cơ sở dữ liệu múi giờ IANA chuẩn tích hợp trong trình duyệt để tự động điều chỉnh.',
+    q2: 'Q. Lịch họp hoặc thông tin có bị theo dõi không?',
+    a2: 'A. Hoàn toàn không. 100% dữ liệu xử lý cục bộ trên thiết bị của bạn.'
   }
 };

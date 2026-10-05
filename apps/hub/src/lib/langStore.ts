@@ -1,17 +1,19 @@
 import { writable } from 'svelte/store';
 
-export type HubLang = 'en' | 'ko' | 'de' | 'vi' | 'ja';
+export type HubLang = 'en' | 'ko' | 'de' | 'vi' | 'ja' | 'fr' | 'es';
 
 function getInitialLang(): HubLang {
   if (typeof window === 'undefined') return 'en';
   try {
     const saved = localStorage.getItem('minitoolbox_hub_lang') as HubLang;
-    if (saved && ['en', 'ko', 'de', 'vi', 'ja'].includes(saved)) {
+    if (saved && ['en', 'ko', 'de', 'vi', 'ja', 'fr', 'es'].includes(saved)) {
       return saved;
     }
     const nav = (navigator.language || '').toLowerCase();
     if (nav.startsWith('ko')) return 'ko';
+    if (nav.startsWith('fr')) return 'fr';
     if (nav.startsWith('de')) return 'de';
+    if (nav.startsWith('es')) return 'es';
     if (nav.startsWith('vi')) return 'vi';
     if (nav.startsWith('ja')) return 'ja';
   } catch (e) {
@@ -298,5 +300,56 @@ export const translations = {
     ],
     metaTitle: 'MiniToolbox.dev | サーバー送信ゼロの安心Web便利ツールポータル',
     metaDesc: 'サーバー送信0KBの安心ブラウザツール群。PDF結合・分割、JIS規格履歴書作成、写真リサイズ、シェンゲン協定90日滞在計算など完全無料。'
+  }
+,
+  fr: {
+    portalBadge: 'Portail Mondial d\'Utilitaires Web',
+    zeroUploadBadge: '🔒 Zéro Téléversement Garanti (0KB)',
+    heroBadge: '🚀 9 Utilitaires Côté Client Sans Serveur',
+    heroTitlePrefix: 'Rapide, Gratuit & ',
+    heroTitleHighlight: '100% Côté Client',
+    heroTitleSuffix: ' Sécurisé',
+    heroDesc: 'Zéro octet de données sensibles envoyé sur un serveur. Tout est calculé dans la mémoire de votre navigateur et le bac à sable WebAssembly.',
+    searchPlaceholder: 'Rechercher des outils (PDF, Anmeldung, Schengen, TimeSync, Photo...)',
+    categories: {
+      all: 'Tous les Outils',
+      privacy: '🔒 Confidentialité / Documents',
+      travel: '✈️ Voyage / Visas & Nomades',
+      career: '📄 Carrière / CV',
+      utility: '🛠️ Shopping & Utilitaires',
+      entertainment: '🎮 Jeux & P2P'
+    },
+    launchBtn: 'Ouvrir l\'Outil →',
+    freeBadge: 'Gratuit & Sans Inscription',
+    metaDesc: 'Portail de micro-outils web 100% côté client et respectueux de la vie privée. Fusion PDF, calculateur Schengen 90/180, synchronisation fuseaux horaires, préparation Anmeldung et plus sans téléversement de données.',
+    footerContact: 'Contact',
+    footerTerms: 'Conditions d\'utilisation',
+    footerPrivacy: 'Politique de confidentialité',
+    footerRefund: 'Remboursement'
+  },
+  es: {
+    portalBadge: 'Portal Global de Microherramientas Web',
+    zeroUploadBadge: '🔒 Cero Carga al Servidor (0KB)',
+    heroBadge: '🚀 9 Microaplicaciones del Lado del Cliente',
+    heroTitlePrefix: 'Rápido, Gratis y ',
+    heroTitleHighlight: '100% en Navegador',
+    heroTitleSuffix: ' Seguro',
+    heroDesc: 'Cero bytes de datos confidenciales enviados a servidores externos. Todo se ejecuta localmente en la memoria de su navegador y WebAssembly.',
+    searchPlaceholder: 'Buscar herramientas (PDF, Schengen, TimeSync, Tallas, Visas...)',
+    categories: {
+      all: 'Todas las Herramientas',
+      privacy: '🔒 Privacidad / Documentos',
+      travel: '✈️ Viajes / Visados y Nómadas',
+      career: '📄 Carrera / CV',
+      utility: '🛠️ Utilidades & Compras',
+      entertainment: '🎮 Juegos / Diversión'
+    },
+    launchBtn: 'Abrir Herramienta →',
+    freeBadge: 'Gratis y Sin Instalación',
+    metaDesc: 'Portal de microherramientas web del lado del cliente y enfocado en la privacidad. Fusión de PDF, calculadora Schengen, sincronización de zonas horarias y conversor de tallas con 0KB de carga.',
+    footerContact: 'Contacto',
+    footerTerms: 'Términos de servicio',
+    footerPrivacy: 'Política de privacidad',
+    footerRefund: 'Política de reembolso'
   }
 };
