@@ -1,5 +1,30 @@
 # LESSON AND LEARN
 
+## [2026-10-05] pnpm 모노레포 서브앱 Vercel 배포가 npm workspace 프로토콜에서 죽음
+**카테고리**: deploy
+**키워드**: vercel, pnpm, workspace, DEPLOYMENT_NOT_FOUND, rootDirectory
+
+### 증상
+- `qr.minitoolbox.dev` 등이 `x-vercel-error: DEPLOYMENT_NOT_FOUND`
+- 빌드 로그: `npm error Unsupported URL Type "workspace:"` 후 5초 만에 Error
+- 도메인 추가는 "latest production deployment has errored"로 거절
+
+### 잘못된 가정
+- 앱 폴더만 올려도 SvelteKit 프리셋이 빌드한다
+
+### 원인
+- 프로젝트 Root Directory가 `.` 이고 CLI가 앱 디렉터리만 업로드하면 `pnpm-workspace.yaml`이 없고 npm이 `workspace:*`를 만난다
+
+### 해결
+- Root Directory = `apps/<app>`, Output = `build`, Install = `pnpm install --no-frozen-lockfile`, Build = `pnpm run build`
+- 레포 루트에서 `vercel deploy --prod --yes --project <name>`
+- 성공한 프로덕션 이후에만 커스텀 도메인 연결. 빈 프로젝트에 붙어 있으면 `vercel domains add <host> <project> --force`
+
+### 재발 방지
+- 새 서브앱은 `apps/pdf-tools`와 같이 모노레포 루트 배포. 앱 폴더 단독 `vercel --prod` 금지
+
+---
+
 ## 2026-10-05: 텔레그램 일일 리포트 발송 시점 및 GA4 통계 자동 연동
 
 - **원인 분석**:

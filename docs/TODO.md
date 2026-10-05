@@ -13,6 +13,9 @@
   - [x] `apps/anmeldung-prep` (:3006) - 독일 안멜둥 서류 체크 & 민감정보 마스킹 캔버스
   - [x] `apps/rirekisho-builder` (:3007) - 일본 이력서 와레키 자동완성 & JIS A4 PDF
   - [x] `apps/visarun-planner` (:3008) - 동남아 비자런 & 90일 체류신고 D-Day 플래너
+  - [x] `apps/qr-studio` (:3010) - 영구 정적 QR (qr.minitoolbox.dev)
+  - [x] `apps/invoice-maker` (:3011) - 로그인 없는 A4 인보이스 (invoice.minitoolbox.dev)
+  - [x] `apps/exif-scrubber` (:3012) - 사진 GPS/EXIF 제거 (exif.minitoolbox.dev)
 - [x] Podman-compose 8개 서비스 완전 통합
 - [x] 투명 알파 파비콘 자동 추출 파이프라인 (`scripts/process_transparent_favicons.py`)
 - [x] KST 00시 텔레그램 일일 방문자수 브리핑 크론봇 (`scripts/telegram_daily_briefing.py`)

@@ -13,6 +13,10 @@ domains = [
     ("Rirekisho", "https://rirekisho.minitoolbox.dev"),
     ("Size", "https://size.minitoolbox.dev"),
     ("Caro", "https://caro.minitoolbox.dev"),
+    ("TimeSync", "https://timesync.minitoolbox.dev"),
+    ("QR", "https://qr.minitoolbox.dev"),
+    ("Invoice", "https://invoice.minitoolbox.dev"),
+    ("EXIF", "https://exif.minitoolbox.dev"),
 ]
 
 for name, url in domains:

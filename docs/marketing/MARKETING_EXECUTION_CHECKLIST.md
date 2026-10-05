@@ -87,4 +87,12 @@
   - `extensions/chrome-minitoolbox/popup.js`: PureQR Studio, Nomad Invoice Maker, EXIF Privacy Scrubber 원클릭 런처 추가
 - [x] **글로벌 커뮤니티 바이럴 런칭팩 제작**
   - `docs/marketing/06_new_apps_viral_pack.md`: r/SideProject, r/InternetIsBeautiful, r/freelance, Hacker News(Show HN), Product Hunt 전용 안티스팸 맞춤형 카피 수록
+- [x] **서브도메인 SEO 정합 (사이트맵이 다른 앱을 가리키던 복사 오류 수정)**
+  - 각 앱 `sitemap.xml` / `robots.txt` / `llms.txt`를 자기 도메인으로 고정
+  - canonical, Open Graph, `WebApplication` + `FAQPage` JSON-LD
+- [x] **Vercel 프로덕션 배포**
+  - 프로젝트 `zero-effort-qr-studio`, `zero-effort-invoice`, `zero-effort-exif`
+  - Root Directory = `apps/<app>`, Output = `build`, install = `pnpm install --no-frozen-lockfile`
+  - 도메인 `qr` / `invoice` / `exif`.minitoolbox.dev
+  - 허브 `minitoolbox-hub` 재배포로 포털 카드·사이트맵·llms.txt 반영
 

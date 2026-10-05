@@ -64,7 +64,6 @@ def main():
     date_str = yesterday_kst.strftime("%Y년 %m월 %d일")
     time_str = now_kst.strftime("%H:%M KST")
 
-    # 8 Apps + Portal
     services = [
         ("🏛️ 독일 안멜둥 서류 & 마스킹", "https://anmeldung.minitoolbox.dev"),
         ("📑 안심 PDF 병합 및 추출", "https://pdf.minitoolbox.dev"),
@@ -74,6 +73,9 @@ def main():
         ("🖼️ 제로업로드 미디어 리사이저", "https://media.minitoolbox.dev"),
         ("👟 글로벌 신발 치수 변환기", "https://size.minitoolbox.dev"),
         ("🎮 베트남 오목 P2P (Cờ Caro)", "https://caro.minitoolbox.dev"),
+        ("🔲 퓨어 QR 스튜디오", "https://qr.minitoolbox.dev"),
+        ("🧾 노마드 인보이스 메이커", "https://invoice.minitoolbox.dev"),
+        ("🛡️ 사진 GPS/EXIF 제거기", "https://exif.minitoolbox.dev"),
     ]
 
     service_lines = []
@@ -109,7 +111,7 @@ def main():
         + "\n\n".join(service_lines)
         + f"\n\n━━━━━━━━━━━━━━━━━━━\n"
         f"🚀 *포털 메인*: `https://minitoolbox.dev`\n"
-        f"🟢 *상태*: 8개 독립 서브도메인 에지 배포 가동 중\n"
+        f"🟢 *상태*: 11개 독립 서브도메인 에지 배포 가동 중\n"
         f"🔒 *보안*: 100% 클라이언트 연산 (서버 저장 0KB)\n"
         f"🌐 *DNS 라우팅*: Porkbun 네임서버 기반 Vercel 매핑 완료"
     )

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { buildFaqJsonLd, buildWebAppJsonLd } from '@zero-effort/seo-config';
   import { currentLang, translations } from '$lib/langStore';
 
   interface LineItem {
@@ -45,6 +46,22 @@
   let notes = 'Payment terms: Due within 14 days.\nDirect Wire: Bank Name, Routing: 123456789, Account: 987654321\nWise: transfer@nomadstudio.co';
 
   $: t = translations[$currentLang] || translations.en;
+
+  function plainQa(s: string) {
+    return s.replace(/^[QA]\.\s*/, '');
+  }
+
+  $: jsonLd = buildWebAppJsonLd({
+    name: t.siteTitle,
+    url: 'https://invoice.minitoolbox.dev',
+    description: t.heroSub,
+    applicationCategory: 'BusinessApplication'
+  });
+
+  $: jsonLdFaq = buildFaqJsonLd([
+    { question: plainQa(t.faq1Q), answer: plainQa(t.faq1A) },
+    { question: plainQa(t.faq2Q), answer: plainQa(t.faq2A) }
+  ]);
 
   // Computed values
   $: subtotal = items.reduce((sum, item) => sum + (Number(item.qty) || 0) * (Number(item.price) || 0), 0);
@@ -136,6 +153,14 @@
 <svelte:head>
   <title>{t.siteTitle} | {t.subBrand}</title>
   <meta name="description" content={t.heroSub} />
+  <link rel="canonical" href="https://invoice.minitoolbox.dev/" />
+  <meta property="og:title" content={t.siteTitle} />
+  <meta property="og:description" content={t.heroSub} />
+  <meta property="og:url" content="https://invoice.minitoolbox.dev/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  {@html `<script type="application/ld+json">${jsonLd}</script>`}
+  {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">

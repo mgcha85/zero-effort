@@ -16,6 +16,9 @@
 | **독일 안멜둥 서류 & 마스킹** | 독일 🇩🇪 | `apps/anmeldung-prep` | `fra1` (Frankfurt) | `anmeldung.minitoolbox.dev` |
 | **일본 이력서 와레키 자동완성** | 일본 🇯🇵 | `apps/rirekisho-builder` | `hnd1` (Tokyo) | `rirekisho.minitoolbox.dev` |
 | **동남아 비자런 플래너** | 동남아 / 태국 / 발리 🇹🇭🇮🇩 | `apps/visarun-planner` | `sin1` (Singapore) | `visarun.minitoolbox.dev` |
+| **PureQR Studio** | 글로벌 🌐 | `apps/qr-studio` | `icn1` (Seoul) | `qr.minitoolbox.dev` |
+| **Nomad Invoice Maker** | 글로벌 🌐 | `apps/invoice-maker` | `icn1` (Seoul) | `invoice.minitoolbox.dev` |
+| **EXIF Privacy Scrubber** | 글로벌 🌐 | `apps/exif-scrubber` | `icn1` (Seoul) | `exif.minitoolbox.dev` |
 
 ---
 
