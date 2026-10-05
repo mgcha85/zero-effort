@@ -9,8 +9,11 @@ export interface ToolLocale {
   features: string[];
 }
 
+export type ToolColor = 'rose' | 'indigo' | 'blue' | 'amber' | 'emerald' | 'cyan' | 'purple';
+
 export interface ToolItem {
   id: string;
+  color: ToolColor;
   name: string;
   nameEn: string;
   subdomain: string;
@@ -36,6 +39,7 @@ export interface ToolItem {
 export const TOOLS: ToolItem[] = [
   {
     id: 'pdf-tools',
+    color: 'rose',
     name: 'PDF 합치기 나누기',
     nameEn: 'Secure PDF Merge & Split',
     subdomain: 'pdf',
@@ -132,6 +136,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'anmeldung-prep',
+    color: 'amber',
     name: '독일 안멜둥 서류 & 마스킹',
     nameEn: 'German Anmeldung Prep & Redactor',
     subdomain: 'anmeldung',
@@ -228,6 +233,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'visarun-planner',
+    color: 'emerald',
     name: '동남아 비자런 & D-Day 플래너',
     nameEn: 'Southeast Asia Visa Run Planner',
     subdomain: 'visarun',
@@ -276,6 +282,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'rirekisho-builder',
+    color: 'rose',
     name: '일본 이력서 와레키 자동완성',
     nameEn: 'Japan JIS Resume (Rirekisho) Builder',
     subdomain: 'rirekisho',
@@ -298,6 +305,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'size-converter',
+    color: 'cyan',
     name: '글로벌 신발/의류 치수 변환기',
     nameEn: 'Global Shoe & Clothing Size Converter',
     subdomain: 'size',
@@ -320,6 +328,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'caro-game',
+    color: 'indigo',
     name: '베트남 오목 P2P (Cờ Caro)',
     nameEn: 'Cờ Caro (Vietnamese Gomoku) P2P',
     subdomain: 'caro',
@@ -342,6 +351,7 @@ export const TOOLS: ToolItem[] = [
   },
   {
     id: 'timesync-planner',
+    color: 'indigo',
     name: '노마드 타임싱크 (시차 & 회의 조율)',
     nameEn: 'Nomad TimeSync (World Overlap Planner)',
     subdomain: 'timesync',

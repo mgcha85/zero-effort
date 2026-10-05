@@ -321,6 +321,37 @@ export const translations = {
     },
     launchBtn: 'Ouvrir l\'Outil →',
     freeBadge: 'Gratuit & Sans Inscription',
+    charterTitle: '🛡️ Charte de Confidentialité MiniToolbox.dev',
+    charterItems: [
+      {
+        title: '1. Architecture Zéro Téléversement',
+        desc: 'Aucune image, fichier PDF ou texte privé n\'est transmis à un serveur. Tout est exécuté dans la mémoire de votre appareil.'
+      },
+      {
+        title: '2. Toujours Gratuit & Sans Inscription',
+        desc: 'Pas de compte requis, pas d\'abonnement ni de limites cachées. Accès immédiat et sans barrière.'
+      },
+      {
+        title: '3. Routage Edge Dédié',
+        desc: 'Chaque micro-outil est distribué via un sous-domaine dédié ultra-rapide (pdf., schengen., timesync., etc.).'
+      }
+    ],
+    faqTitle: 'Foire Aux Questions (FAQ)',
+    faqs: [
+      {
+        q: 'Mes fichiers sont-ils vraiment protégés sans envoi sur un serveur ?',
+        a: 'Oui, garanti à 100%. Tout le traitement est effectué localement dans votre navigateur via WebAssembly et l\'API Canvas. Vous pouvez inspecter l\'onglet Réseau (F12) : zéro octet ne quitte votre appareil.'
+      },
+      {
+        q: 'Est-ce totalement gratuit ? Faut-il créer un compte ?',
+        a: 'Absolument gratuit, sans inscription, sans abonnement et sans limite de conversion.'
+      },
+      {
+        q: 'Puis-je l\'utiliser sur mobile ?',
+        a: 'Oui, tous nos outils sont entièrement réactifs et fonctionnent parfaitement sur iOS Safari et Android Chrome.'
+      }
+    ],
+    metaTitle: 'MiniToolbox.dev | Utilitaires Web 100% Côté Client & Respectueux de la Vie Privée',
     metaDesc: 'Portail de micro-outils web 100% côté client et respectueux de la vie privée. Fusion PDF, calculateur Schengen 90/180, synchronisation fuseaux horaires, préparation Anmeldung et plus sans téléversement de données.',
     footerContact: 'Contact',
     footerTerms: 'Conditions d\'utilisation',
@@ -346,6 +377,37 @@ export const translations = {
     },
     launchBtn: 'Abrir Herramienta →',
     freeBadge: 'Gratis y Sin Instalación',
+    charterTitle: '🛡️ Carta de Privacidad de MiniToolbox.dev',
+    charterItems: [
+      {
+        title: '1. Arquitectura de Cero Carga',
+        desc: 'Ninguna imagen, archivo PDF o texto confidencial se envía a un servidor. Todo se procesa en la memoria de su dispositivo.'
+      },
+      {
+        title: '2. Siempre Gratis y Sin Registro',
+        desc: 'Sin cuentas forzadas, sin suscripciones y sin límites sorpresa tras dos conversiones. Acceso libre para todos.'
+      },
+      {
+        title: '3. Enrutamiento Rápido en el Edge',
+        desc: 'Cada herramienta opera en un subdominio dedicado (pdf., schengen., size., etc.) con carga instantánea mundial.'
+      }
+    ],
+    faqTitle: 'Preguntas Frecuentes (FAQ)',
+    faqs: [
+      {
+        q: '¿Realmente mis archivos nunca se suben a un servidor?',
+        a: 'Garantizado al 100%. Todo funciona localmente en su navegador mediante WebAssembly y APIs estándar. Puede comprobar en la pestaña Red (F12) que no se transmite ningún archivo.'
+      },
+      {
+        q: '¿Es completamente gratis? ¿Debo registrarme?',
+        a: 'Es 100% gratuito, sin necesidad de cuenta, sin suscripciones y sin límites de uso.'
+      },
+      {
+        q: '¿Puedo usarlo en dispositivos móviles?',
+        a: 'Sí, las herramientas están optimizadas para navegadores móviles como iOS Safari y Android Chrome.'
+      }
+    ],
+    metaTitle: 'MiniToolbox.dev | Microherramientas Web del Lado del Cliente y Máxima Privacidad',
     metaDesc: 'Portal de microherramientas web del lado del cliente y enfocado en la privacidad. Fusión de PDF, calculadora Schengen, sincronización de zonas horarias y conversor de tallas con 0KB de carga.',
     footerContact: 'Contacto',
     footerTerms: 'Términos de servicio',
