@@ -339,6 +339,54 @@ export const TOOLS: ToolItem[] = [
     targetRegionEn: 'Vietnam / Global',
     features: ['WebRTC 브라우저 간 P2P 직접 연결', '초대 링크 생성으로 즉시 대국 시작', '반응형 바둑판 및 턴 타이머', '채팅 및 돌 색상 선택 지원'],
     featuresEn: ['Serverless WebRTC P2P connection', '1-click shareable invite link', 'Responsive board with turn timers', 'In-game chat and piece colors']
+  },
+  {
+    id: 'timesync-planner',
+    name: '노마드 타임싱크 (시차 & 회의 조율)',
+    nameEn: 'Nomad TimeSync (World Overlap Planner)',
+    subdomain: 'timesync',
+    url: 'https://timesync.minitoolbox.dev',
+    category: 'travel',
+    categoryLabel: '글로벌 & 여행',
+    categoryLabelEn: 'Global & Travel',
+    icon: '🌐',
+    faviconPath: '/favicons/timesync.png',
+    tagline: '글로벌 리모트 워커를 위한 1초 시차 대조 & 골든 워킹 아워 플래너',
+    taglineEn: 'Instant timezone comparison & golden overlap hours finder for digital nomads',
+    description: '파리, 뉴욕, 런던, 샌프란시스코, 서울 등 세계 주요 도시의 시차를 슬라이더로 맞추고 전원 근무 가능한 골든타임을 찾아줍니다. 100% 브라우저 메모리 연산.',
+    descriptionEn: 'Coordinate cross-border meetings across Paris, New York, London, SF & Asia. Find overlapping golden working hours and export calendar events locally with zero tracking.',
+    badge: '🌟 골든타임 자동 감지',
+    badgeEn: '🌟 Golden Hours Finder',
+    targetRegion: 'Global 🌐 (US & EU)',
+    targetRegionEn: 'Global 🌐 (US & EU)',
+    features: ['24시간 인터랙티브 타임라인 슬라이더', '골든 워킹 아워(08~19시) 겹침 영역 자동 탐지', '1-Click 회의 일정 텍스트 복사', 'RFC 표준 .ICS 캘린더 파일 내보내기'],
+    featuresEn: ['24-hour interactive visual time slider', 'Automatic overlap golden hours detection', '1-Click formatted schedule clipboard copy', 'RFC standard .ICS calendar export'],
+    i18n: {
+      de: {
+        name: 'Nomad TimeSync (Zeitzonen-Planer)',
+        tagline: 'Weltweiter Zeitzonen- & Meeting-Planer für Remote-Teams',
+        description: 'Finden Sie optimale Überschneidungszeiten zwischen Berlin, Paris, New York und Asien mit 100% Datenschutz.',
+        badge: '🌟 Golden Hours Finder',
+        categoryLabel: 'Global & Reise',
+        features: ['24-Stunden-Zeitschieberegler', 'Automatische Erkennung von Kernarbeitszeiten', '1-Klick-Zeitplan-Kopie', '.ICS-Kalenderexport']
+      },
+      vi: {
+        name: 'Nomad TimeSync (Đồng Bộ Múi Giờ)',
+        tagline: 'Tìm khung giờ họp vàng cho nhóm làm việc từ xa quốc tế',
+        description: 'So sánh múi giờ giữa Paris, New York, London và Châu Á, tự động phát hiện khung giờ làm việc chung.',
+        badge: '🌟 Tìm Giờ Vàng',
+        categoryLabel: 'Toàn Cầu & Du Lịch',
+        features: ['Thanh trượt thời gian tương tác 24h', 'Tự động phát hiện giờ làm việc chung', 'Sao chép tóm tắt lịch họp 1 chạm', 'Xuất file lịch .ICS chuẩn']
+      },
+      ja: {
+        name: 'ノマド タイムシンク (時差会議プランナー)',
+        tagline: '世界各地の時差を1秒で比較し最適な会議時間を自動算出',
+        description: 'パリ、ニューヨーク、ロンドン、東京などの時差をスライダーで直感比較。全員が稼働可能なゴールデンアワーを完全ローカルで算出。',
+        badge: '🌟 ゴールデンタイム自動検出',
+        categoryLabel: 'グローバル・渡航',
+        features: ['24時間インタラクティブタイムスライダー', 'ゴールデン稼働時間帯の自動重複検出', 'ワンクリック会議時間テキストコピー', 'RFC準拠 .ICSカレンダーエクスポート']
+      }
+    }
   }
 ];
 

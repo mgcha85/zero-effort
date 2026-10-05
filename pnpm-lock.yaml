@@ -300,6 +300,45 @@ importers:
         specifier: ^6.1.0
         version: 6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0)
 
+  apps/timesync-planner:
+    devDependencies:
+      '@sveltejs/adapter-static':
+        specifier: ^3.0.8
+        version: 3.0.10(@sveltejs/kit@2.70.3(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.57.1)(vite@6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0)))(svelte@5.57.1)(typescript@5.9.3)(vite@6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0)))
+      '@sveltejs/kit':
+        specifier: ^2.16.0
+        version: 2.70.3(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.57.1)(vite@6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0)))(svelte@5.57.1)(typescript@5.9.3)(vite@6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0))
+      '@sveltejs/vite-plugin-svelte':
+        specifier: ^5.0.0
+        version: 5.1.1(svelte@5.57.1)(vite@6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0))
+      '@zero-effort/seo-config':
+        specifier: workspace:*
+        version: link:../../packages/seo-config
+      '@zero-effort/shared-ui':
+        specifier: workspace:*
+        version: link:../../packages/shared-ui
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.6.1(postcss@8.5.28)
+      postcss:
+        specifier: ^8.4.49
+        version: 8.5.28
+      svelte:
+        specifier: ^5.0.0
+        version: 5.57.1
+      svelte-check:
+        specifier: ^4.0.0
+        version: 4.7.6(picomatch@4.0.7)(svelte@5.57.1)(typescript@5.9.3)
+      tailwindcss:
+        specifier: ^3.4.17
+        version: 3.4.19(tsx@4.21.0)
+      typescript:
+        specifier: ^5.0.0
+        version: 5.9.3
+      vite:
+        specifier: ^6.0.0
+        version: 6.4.3(@types/node@20.11.0)(jiti@1.21.7)(tsx@4.21.0)
+
   apps/visarun-planner:
     devDependencies:
       '@sveltejs/adapter-static':

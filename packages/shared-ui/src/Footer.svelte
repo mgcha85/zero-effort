@@ -1,7 +1,7 @@
 <script lang="ts">
   import LegalModal from './LegalModal.svelte';
 
-  export let lang: 'ko' | 'en' | 'de' | 'vi' | 'ja' | 'es' | 'th' = 'ko';
+  export let lang: 'ko' | 'en' | 'de' | 'vi' | 'ja' | 'es' | 'th' | 'fr' | string = 'en';
 
   let activeModal: 'terms' | 'privacy' | null = null;
 
@@ -95,6 +95,7 @@
     vi: { contact: 'Liên hệ', terms: 'Điều khoản sử dụng', privacy: 'Chính sách bảo mật', refund: 'Chính sách hoàn tiền' },
     ja: { contact: 'お問い合わせ', terms: '利用規約', privacy: 'プライバシーポリシー', refund: '返金・キャンセルポリシー' },
     es: { contact: 'Contacto', terms: 'Términos de servicio', privacy: 'Política de privacidad', refund: 'Política de reembolso' },
+    fr: { contact: 'Contact', terms: "Conditions d'utilisation", privacy: 'Confidentialité', refund: 'Remboursement' },
     th: { contact: 'ติดต่อเรา', terms: 'ข้อกำหนดการใช้งาน', privacy: 'นโยบายความเป็นส่วนตัว', refund: 'นโยบายการคืนเงิน' }
   };
 
@@ -122,6 +123,10 @@
     es: {
       reg: 'Registro de comercio electrónico: Nº 2021-PyeongtaekAnjung-0261 | NIF: 219-03-78291',
       company: 'Empresa: Cha Data Research | Representante: Min Gyu Cha | Dirección: 100-13, Dodae-gil, Pyeongtaek-si, Gyeonggi-do, República de Corea'
+    },
+    fr: {
+      reg: "Enregistrement vente à distance : N° 2021-PyeongtaekAnjung-0261 | SIRET : 219-03-78291",
+      company: "Entreprise : Cha Data Research | Représentant : Min Gyu Cha | Adresse : 100-13, Dodae-gil, Pyeongtaek-si, Gyeonggi-do, République de Corée"
     },
     th: {
       reg: 'ทะเบียนพาณิชย์อิเล็กทรอนิกส์: เลขที่ 2021-PyeongtaekAnjung-0261 | ทะเบียนนิติบุคคล: 219-03-78291',

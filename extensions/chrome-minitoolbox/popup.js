@@ -6,6 +6,7 @@ const TOOLS = [
   { name: 'Secure PDF Suite', sub: 'Client-Side PDF Merge & Split', icon: '📄', url: 'https://pdf.minitoolbox.dev' },
   { name: 'WASM Media Studio', sub: 'Local Video/Audio Converter', icon: '🎬', url: 'https://media.minitoolbox.dev' },
   { name: 'VisaRun Planner', sub: 'Southeast Asia Border Run Tracker', icon: '✈️', url: 'https://visarun.minitoolbox.dev' },
+  { name: 'Nomad TimeSync', sub: 'World Timezone & Meeting Golden Hours', icon: '🌐', url: 'https://timesync.minitoolbox.dev' },
   { name: 'Cờ Caro Online', sub: 'Gomoku Strategy vs Local AI', icon: '🎮', url: 'https://caro.minitoolbox.dev' }
 ];
 
