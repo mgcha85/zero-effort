@@ -80,10 +80,28 @@ def main():
     for name, url in services:
         service_lines.append(f"• *{name}*\n   └ `{url.replace('https://', '')}` | [정상 가동]")
 
+    # Fetch GA4 metrics if available
+    ga4_section = ""
+    try:
+        from fetch_ga4_stats import get_ga4_stats
+        import asyncio
+        stats = asyncio.run(get_ga4_stats())
+        if stats.get('status') == 'success':
+            ga4_section = (
+                f"📈 *[GA4 방문자 통계 요약]*\n"
+                f"• 활성 사용자: *{stats['active_users']}명*\n"
+                f"• 신규 사용자: *{stats['new_users']}명*\n"
+                f"• 총 이벤트: *{stats['events']}건*\n\n"
+            )
+    except Exception as e:
+        print(f"Warning: could not fetch GA4 stats: {e}", file=sys.stderr)
+
     briefing = (
         f"📊 *[MiniToolbox.dev] 일일 서비스 & 운영 리포트*\n"
         f"📅 *기준일*: {date_str} (발송: {time_str})\n"
         f"━━━━━━━━━━━━━━━━━━━\n\n"
+        + ga4_section
+        + "🛠️ *[서브 서비스 가동 현황]*\n"
         + "\n\n".join(service_lines)
         + f"\n\n━━━━━━━━━━━━━━━━━━━\n"
         f"🚀 *포털 메인*: `https://minitoolbox.dev`\n"
