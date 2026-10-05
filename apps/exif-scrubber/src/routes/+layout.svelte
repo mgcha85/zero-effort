@@ -16,6 +16,11 @@
 
   onMount(() => {
     try {
+      const queryLang = new URLSearchParams(location.search).get('lang') as Lang;
+      if (queryLang && langs.some(l => l.id === queryLang)) {
+        currentLang.set(queryLang);
+        return;
+      }
       const saved = localStorage.getItem('exif_scrub_lang') as Lang;
       if (saved && langs.some(l => l.id === saved)) {
         currentLang.set(saved);
