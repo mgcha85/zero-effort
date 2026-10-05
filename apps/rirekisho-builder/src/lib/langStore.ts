@@ -1,10 +1,56 @@
 import { writable } from 'svelte/store';
 
-export type Lang = 'ja' | 'ko' | 'en';
+export type Lang = 'en' | 'fr' | 'de' | 'es' | 'vi' | 'ja' | 'ko';
 
 export const currentLang = writable<Lang>('ja');
 
-export const translations = {
+export const translations: Record<Lang, {
+  siteTitle: string;
+  subBrand: string;
+  badge: string;
+  tabBasic: string;
+  tabEdu: string;
+  tabBio: string;
+  tabEdit: string;
+  recalculateBtn: string;
+  noWorkNotice: string;
+  preview: string;
+  printBtn: string;
+  resetBtn: string;
+  name: string;
+  nameFurigana: string;
+  birthDate: string;
+  gender: string;
+  genderMale: string;
+  genderFemale: string;
+  genderNone: string;
+  phone: string;
+  email: string;
+  address: string;
+  addressFurigana: string;
+  postalCode: string;
+  photo: string;
+  photoUpload: string;
+  photoRemove: string;
+  year: string;
+  month: string;
+  day: string;
+  autoCalcNotice: string;
+  educationHeader: string;
+  workHeader: string;
+  licensesHeader: string;
+  motivationHeader: string;
+  requestsHeader: string;
+  addRow: string;
+  removeRow: string;
+  endMark: string;
+  footerSecurity: string;
+  faqTitle: string;
+  faq1Q: string;
+  faq1A: string;
+  faq2Q: string;
+  faq2A: string;
+}> = {
   ja: {
     siteTitle: '履歴書作成ツール',
     subBrand: 'JIS規格 A4 PDF印刷 & 和暦自動計算',
@@ -145,5 +191,193 @@ export const translations = {
     faq1A: 'A. Japan follows an April to March academic year. The tool precisely calculates school admission and graduation dates based on your birthday and converts them to Wareki eras.',
     faq2Q: 'Q. Can I use this for Japanese visa or job applications?',
     faq2A: 'A. Yes. It formats strictly to JIS standards in crisp A4 dimensions ready to print or save as PDF.'
+  },
+  fr: {
+    siteTitle: 'Créateur de CV Japonais (Rirekisho)',
+    subBrand: 'Norme JIS A4 PDF & Conversion d\'ères Wareki',
+    badge: '🔒 0 Ko Serveur · 100% Navigateur',
+    tabBasic: 'Infos de base',
+    tabEdu: 'Formation & Carrière',
+    tabBio: 'Motivation & Atouts',
+    tabEdit: 'Éditer',
+    recalculateBtn: '⚡ Recalculer les ères scolaires',
+    noWorkNotice: 'Sans expérience, la mention "なし" s\'affiche. Ajoutez des lignes si besoin.',
+    preview: 'Aperçu avant impression',
+    printBtn: 'Imprimer A4 / Enregistrer PDF',
+    resetBtn: 'Réinitialiser',
+    name: 'Nom complet',
+    nameFurigana: 'Furigana (Hiragana)',
+    birthDate: 'Date de naissance',
+    gender: 'Genre',
+    genderMale: 'Homme',
+    genderFemale: 'Femme',
+    genderNone: 'Non précisé',
+    phone: 'Téléphone',
+    email: 'E-mail',
+    address: 'Adresse au Japon',
+    addressFurigana: 'Furigana de l\'adresse',
+    postalCode: 'Code postal',
+    photo: 'Photo d\'identité (40x30mm)',
+    photoUpload: 'Téléverser photo',
+    photoRemove: 'Supprimer',
+    year: 'Année',
+    month: 'Mois',
+    day: 'Jour',
+    autoCalcNotice: 'Votre date de naissance calcule automatiquement les années d\'entrée et de diplôme (occidental et ères Wareki Reiwa/Heisei/Showa).',
+    educationHeader: 'Formation (学歴)',
+    workHeader: 'Expérience pro (職歴)',
+    licensesHeader: 'Permis & Certificats (免許・資格)',
+    motivationHeader: 'Motivation & Points forts (志望動機)',
+    requestsHeader: 'Souhaits particuliers (本人希望記入欄)',
+    addRow: '+ Ajouter ligne',
+    removeRow: 'Supprimer',
+    endMark: 'Fin (以上)',
+    footerSecurity: 'Toutes les données restent dans votre navigateur. Aucun envoi sur un serveur distant.',
+    faqTitle: 'Foire Aux Questions (FAQ)',
+    faq1Q: 'Q. Comment sont calculées les ères japonaises Wareki et le calendrier scolaire ?',
+    faq1A: 'A. Le Japon applique l\'année scolaire d\'avril à mars. L\'outil calcule précisément chaque étape selon la norme JIS.',
+    faq2Q: 'Q. Ce modèle convient-il pour un visa ou un emploi au Japon ?',
+    faq2A: 'A. Oui, c\'est le format standard officiel JIS imprimable en A4.'
+  },
+  de: {
+    siteTitle: 'Japanischer Lebenslauf-Generator (Rirekisho)',
+    subBrand: 'JIS-Standard A4 PDF & Wareki-Ärenumrechner',
+    badge: '🔒 0 KB Server-Uploads · 100% Im Browser',
+    tabBasic: 'Basisdaten',
+    tabEdu: 'Bildung & Beruf',
+    tabBio: 'Motivation & Stärken',
+    tabEdit: 'Bearbeiten',
+    recalculateBtn: '⚡ Schul- und Ärendaten neu berechnen',
+    noWorkNotice: 'Ohne Berufserfahrung wird "なし" eingetragen. Fügen Sie Zeilen hinzu, falls vorhanden.',
+    preview: 'Druckvorschau',
+    printBtn: 'A4 drucken / Als PDF speichern',
+    resetBtn: 'Zurücksetzen',
+    name: 'Vollständiger Name',
+    nameFurigana: 'Furigana (Hiragana)',
+    birthDate: 'Geburtsdatum',
+    gender: 'Geschlecht',
+    genderMale: 'Männlich',
+    genderFemale: 'Weiblich',
+    genderNone: 'Keine Angabe',
+    phone: 'Telefon',
+    email: 'E-Mail',
+    address: 'Wohnadresse in Japan',
+    addressFurigana: 'Adresse Furigana',
+    postalCode: 'Postleitzahl',
+    photo: 'Passbild (40x30mm)',
+    photoUpload: 'Foto hochladen',
+    photoRemove: 'Foto entfernen',
+    year: 'Jahr',
+    month: 'Monat',
+    day: 'Tag',
+    autoCalcNotice: 'Die Eingabe des Geburtsdatums berechnet japanische Schuljahre in westlicher Zeitrechnung und Wareki (Reiwa, Heisei, Showa) automatisch.',
+    educationHeader: 'Bildungsweg (学歴)',
+    workHeader: 'Berufserfahrung (職歴)',
+    licensesHeader: 'Lizenzen & Zertifikate (免許・資格)',
+    motivationHeader: 'Motivation & Selbstpräsentation (志望動機)',
+    requestsHeader: 'Persönliche Wünsche (本人希望記入欄)',
+    addRow: '+ Zeile hinzufügen',
+    removeRow: 'Löschen',
+    endMark: 'Ende (以上)',
+    footerSecurity: 'Alle Daten verbleiben lokal in Ihrem Browser. Keine Server-Übertragung garantiert höchste Privatsphäre.',
+    faqTitle: 'Häufig gestellte Fragen (FAQ)',
+    faq1Q: 'Q. Entspricht die Formatierung den Vorgaben in Japan?',
+    faq1A: 'A. Ja, sie folgt exakt dem japanischen JIS-Standard für A4-Lebensläufe.',
+    faq2Q: 'Q. Kann ich den Lebenslauf für Visa und Bewerbungen nutzen?',
+    faq2A: 'A. Ja, dies ist das offizielle Standardformat in ganz Japan.'
+  },
+  es: {
+    siteTitle: 'Generador de Currículum Japonés (Rirekisho)',
+    subBrand: 'Norma JIS Estándar A4 PDF & Conversor de Eras Wareki',
+    badge: '🔒 0KB Servidor · 100% En Navegador',
+    tabBasic: 'Datos Básicos',
+    tabEdu: 'Educación y Empleo',
+    tabBio: 'Motivación y PR',
+    tabEdit: 'Editar',
+    recalculateBtn: '⚡ Recalcular eras académicas',
+    noWorkNotice: 'Sin experiencia previa se marca "なし". Agrega filas si tienes experiencia.',
+    preview: 'Vista previa de impresión',
+    printBtn: 'Imprimir A4 / Guardar PDF',
+    resetBtn: 'Restablecer',
+    name: 'Nombre completo',
+    nameFurigana: 'Furigana (Hiragana)',
+    birthDate: 'Fecha de nacimiento',
+    gender: 'Género',
+    genderMale: 'Hombre',
+    genderFemale: 'Mujer',
+    genderNone: 'No especificar',
+    phone: 'Teléfono',
+    email: 'Correo electrónico',
+    address: 'Dirección en Japón',
+    addressFurigana: 'Furigana de la dirección',
+    postalCode: 'Código postal',
+    photo: 'Foto carnet (40x30mm)',
+    photoUpload: 'Subir foto',
+    photoRemove: 'Eliminar',
+    year: 'Año',
+    month: 'Mes',
+    day: 'Día',
+    autoCalcNotice: 'Al ingresar la fecha de nacimiento se calculan automáticamente los años escolares en formato occidental y eras Wareki (Reiwa, Heisei, Showa).',
+    educationHeader: 'Educación (学歴)',
+    workHeader: 'Experiencia laboral (職歴)',
+    licensesHeader: 'Licencias y Certificaciones (免許・資格)',
+    motivationHeader: 'Motivación y Presentación (志望動機)',
+    requestsHeader: 'Peticiones personales (本人希望記入欄)',
+    addRow: '+ Agregar fila',
+    removeRow: 'Eliminar',
+    endMark: 'Fin (以上)',
+    footerSecurity: 'Toda la información se procesa localmente en tu navegador sin subidas a servidores externos.',
+    faqTitle: 'Preguntas frecuentes (FAQ)',
+    faq1Q: 'Q. ¿Este formato es válido para visas y empleos en Japón?',
+    faq1A: 'A. Sí, cumple estrictamente con el estándar industrial japonés (JIS) en formato A4.',
+    faq2Q: 'Q. ¿Cómo calcula las eras Wareki?',
+    faq2A: 'A. Sigue el ciclo escolar japonés de abril a marzo y convierte los años a Reiwa, Heisei o Showa de forma exacta.'
+  },
+  vi: {
+    siteTitle: 'Công cụ tạo CV tiếng Nhật (Rirekisho)',
+    subBrand: 'Chuẩn JIS A4 PDF & Tự động tính niên hiệu Wareki',
+    badge: '🔒 0KB Máy chủ · 100% Trên Trình Duyệt',
+    tabBasic: 'Thông tin cá nhân',
+    tabEdu: 'Học vấn & Kinh nghiệm',
+    tabBio: 'Lý do ứng tuyển & PR',
+    tabEdit: 'Chỉnh sửa',
+    recalculateBtn: '⚡ Tính lại niên hiệu học vấn',
+    noWorkNotice: 'Nếu chưa có kinh nghiệm, hệ thống tự điền "なし". Hãy thêm dòng nếu có kinh nghiệm làm việc.',
+    preview: 'Xem trước bản in',
+    printBtn: 'In khổ A4 / Lưu PDF',
+    resetBtn: 'Làm lại',
+    name: 'Họ và tên',
+    nameFurigana: 'Furigana (Hiragana)',
+    birthDate: 'Ngày tháng năm sinh',
+    gender: 'Giới tính',
+    genderMale: 'Nam',
+    genderFemale: 'Nữ',
+    genderNone: 'Không ghi',
+    phone: 'Số điện thoại',
+    email: 'Email',
+    address: 'Địa chỉ tại Nhật Bản',
+    addressFurigana: 'Furigana địa chỉ',
+    postalCode: 'Mã bưu điện',
+    photo: 'Ảnh thẻ (40x30mm)',
+    photoUpload: 'Tải ảnh lên',
+    photoRemove: 'Xóa ảnh',
+    year: 'Năm',
+    month: 'Tháng',
+    day: 'Ngày',
+    autoCalcNotice: 'Nhập ngày sinh sẽ tự động tính năm nhập học và tốt nghiệp từ tiểu học đến đại học theo lịch Tây và niên hiệu Wareki (Reiwa, Heisei, Showa).',
+    educationHeader: 'Học vấn (学歴)',
+    workHeader: 'Lịch sử làm việc (職歴)',
+    licensesHeader: 'Bằng cấp & Chứng chỉ (免許・資格)',
+    motivationHeader: 'Lý do ứng tuyển & Điểm mạnh (志望動機)',
+    requestsHeader: 'Nguyện vọng cá nhân (本人希望記入欄)',
+    addRow: '+ Thêm dòng',
+    removeRow: 'Xóa',
+    endMark: 'Hết (以上)',
+    footerSecurity: 'Mọi dữ liệu cá nhân chỉ lưu trong trình duyệt của bạn, tuyệt đối không gửi lên máy chủ bên ngoài.',
+    faqTitle: 'Câu hỏi thường gặp (FAQ)',
+    faq1Q: 'Q. Mẫu này có chuẩn để nộp xin việc và visa Nhật Bản không?',
+    faq1A: 'A. Có, mẫu tuân thủ nghiêm ngặt theo tiêu chuẩn công nghiệp Nhật Bản (JIS) khổ giấy A4.',
+    faq2Q: 'Q. Niên hiệu Wareki được tính như thế nào?',
+    faq2A: 'A. Tính toán tự động theo năm học tháng 4 tại Nhật, chính xác tuyệt đối các thời kỳ Reiwa, Heisei và Showa.'
   }
 };

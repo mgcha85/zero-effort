@@ -267,22 +267,23 @@
 
 <div class="mx-auto max-w-4xl px-4 py-8 sm:px-6">
   <!-- Title & Privacy Shield Callout -->
-  <div class="mb-8 text-center">
-    <div class="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3.5 py-1 text-xs font-bold text-rose-800 border border-rose-200 mb-3 shadow-2xs">
+  <div class="mb-10 text-center">
+    <div class="inline-flex items-center gap-1.5 rounded-full bg-rose-50/90 px-3.5 py-1 text-xs font-bold text-rose-800 border border-rose-200/80 mb-3.5 shadow-2xs">
+      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
       <span>{t.privacyBadge}</span>
     </div>
-    <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-      {t.title}
+    <h1 class="text-3xl font-black tracking-tight text-slate-900 sm:text-5xl">
+      <span class="bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">{t.title}</span>
     </h1>
-    <p class="mt-2 text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+    <p class="mt-3 text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed font-normal">
       {t.desc}
     </p>
 
     <!-- Tab Selection -->
-    <div class="mt-6 inline-flex rounded-xl bg-slate-200/70 p-1 border border-slate-300/60 shadow-inner">
+    <div class="mt-7 inline-flex rounded-2xl bg-slate-200/70 p-1 border border-slate-300/60 shadow-inner">
       <button
         type="button"
-        class="flex items-center gap-1.5 rounded-lg px-6 py-2 text-xs font-black transition {mode === 'merge' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'}"
+        class="flex items-center gap-1.5 rounded-xl px-6 py-2.5 text-xs font-black transition {mode === 'merge' ? 'bg-white text-rose-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'}"
         on:click={() => { mode = 'merge'; errorMessage = ''; }}
       >
         <span>{t.tabMerge}</span>

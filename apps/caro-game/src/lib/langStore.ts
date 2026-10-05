@@ -1,10 +1,47 @@
 import { writable } from 'svelte/store';
 
-export type Lang = 'vi' | 'ko' | 'en';
+export type Lang = 'en' | 'fr' | 'de' | 'es' | 'vi' | 'ja' | 'ko';
 
 export const currentLang = writable<Lang>('vi');
 
-export const translations = {
+export const translations: Record<Lang, {
+  siteTitle: string;
+  siteSub: string;
+  badgeTop: string;
+  heroTitle: string;
+  heroDesc: string;
+  freeBadge: string;
+  btnOnline: string;
+  btnAi: string;
+  btnLocal: string;
+  btnSound: string;
+  btnNewGame: string;
+  roomTitle: string;
+  roomWait: string;
+  roomConnected: string;
+  btnCopyLink: string;
+  btnCopied: string;
+  btnShareZalo: string;
+  turnYour: string;
+  turnAiThinking: string;
+  turnPlayer: (p: string) => string;
+  turnOpponent: string;
+  winMessage: (p: string) => string;
+  drawMessage: string;
+  connectingRoom: (id: string) => string;
+  roomCreated: string;
+  roomNotFound: string;
+  peerDisconnected: string;
+  opponentRestart: string;
+  rulesTitle: string;
+  rulesDesc: string;
+  step1Title: string;
+  step1Desc: string;
+  step2Title: string;
+  step2Desc: string;
+  step3Title: string;
+  step3Desc: string;
+}> = {
   vi: {
     siteTitle: 'Cờ Caro Online',
     siteSub: 'Chơi Cờ Caro (Gomoku) 1:1 Thời Gian Thực',
@@ -42,6 +79,44 @@ export const translations = {
     step2Desc: 'Gửi liên kết cho đối thủ qua Zalo, Messenger hoặc bất kỳ ứng dụng nào.',
     step3Title: '3. Vào Đấu Tức Thì',
     step3Desc: 'Đối thủ mở link trên điện thoại hoặc máy tính là ván đấu tự động khởi tranh.'
+  },
+  en: {
+    siteTitle: 'Caro Online (Gomoku)',
+    siteSub: 'Real-time 1v1 P2P Gomoku in Browser',
+    badgeTop: '🇻🇳 Vietnamese Caro (Real-time P2P 1v1)',
+    heroTitle: 'Caro Online (15x15 Gomoku)',
+    heroDesc: 'Play against friends via instant invite link or practice against AI',
+    freeBadge: '⚡ 100% Free',
+    btnOnline: '🌐 Create 1v1 Online Room',
+    btnAi: '🤖 vs AI',
+    btnLocal: '👥 Local 2 Players',
+    btnSound: 'Toggle Sound',
+    btnNewGame: 'New Game',
+    roomTitle: 'Battle Room',
+    roomWait: '⏳ Waiting for opponent to join... Copy and send the link to your friend!',
+    roomConnected: '🟢 Opponent joined! You play as:',
+    btnCopyLink: '📋 Copy Room Link',
+    btnCopied: '✅ Copied!',
+    btnShareZalo: '💬 Share Link',
+    turnYour: 'Your turn (X)',
+    turnAiThinking: 'Turn: O (AI is thinking...)',
+    turnPlayer: (p: string) => `Turn: ${p}`,
+    turnOpponent: 'Opponent turn...',
+    winMessage: (p: string) => `🎉 Player ${p} Wins!`,
+    drawMessage: 'Draw Game!',
+    connectingRoom: (id: string) => `Connecting to room ${id}...`,
+    roomCreated: 'Room ready! Share the link with your opponent to play.',
+    roomNotFound: 'Room not found or host has left.',
+    peerDisconnected: 'Opponent disconnected.',
+    opponentRestart: 'Opponent requested a new game!',
+    rulesTitle: 'Serverless Real-Time P2P WebRTC Matchmaking',
+    rulesDesc: 'No login, no heavy servers required. WebRTC P2P technology connects both browsers directly for ultra-low latency multiplayer.',
+    step1Title: '1. Create Room',
+    step1Desc: 'Generates a unique room code and instant matchmaking URL.',
+    step2Title: '2. Share Invite Link',
+    step2Desc: 'Send the battle link to your opponent via any chat messenger.',
+    step3Title: '3. Instant Play',
+    step3Desc: 'Once opened on phone or PC, the game starts instantly in browser.'
   },
   ko: {
     siteTitle: '베트남 오목 (Cờ Caro)',
@@ -81,42 +156,156 @@ export const translations = {
     step3Title: '3. 즉시 대국 시작',
     step3Desc: '상대방이 스마트폰이나 PC로 링크를 열면 즉시 대국판이 연결됩니다.'
   },
-  en: {
+  ja: {
+    siteTitle: '五目並べ オンライン (Caro)',
+    siteSub: 'ブラウザで遊ぶリアルタイム1対1 P2P五目並べ',
+    badgeTop: '🇻🇳 ベトナム式五目並べ (リアルタイム1対1)',
+    heroTitle: '五目並べ オンライン (15x15)',
+    heroDesc: 'リンクを共有して友達と即対局、またはスマートAIと腕試し',
+    freeBadge: '⚡ 完全無料',
+    btnOnline: '🌐 1対1 オンライン対局室作成',
+    btnAi: '🤖 AI対戦',
+    btnLocal: '👥 1台で2人対戦',
+    btnSound: '効果音 切替',
+    btnNewGame: '新しい対局',
+    roomTitle: '対局室',
+    roomWait: '⏳ 対戦相手の参加を待っています... リンクをコピーして友達に送信してください！',
+    roomConnected: '🟢 相手が参加しました！ あなたの手番石:',
+    btnCopyLink: '📋 部屋のリンクをコピー',
+    btnCopied: '✅ コピー完了！',
+    btnShareZalo: '💬 リンクを共有',
+    turnYour: 'あなたの番です (X)',
+    turnAiThinking: '手番: O (AI思考中...)',
+    turnPlayer: (p: string) => `手番: ${p}`,
+    turnOpponent: '相手の手番です...',
+    winMessage: (p: string) => `🎉 プレイヤー ${p} の勝利！`,
+    drawMessage: '引き分け！',
+    connectingRoom: (id: string) => `部屋 ${id} に接続中...`,
+    roomCreated: '対局室を作成しました！リンクを対戦相手に送ってください。',
+    roomNotFound: '部屋が見つからないか、ホストが退出しました。',
+    peerDisconnected: '対戦相手との接続が切断されました。',
+    opponentRestart: '対戦相手が新しい対局を開始しました！',
+    rulesTitle: 'WebRTC P2P 高速リアルタイム対戦',
+    rulesDesc: '登録不要、サーバー中継なし。ブラウザ同士を直接つなぐWebRTC P2P技術で、超低遅延の快適な五目並べ体験を提供します。',
+    step1Title: '1. 部屋を作成',
+    step1Desc: 'ボタン1つで専用の対局室コードと招待URLを発行。',
+    step2Title: '2. 友達へ送信',
+    step2Desc: 'LINEやメッセージアプリでURLを相手に送信します。',
+    step3Title: '3. 即時スタート',
+    step3Desc: 'スマホやPCでリンクを開くだけで、すぐに対局が始まります。'
+  },
+  fr: {
+    siteTitle: 'Morpion Caro en Ligne (Gomoku)',
+    siteSub: 'Jeu Gomoku 1v1 en Temps Réel dans le Navigateur',
+    badgeTop: '🇻🇳 Caro Vietnamien (P2P Temps Réel 1v1)',
+    heroTitle: 'Caro en Ligne (15x15 Gomoku)',
+    heroDesc: 'Défiez vos amis par lien direct ou entraînez-vous contre l\'IA',
+    freeBadge: '⚡ 100% Gratuit',
+    btnOnline: '🌐 Créer un salon 1v1',
+    btnAi: '🤖 Jouer contre l\'IA',
+    btnLocal: '👥 2 Joueurs Local',
+    btnSound: 'Son On/Off',
+    btnNewGame: 'Nouvelle partie',
+    roomTitle: 'Salon de combat',
+    roomWait: '⏳ En attente de l\'adversaire... Copiez et partagez le lien !',
+    roomConnected: '🟢 Adversaire connecté ! Vous jouez avec :',
+    btnCopyLink: '📋 Copier le lien',
+    btnCopied: '✅ Copié !',
+    btnShareZalo: '💬 Partager le lien',
+    turnYour: 'À votre tour (X)',
+    turnAiThinking: 'Tour : O (L\'IA réfléchit...)',
+    turnPlayer: (p: string) => `Tour : ${p}`,
+    turnOpponent: 'Tour de l\'adversaire...',
+    winMessage: (p: string) => `🎉 Le joueur ${p} gagne !`,
+    drawMessage: 'Partie nulle !',
+    connectingRoom: (id: string) => `Connexion au salon ${id}...`,
+    roomCreated: 'Salon créé ! Partagez le lien avec votre adversaire.',
+    roomNotFound: 'Salon introuvable ou l\'hôte s\'est déconnecté.',
+    peerDisconnected: 'L\'adversaire s\'est déconnecté.',
+    opponentRestart: 'L\'adversaire a relancé une partie !',
+    rulesTitle: 'Technologie WebRTC P2P en Temps Réel',
+    rulesDesc: 'Sans inscription ni serveur central. Les deux navigateurs communiquent directement pour une fluidité instantanée.',
+    step1Title: '1. Créer le salon',
+    step1Desc: 'Génère un lien de match unique en un clic.',
+    step2Title: '2. Envoyer le lien',
+    step2Desc: 'Partagez le lien à votre adversaire sur n\'importe quelle messagerie.',
+    step3Title: '3. Jouer immédiatement',
+    step3Desc: 'Dès que le lien est ouvert sur mobile ou PC, la partie commence.'
+  },
+  de: {
     siteTitle: 'Caro Online (Gomoku)',
-    siteSub: 'Real-time 1v1 P2P Gomoku in Browser',
-    badgeTop: '🇻🇳 Vietnamese Caro (Real-time P2P 1v1)',
+    siteSub: 'Echtzeit 1v1 P2P Gomoku im Browser',
+    badgeTop: '🇻🇳 Vietnamesisches Caro (Echtzeit P2P 1v1)',
     heroTitle: 'Caro Online (15x15 Gomoku)',
-    heroDesc: 'Play against friends via instant invite link or practice against AI',
-    freeBadge: '⚡ 100% Free',
-    btnOnline: '🌐 Create 1v1 Online Room',
-    btnAi: '🤖 vs AI',
-    btnLocal: '👥 Local 2 Players',
-    btnSound: 'Toggle Sound',
-    btnNewGame: 'New Game',
-    roomTitle: 'Battle Room',
-    roomWait: '⏳ Waiting for opponent to join... Copy and send the link to your friend!',
-    roomConnected: '🟢 Opponent joined! You play as:',
-    btnCopyLink: '📋 Copy Room Link',
-    btnCopied: '✅ Copied!',
-    btnShareZalo: '💬 Share Link',
-    turnYour: 'Your turn (X)',
-    turnAiThinking: 'Turn: O (AI is thinking...)',
-    turnPlayer: (p: string) => `Turn: ${p}`,
-    turnOpponent: 'Opponent turn...',
-    winMessage: (p: string) => `🎉 Player ${p} Wins!`,
-    drawMessage: 'Draw Game!',
-    connectingRoom: (id: string) => `Connecting to room ${id}...`,
-    roomCreated: 'Room ready! Share the link with your opponent to play.',
-    roomNotFound: 'Room not found or host has left.',
-    peerDisconnected: 'Opponent disconnected.',
-    opponentRestart: 'Opponent requested a new game!',
-    rulesTitle: 'Serverless Real-Time P2P WebRTC Matchmaking',
-    rulesDesc: 'No login, no heavy servers required. WebRTC P2P technology connects both browsers directly for ultra-low latency multiplayer.',
-    step1Title: '1. Create Room',
-    step1Desc: 'Generates a unique room code and instant matchmaking URL.',
-    step2Title: '2. Share Invite Link',
-    step2Desc: 'Send the battle link to your opponent via any chat messenger.',
-    step3Title: '3. Instant Play',
-    step3Desc: 'Once opened on phone or PC, the game starts instantly in browser.'
+    heroDesc: 'Spielen Sie gegen Freunde per Sofort-Link oder trainieren Sie gegen KI',
+    freeBadge: '⚡ 100% Kostenlos',
+    btnOnline: '🌐 1v1 Online-Raum erstellen',
+    btnAi: '🤖 Gegen KI spielen',
+    btnLocal: '👥 2 Spieler Lokal',
+    btnSound: 'Ton Ein/Aus',
+    btnNewGame: 'Neues Spiel',
+    roomTitle: 'Spielraum',
+    roomWait: '⏳ Warte auf Mitspieler... Kopieren Sie den Link und senden Sie ihn an Freunde!',
+    roomConnected: '🟢 Gegner beigetreten! Ihre Steine:',
+    btnCopyLink: '📋 Raum-Link kopieren',
+    btnCopied: '✅ Kopiert!',
+    btnShareZalo: '💬 Link teilen',
+    turnYour: 'Sie sind am Zug (X)',
+    turnAiThinking: 'Zug: O (KI überlegt...)',
+    turnPlayer: (p: string) => `Am Zug: ${p}`,
+    turnOpponent: 'Gegner ist am Zug...',
+    winMessage: (p: string) => `🎉 Spieler ${p} gewinnt!`,
+    drawMessage: 'Unentschieden!',
+    connectingRoom: (id: string) => `Verbinde mit Raum ${id}...`,
+    roomCreated: 'Raum bereit! Teilen Sie den Link mit Ihrem Spielpartner.',
+    roomNotFound: 'Raum nicht gefunden oder Gastgeber hat verlassen.',
+    peerDisconnected: 'Verbindung zum Gegner getrennt.',
+    opponentRestart: 'Gegner hat ein neues Spiel gestartet!',
+    rulesTitle: 'Serverlose WebRTC P2P Echtzeit-Duelle',
+    rulesDesc: 'Keine Registrierung erforderlich. WebRTC P2P verbindet beide Browser direkt für verzögerungsfreies Spielen.',
+    step1Title: '1. Raum erstellen',
+    step1Desc: 'Erzeugt mit einem Klick einen einzigartigen Einladungslink.',
+    step2Title: '2. Link teilen',
+    step2Desc: 'Senden Sie den Link per Messenger an Ihren Spielpartner.',
+    step3Title: '3. Sofort spielen',
+    step3Desc: 'Sobald der Link auf Handy oder PC geöffnet wird, startet das Duell.'
+  },
+  es: {
+    siteTitle: 'Caro Online (Gomoku)',
+    siteSub: 'Gomoku P2P 1v1 en Tiempo Real en el Navegador',
+    badgeTop: '🇻🇳 Caro Vietnamita (P2P Tiempo Real 1v1)',
+    heroTitle: 'Caro Online (15x15 Gomoku)',
+    heroDesc: 'Juega contra amigos mediante enlace directo o compite con la IA',
+    freeBadge: '⚡ 100% Gratis',
+    btnOnline: '🌐 Crear sala 1v1 online',
+    btnAi: '🤖 vs IA',
+    btnLocal: '👥 2 Jugadores Local',
+    btnSound: 'Sonido On/Off',
+    btnNewGame: 'Nueva partida',
+    roomTitle: 'Sala de duelo',
+    roomWait: '⏳ Esperando al oponente... ¡Copia y comparte el enlace!',
+    roomConnected: '🟢 ¡Oponente conectado! Juegas con:',
+    btnCopyLink: '📋 Copiar enlace',
+    btnCopied: '✅ ¡Copiado!',
+    btnShareZalo: '💬 Compartir enlace',
+    turnYour: 'Tu turno (X)',
+    turnAiThinking: 'Turno: O (La IA está pensando...)',
+    turnPlayer: (p: string) => `Turno: ${p}`,
+    turnOpponent: 'Turno del oponente...',
+    winMessage: (p: string) => `🎉 ¡Jugador ${p} gana!`,
+    drawMessage: '¡Empate!',
+    connectingRoom: (id: string) => `Conectando a la sala ${id}...`,
+    roomCreated: '¡Sala creada! Comparte el enlace con tu rival.',
+    roomNotFound: 'Sala no encontrada o el anfitrión ha salido.',
+    peerDisconnected: 'El oponente se ha desconectado.',
+    opponentRestart: '¡El oponente inició una nueva partida!',
+    rulesTitle: 'Tecnología WebRTC P2P en Tiempo Real',
+    rulesDesc: 'Sin registros ni servidores intermediarios. WebRTC conecta directamente ambos navegadores con latencia ultrabaja.',
+    step1Title: '1. Crear sala',
+    step1Desc: 'Genera una clave de sala y enlace instantáneo.',
+    step2Title: '2. Enviar invitación',
+    step2Desc: 'Comparte el enlace con tu rival por cualquier app de chat.',
+    step3Title: '3. Jugar al instante',
+    step3Desc: 'Al abrir el enlace en móvil o PC, la partida comienza de inmediato.'
   }
 };
