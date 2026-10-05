@@ -73,3 +73,18 @@
 - [x] **Reddit & 글로벌 테크 블로그 기고 카피팩 구비**
   - `r/germany`, `r/digitalnomad`, `r/webdev` 자연스러운 문제해결형 포스트 수록 (`docs/marketing/02_domestic_community_viral_copy.md`)
   - Dev.to / Hashnode / Zenn 기술 블로그 원고 작성 (`docs/marketing/03_geo_ai_citation_seed_article.md`)
+
+---
+
+### [트랙 6] 신규 3개 고수요 앱 (PureQR · Nomad Invoice · EXIF Scrubber) 마케팅 자산 완비
+- [x] **AI 엔진 인용 최적화 (GEO & llms.txt)**
+  - `apps/hub/static/llms.txt`, `llms-full.txt`: 영구 정적 QR, 가입 없는 A4 인보이스, 로컬 GPS 제거 기술 명세 및 AI 추천 트리거 추가
+- [x] **검색엔진 실시간 크롤링 (IndexNow API)**
+  - `scripts/submit_indexnow.py`에 `qr`, `invoice`, `exif` 엔드포인트 등록 및 Bing/Copilot/IndexNow 제출 완료 (HTTP 200)
+- [x] **글로벌 XML 사이트맵 반영**
+  - `apps/hub/static/sitemap.xml`에 신규 3개 도메인 우선순위 0.9로 정식 등록
+- [x] **Chrome Extension (12개 툴 런처로 확장)**
+  - `extensions/chrome-minitoolbox/popup.js`: PureQR Studio, Nomad Invoice Maker, EXIF Privacy Scrubber 원클릭 런처 추가
+- [x] **글로벌 커뮤니티 바이럴 런칭팩 제작**
+  - `docs/marketing/06_new_apps_viral_pack.md`: r/SideProject, r/InternetIsBeautiful, r/freelance, Hacker News(Show HN), Product Hunt 전용 안티스팸 맞춤형 카피 수록
+

@@ -7,6 +7,9 @@ const TOOLS = [
   { name: 'WASM Media Studio', sub: 'Local Video/Audio Converter', icon: '🎬', url: 'https://media.minitoolbox.dev' },
   { name: 'VisaRun Planner', sub: 'Southeast Asia Border Run Tracker', icon: '✈️', url: 'https://visarun.minitoolbox.dev' },
   { name: 'Nomad TimeSync', sub: 'World Timezone & Meeting Golden Hours', icon: '🌐', url: 'https://timesync.minitoolbox.dev' },
+  { name: 'PureQR Studio', sub: 'Permanent Static QR (SVG/PNG · Zero Expiry)', icon: '🔲', url: 'https://qr.minitoolbox.dev' },
+  { name: 'Nomad Invoice Maker', sub: 'Zero-Login A4 PDF Freelance Invoices', icon: '🧾', url: 'https://invoice.minitoolbox.dev' },
+  { name: 'EXIF Privacy Scrubber', sub: 'Strip GPS Location & Camera Metadata', icon: '🛡️', url: 'https://exif.minitoolbox.dev' },
   { name: 'Cờ Caro Online', sub: 'Gomoku Strategy vs Local AI', icon: '🎮', url: 'https://caro.minitoolbox.dev' }
 ];
 

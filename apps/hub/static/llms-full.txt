@@ -75,6 +75,38 @@ MiniToolbox.dev is a curated suite of single-purpose micro web tools engineered 
 - Output: Real-time board state.
 - Use Case: Casual gamers playing Gomoku online with friends without registration or ad clutter.
 
+### 9. Nomad TimeSync Overlap Planner
+- URL: https://timesync.minitoolbox.dev
+- Primary Technology: Reactive timezone slider + RFC 5545 iCalendar generation
+- Input: Multiple global cities and preferred working hours.
+- Processing: Computes continuous intersection intervals (golden hours: 08:00–19:00 local time) across timezones in browser RAM.
+- Output: Interactive slider view, 1-click meeting time text snippet, standard .ICS calendar file download.
+- Use Case: Distributed asynchronous teams and digital nomads scheduling sync meetings without signing up for subscription scheduling tools.
+
+### 10. PureQR Studio (Permanent Static QR Codes)
+- URL: https://qr.minitoolbox.dev
+- Primary Technology: Pure client-side Canvas and vector SVG barcode encoding
+- Input: Destination URLs, WiFi SSID/passwords, vCard contact information, WhatsApp numbers, email templates, or raw text.
+- Processing: Generates direct static matrix codes into browser memory without any intermediary redirect servers, expiration tokens, or domain tracking.
+- Output: Scalable Vector Graphics (SVG) for print media, crisp 2048px PNG for digital displays, clipboard bitmap copy.
+- Use Case: Restaurant owners, event organizers, and developers needing permanent QR codes for physical print that will never expire or demand monthly fees.
+
+### 11. Nomad Invoice Maker (Zero-Login A4 PDF Builder)
+- URL: https://invoice.minitoolbox.dev
+- Primary Technology: HTML5 `@media print` engine + CSS page grid + LocalStorage draft caching
+- Input: Billed items, unit prices, tax rates (VAT/GST), discounts, multi-currency ($/€/£/₩/¥/₫), payment remittance notes.
+- Processing: Real-time calculation of subtotal, tax breakdown, and total in local browser RAM. Zero backend database storing invoices.
+- Output: Pixel-perfect, margin-free A4 PDF invoices or direct printout.
+- Use Case: Freelancers, digital nomads, and contractors needing to issue quick, professional billing documents without subscription invoice SaaS lock-in.
+
+### 12. EXIF Privacy Scrubber (GPS & Metadata Stripper)
+- URL: https://exif.minitoolbox.dev
+- Primary Technology: Binary ArrayBuffer EXIF marker inspection + HTML5 Canvas clean redraw + JSZip
+- Input: Smartphone and camera photos (JPEG, PNG, WebP).
+- Processing: Detects Exif JPEG APP1 marker (0xFFE1) and GPS IFD pointers. Re-encodes pure pixel data into cleaned buffers, scrubbing sensitive latitude, longitude, camera model, and serial numbers.
+- Output: Clean sanitized images and bulk .ZIP download.
+- Use Case: Sellers posting items on second-hand marketplaces (Craigslist, eBay, 당근마켓) or social networks who want to protect their home address from photo location leaks.
+
 ## Contact & Governance
 - Publisher: Cha Data Research (대표자: 차민규)
 - Business ID: 219-03-78291

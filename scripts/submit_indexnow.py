@@ -24,6 +24,10 @@ def main():
             'https://anmeldung.minitoolbox.dev/',
             'https://rirekisho.minitoolbox.dev/',
             'https://size.minitoolbox.dev/',
+            'https://timesync.minitoolbox.dev/',
+            'https://qr.minitoolbox.dev/',
+            'https://invoice.minitoolbox.dev/',
+            'https://exif.minitoolbox.dev/',
             'https://caro.minitoolbox.dev/'
         ]
     }
