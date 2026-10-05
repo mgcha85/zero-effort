@@ -163,7 +163,7 @@
   {@html `<script type="application/ld+json">${jsonLdFaq}</script>`}
 </svelte:head>
 
-<div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+<div class="invoice-page mx-auto max-w-6xl px-4 py-8 sm:px-6">
   <!-- Hero Section (no-print) -->
   <div class="no-print text-center mb-8">
     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-blue-800 bg-blue-50 border border-blue-200/80 mb-3 shadow-2xs">
@@ -436,17 +436,46 @@
 
 <style>
   @media print {
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
     :global(body) {
       background: white !important;
+      margin: 0 !important;
     }
-    .no-print {
+
+    .invoice-page {
+      width: 210mm !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    :global(.no-print) {
       display: none !important;
     }
+
     .print-sheet {
+      width: 210mm !important;
+      min-height: 297mm;
+      box-sizing: border-box;
+      margin: 0 !important;
       border: none !important;
       box-shadow: none !important;
-      padding: 0 !important;
-      max-width: 100% !important;
+      padding: 12mm !important;
+      border-radius: 0 !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .print-sheet table,
+    .print-sheet tr,
+    .print-sheet td,
+    .print-sheet th {
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
   }
 </style>
