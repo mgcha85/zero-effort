@@ -301,7 +301,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Japan 🇯🇵',
     targetRegionEn: 'Japan 🇯🇵',
     features: ['학력/경력 와레키 연도 원클릭 자동완성', '증명사진 삽입 및 여백 자동 조절', '일본 표준 JIS 규격 2페이지 레이아웃', '인쇄 최적화 및 1클릭 PDF 출력'],
-    featuresEn: ['Auto-calculate school years in Wareki', 'Photo insertion with auto-fit', 'Standard JIS 2-page layout', 'Print-optimized 1-click PDF']
+    featuresEn: ['Auto-calculate school years in Wareki', 'Photo insertion with auto-fit', 'Standard JIS 2-page layout', 'Print-optimized 1-click PDF'],
+    i18n: {
+      ja: {
+        name: '日本標準 JIS履歴書（和暦自動計算）',
+        tagline: '生年月日から令和・平成・昭和の学歴・職歴年数を自動計算・JIS規格PDF出力',
+        description: '生年月日を入力するだけで小・中・高・大学の入学・卒業年を和暦で自動入力。証明写真の貼付枠や綺麗なA4/B4レイアウトに対応。',
+        badge: '🇯🇵 日本就職・転職必携',
+        categoryLabel: '就職・キャリア',
+        features: ['学歴・職歴の和暦ワンクリック自動計算', '証明写真の自動配置・調整機能', '日本標準JIS規格準拠2ページ仕様', '印刷対応・完全無料PDF出力']
+      },
+      vi: {
+        name: 'Tạo Sơ Yếu Lý Lịch Chuẩn Nhật (Rirekisho)',
+        tagline: 'Tự động tính năm niên hiệu Nhật (Reiwa/Heisei) và xuất file PDF chuẩn JIS',
+        description: 'Chỉ cần nhập ngày sinh, hệ thống tự động đổi năm học cấp 1 đến đại học theo niên hiệu Nhật Bản và tạo CV chuẩn JIS.',
+        badge: '🇯🇵 Việc Làm Tại Nhật',
+        categoryLabel: 'Nghề Nghiệp / CV',
+        features: ['Tự động tính năm Wareki', 'Chèn và căn chỉnh ảnh thẻ', 'Bố cục 2 trang chuẩn JIS', 'Xuất file PDF chuẩn in ấn']
+      },
+      de: {
+        name: 'Japanischer JIS-Lebenslauf (Rirekisho)',
+        tagline: 'Automatischer Wareki-Rechner (Reiwa/Heisei) & offizieller JIS-Lebenslauf',
+        description: 'Berechnet Ausbildungsjahre im japanischen Kalender und generiert den offiziellen Standard-JIS-Lebenslauf im PDF-Format.',
+        badge: '🇯🇵 Japan Karriere',
+        categoryLabel: 'Karriere & CV',
+        features: ['Wareki-Jahre automatisch berechnen', 'Passfoto-Zuschnitt & Einbettung', 'Offizielles 2-Seiten JIS-Layout', 'Druckoptimierter PDF-Export']
+      },
+      fr: {
+        name: 'CV Japonais JIS (Rirekisho Builder)',
+        tagline: 'Calculateur automatique d\'ère japonaise (Wareki) & CV standard JIS',
+        description: 'Convertit automatiquement vos années d\'études en ères japonaises (Reiwa/Heisei) et produit un CV officiel JIS en PDF.',
+        badge: '🇯🇵 Emploi au Japon',
+        categoryLabel: 'Carrière & CV',
+        features: ['Calcul automatique des ères japonaises', 'Insertion et recadrage de photo', 'Mise en page standard JIS 2 pages', 'Export PDF haute qualité']
+      },
+      es: {
+        name: 'Generador de CV Japonés JIS (Rirekisho)',
+        tagline: 'Cálculo automático de era japonesa (Wareki) y plantilla estándar JIS',
+        description: 'Calcula años escolares en el calendario oficial japonés y genera un currículum estándar JIS de 2 páginas en PDF.',
+        badge: '🇯🇵 Empleo en Japón',
+        categoryLabel: 'Carrera y CV',
+        features: ['Cálculo de años en calendario japonés', 'Inserción y ajuste de fotografía', 'Formato estándar JIS de 2 páginas', 'Exportación a PDF lista para imprimir']
+      }
+    }
   },
   {
     id: 'size-converter',
@@ -324,7 +366,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Global 🌐',
     targetRegionEn: 'Global 🌐',
     features: ['남성/여성/키즈 세부 카테고리', 'US / UK / EU / JP / KR / CM 실시간 환산', '주요 브랜드(나이키, 아디다스 등) 팁', '결과 링크 1초 공유 기능'],
-    featuresEn: ['Men / Women / Kids categories', 'US / UK / EU / JP / KR / CM conversion', 'Popular brand sizing advice', '1-second shareable URL links']
+    featuresEn: ['Men / Women / Kids categories', 'US / UK / EU / JP / KR / CM conversion', 'Popular brand sizing advice', '1-second shareable URL links'],
+    i18n: {
+      de: {
+        name: 'Internationaler Schuh- & Kleidergrößen-Umrechner',
+        tagline: 'Präzise Größenumrechnung (EU, US, UK, JP, KR, CM) für Online-Shopping',
+        description: 'Vergleichen Sie Schuh- und Kleidergrößen weltweit in Echtzeit, um Fehlkäufe bei internationalen Bestellungen zu vermeiden.',
+        badge: '🛍️ Fehlkauf-Schutz',
+        categoryLabel: 'Shopping & Alltag',
+        features: ['Herren-, Damen- und Kindergrößen', 'Echtzeit-Umrechnung EU/US/UK/JP/CM', 'Tipps für Nike, Adidas & Co.', 'Ergebnis-Link in 1 Sekunde teilen']
+      },
+      vi: {
+        name: 'Bảng Quy Đổi Size Giày & Quần Áo Quốc Tế',
+        tagline: 'Chuyển đổi kích cỡ US, UK, EU, JP, KR, CM chuẩn xác khi mua hàng xách tay',
+        description: 'Chuyển đổi tức thì kích cỡ giày dép và quần áo nam, nữ, trẻ em giữa các bảng đo chuẩn quốc tế mà không lo chọn nhầm cỡ.',
+        badge: '🛍️ Mua Sắm Thông Minh',
+        categoryLabel: 'Mua Sắm & Đời Sống',
+        features: ['Phân loại Nam / Nữ / Trẻ em', 'Quy đổi US / UK / EU / JP / KR / CM', 'Mẹo chọn size theo thương hiệu', 'Chia sẻ kết quả bằng 1 đường link']
+      },
+      ja: {
+        name: '海外 靴・洋服サイズ一括換算ツール',
+        tagline: '海外通販（US・UK・EU・JP・KR・CM）で失敗しないリアルタイムサイズ比較',
+        description: 'アメリカ、イギリス、ヨーロッパ、日本、韓国、実寸CM間のシューズ・アパレル規格を瞬時に換算します。',
+        badge: '🛍️ 個人輸入・通販必携',
+        categoryLabel: 'ショッピング・生活',
+        features: ['メンズ・レディース・キッズ対応', 'US/UK/EU/JP/KR/CM瞬時換算', '主要ブランド（Nike/Adidas等）の目安', '換算結果リンクの1秒共有']
+      },
+      fr: {
+        name: 'Convertisseur de Tailles Chaussures & Vêtements',
+        tagline: 'Conversion internationale (US, UK, EU, JP, KR, CM) pour le shopping en ligne',
+        description: 'Convertissez instantanément les pointures et tailles de vêtements entre standards internationaux pour éviter les erreurs d\'achat.',
+        badge: '🛍️ Shopping Précis',
+        categoryLabel: 'Shopping & Pratique',
+        features: ['Catégories Hommes / Femmes / Enfants', 'Conversion US / UK / EU / JP / CM', 'Conseils marques (Nike, Adidas...)', 'Lien de partage rapide en 1 clic']
+      },
+      es: {
+        name: 'Conversor Internacional de Tallas de Calzado y Ropa',
+        tagline: 'Conversión precisa (US, UK, EU, JP, KR, CM) para compras online',
+        description: 'Compare tallas internacionales de calzado y ropa en tiempo real para evitar errores en compras por internet.',
+        badge: '🛍️ Compras Seguras',
+        categoryLabel: 'Compras y Utilidades',
+        features: ['Categorías Hombre / Mujer / Niños', 'Conversión US / UK / EU / JP / CM', 'Consejos de marcas principales', 'Compartir enlace de resultado en 1 clic']
+      }
+    }
   },
   {
     id: 'caro-game',
@@ -347,7 +431,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Vietnam 🇻🇳',
     targetRegionEn: 'Vietnam / Global',
     features: ['WebRTC 브라우저 간 P2P 직접 연결', '초대 링크 생성으로 즉시 대국 시작', '반응형 바둑판 및 턴 타이머', '채팅 및 돌 색상 선택 지원'],
-    featuresEn: ['Serverless WebRTC P2P connection', '1-click shareable invite link', 'Responsive board with turn timers', 'In-game chat and piece colors']
+    featuresEn: ['Serverless WebRTC P2P connection', '1-click shareable invite link', 'Responsive board with turn timers', 'In-game chat and piece colors'],
+    i18n: {
+      vi: {
+        name: 'Cờ Caro Trực Tuyến P2P (Không Cần Server)',
+        tagline: 'Chơi cờ Caro đối kháng trực tiếp qua trình duyệt với bạn bè bằng WebRTC',
+        description: 'Kết nối P2P trực tiếp giữa hai trình duyệt không lưu dữ liệu trên server, tốc độ siêu nhanh và không giật lag.',
+        badge: '🇻🇳 Trò Chơi Dân Gian',
+        categoryLabel: 'Trò Chơi & Giải Trí',
+        features: ['Kết nối trực tiếp WebRTC P2P', 'Tạo link mời bạn bè trong 1 giây', 'Bàn cờ co giãn và đếm ngược lượt đi', 'Hỗ trợ chat và đổi màu quân cờ']
+      },
+      de: {
+        name: 'Vietnamesisches Gomoku P2P (Cờ Caro)',
+        tagline: 'Serverloses Echtzeit-Fünf-in-einer-Reihe-Spiel über WebRTC',
+        description: 'Spielen Sie traditionelles vietnamesisches Gomoku direkt von Browser zu Browser ohne Server-Verzögerung mit Freunden.',
+        badge: '🇻🇳 Brettspiel-Klassiker',
+        categoryLabel: 'Spiele & Freizeit',
+        features: ['WebRTC Peer-to-Peer Verbindung', '1-Klick Einladungslink', 'Responsives Spielfeld mit Timer', 'In-Game Chat']
+      },
+      ja: {
+        name: 'ベトナム五目並べ P2P (Cờ Caro)',
+        tagline: 'WebRTC P2P通信によるサーバー不要のリアルタイムオンライン対局',
+        description: 'ブラウザ同士がP2Pで直接通信し、遅延ゼロで友達と対局できる登録不要の五目並べゲームです。',
+        badge: '🇻🇳 伝統ボードゲーム',
+        categoryLabel: 'ゲーム・娯楽',
+        features: ['WebRTCブラウザ間P2P直接通信', '対局招待URLを1クリック発行', 'レスポンシブ盤面＆持ち時間タイマー', 'チャット・石の色変更対応']
+      },
+      fr: {
+        name: 'Gomoku Vietnamien P2P (Cờ Caro)',
+        tagline: 'Jeu de morpion à 5 pions en temps réel sans serveur via WebRTC',
+        description: 'Jouez au Gomoku traditionnel directement de navigateur à navigateur sans latence avec un ami via un lien direct.',
+        badge: '🇻🇳 Jeu Traditionnel',
+        categoryLabel: 'Jeux & Loisirs',
+        features: ['Connexion directe WebRTC P2P', 'Lien d\'invitation instantané', 'Plateau responsive avec minuteur', 'Messagerie instantanée incluse']
+      },
+      es: {
+        name: 'Gomoku Vietnamita P2P (Cờ Caro)',
+        tagline: 'Juego de 5 en línea en tiempo real sin servidores mediante WebRTC',
+        description: 'Juega al tradicional Gomoku vietnamita de navegador a navegador con amigos mediante un enlace de invitación directo.',
+        badge: '🇻🇳 Juego Tradicional',
+        categoryLabel: 'Juegos y Ocio',
+        features: ['Conexión directa P2P con WebRTC', 'Enlace de invitación en 1 clic', 'Tablero adaptable con temporizador', 'Chat integrado durante la partida']
+      }
+    }
   },
   {
     id: 'timesync-planner',
@@ -395,6 +521,22 @@ export const TOOLS: ToolItem[] = [
         badge: '🌟 ゴールデンタイム自動検出',
         categoryLabel: 'グローバル・渡航',
         features: ['24時間インタラクティブタイムスライダー', 'ゴールデン稼働時間帯の自動重複検出', 'ワンクリック会議時間テキストコピー', 'RFC準拠 .ICSカレンダーエクスポート']
+      },
+      fr: {
+        name: 'Nomad TimeSync (Planificateur de Fuseaux Horaires)',
+        tagline: 'Trouvez instantanément le chevauchement parfait pour vos réunions d\'équipe',
+        description: 'Coordonnez vos réunions entre Paris, New York, Londres et l\'Asie. Détection automatique des heures dorées communes avec zéro tracking.',
+        badge: '🌟 Détection Heures Dorées',
+        categoryLabel: 'Monde & Déplacement',
+        features: ['Curseur horaire visuel 24h interactif', 'Détection des plages de travail communes', 'Copie du créneau de réunion en 1 clic', 'Export calendrier standard .ICS']
+      },
+      es: {
+        name: 'Nomad TimeSync (Planificador de Husos Horarios)',
+        tagline: 'Encuentre horas de reunión óptimas para equipos remotos globales',
+        description: 'Coordine reuniones internacionales entre Madrid, Nueva York, Londres y Asia. Detección automática de horarios de solapamiento.',
+        badge: '🌟 Horas Doradas Detectadas',
+        categoryLabel: 'Global y Viajes',
+        features: ['Control deslizante visual de 24 horas', 'Detección automática de horarios compartidos', 'Copia de horario con formato en 1 clic', 'Exportación de eventos en formato .ICS']
       }
     }
   }
@@ -420,7 +562,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Global 🌐',
     targetRegionEn: 'Global 🌐',
     features: ['URL·와이파이·vCard·WhatsApp 지원', '인쇄용 고해상도 벡터 SVG 다운로드', '2048px 초고화질 PNG 내보내기', '리다이렉트 제로 영구 보장'],
-    featuresEn: ['URL, WiFi, vCard, WhatsApp & Email', 'High-res Vector SVG export for print', '2048px crisp PNG export', 'Zero redirects guarantee']
+    featuresEn: ['URL, WiFi, vCard, WhatsApp & Email', 'High-res Vector SVG export for print', '2048px crisp PNG export', 'Zero redirects guarantee'],
+    i18n: {
+      de: {
+        name: 'PureQR Studio (Permanente QR-Codes)',
+        tagline: 'Echter permanenter statischer QR-Code-Generator ohne Ablauf & Abo-Fallen',
+        description: 'Verschlüsselt Daten wie URL, WLAN, vCard oder WhatsApp direkt im Browser. Keine Weiterleitungs-Tricks, 100% kostenloser SVG/PNG-Export.',
+        badge: '🔒 Läuft nie ab',
+        categoryLabel: 'Sicherheits-Tools',
+        features: ['URL, WLAN, vCard, WhatsApp & E-Mail', 'Vektor-SVG-Export für gestochen scharfen Druck', '2048px hochauflösendes PNG', 'Keine Redirects garantiert']
+      },
+      vi: {
+        name: 'PureQR Studio (Tạo Mã QR Vĩnh Viễn)',
+        tagline: 'Tạo mã QR tĩnh vĩnh viễn không hết hạn, không bẫy đăng ký trả phí',
+        description: 'Mã hóa trực tiếp URL, WiFi, danh thiếp vCard, WhatsApp trên RAM trình duyệt. Xuất file vector SVG và PNG 2048px siêu nét.',
+        badge: '🔒 Không Bao Giờ Hết Hạn',
+        categoryLabel: 'Tiện Ích Bảo Mật',
+        features: ['Hỗ trợ URL, WiFi, vCard, WhatsApp', 'Tải file vector SVG in ấn chất lượng cao', 'Xuất ảnh PNG 2048px siêu sắc nét', 'Cam kết 0 chuyển hướng']
+      },
+      ja: {
+        name: 'PureQR Studio (永久・静的QRコード生成)',
+        tagline: '有効期限・リダイレクト詐欺なしの完全静的QRコード作成ツール',
+        description: 'URL、Wi-Fi自動接続、vCard名刺、WhatsAppをブラウザ内で直接生成。印刷用ベクターSVGおよび高解像度PNGを無制限出力。',
+        badge: '🔒 期限切れゼロ保証',
+        categoryLabel: 'セキュリティ・ユーティリティ',
+        features: ['URL/Wi-Fi/vCard/WhatsApp対応', '印刷用高品質ベクターSVG出力', '2048px高解像度PNG保存', 'リダイレクトなし永久有効']
+      },
+      fr: {
+        name: 'PureQR Studio (QR Codes Permanents)',
+        tagline: 'Générateur de QR codes statiques permanents sans redirection ni expiration',
+        description: 'Encodez directement URL, Wi-Fi, vCard et WhatsApp dans la mémoire de votre navigateur. Export vectoriel SVG et PNG 2048px.',
+        badge: '🔒 N\'expire jamais',
+        categoryLabel: 'Sécurité & Utilitaires',
+        features: ['Support URL, Wi-Fi, vCard, WhatsApp', 'Export vectoriel SVG haute résolution', 'Export PNG net 2048px', 'Garantie sans redirection']
+      },
+      es: {
+        name: 'PureQR Studio (Códigos QR Permanentes)',
+        tagline: 'Generador de códigos QR estáticos y permanentes sin redirecciones ni caducidad',
+        description: 'Codifica URL, Wi-Fi, vCard y WhatsApp directamente en la memoria del navegador. Exportación vectorial SVG y PNG 2048px.',
+        badge: '🔒 Nunca caduca',
+        categoryLabel: 'Utilidades de Seguridad',
+        features: ['Soporte para URL, Wi-Fi, vCard y WhatsApp', 'Exportación vectorial SVG para impresión', 'Exportación PNG nítida de 2048px', 'Cero redirecciones garantizadas']
+      }
+    }
   },
   {
     id: 'invoice-maker',
@@ -443,7 +627,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Global 🌐',
     targetRegionEn: 'Global 🌐',
     features: ['글로벌 다국적 통화($, €, £, ₩) 지원', '부가세/세율 및 할인 자동 계산', '브라우저 로컬 자동 임시저장', '여백 없는 완벽한 A4 PDF 인쇄'],
-    featuresEn: ['Multi-currency ($/€/£/₩/¥/₫)', 'Automatic tax & discount calculation', 'Local storage draft auto-save', 'Clean A4 print & PDF export']
+    featuresEn: ['Multi-currency ($/€/£/₩/¥/₫)', 'Automatic tax & discount calculation', 'Local storage draft auto-save', 'Clean A4 print & PDF export'],
+    i18n: {
+      de: {
+        name: 'Nomad Invoice Maker (Rechnungs-Generator)',
+        tagline: 'Professionelle A4 PDF-Rechnungen ohne Registrierung erstellen',
+        description: 'Erstellen Sie A4-Rechnungen mit mehreren Währungen ($/€/£/₩/¥/₫) und Steuersätzen direkt im Browser. 100% lokal und privat.',
+        badge: '⚡ 1-Klick A4 PDF',
+        categoryLabel: 'Finanzen & Arbeit',
+        features: ['Mehrwährungsfähig ($/€/£/₩/¥/₫)', 'Automatische Steuer- & Rabattberechnung', 'Automatische lokale Speicherung', 'Optimales A4-Drucklayout']
+      },
+      vi: {
+        name: 'Nomad Invoice Maker (Tạo Hóa Đơn A4)',
+        tagline: 'Tạo hóa đơn & biên lai A4 PDF chuyên nghiệp không cần đăng ký tài khoản',
+        description: 'Hỗ trợ đa tiền tệ ($, €, £, ₩, ¥, ₫), tự động tính thuế VAT và chiết khấu. 100% bảo mật cục bộ trên trình duyệt.',
+        badge: '⚡ Xuất PDF 1 Chạm',
+        categoryLabel: 'Công Việc & Tài Chính',
+        features: ['Hỗ trợ đa tiền tệ quốc tế', 'Tự động tính thuế & chiết khấu', 'Tự động lưu nháp trên máy', 'Định dạng in ấn A4 chuẩn đẹp']
+      },
+      ja: {
+        name: 'ノマド インボイスメーカー (A4請求書生成)',
+        tagline: '登録不要・1秒でA4 PDF請求書や領収書を作成・印刷',
+        description: '会員登録やクラウド送信なしで、多通貨（$/€/£/₩/¥/₫）対応のスタイリッシュなA4請求書を発行。消費税・割引も自動計算。',
+        badge: '⚡ 1クリックA4出力',
+        categoryLabel: 'ビジネス・請求業務',
+        features: ['多通貨（$/€/£/₩/¥/₫）対応', '消費税・割引の自動計算', 'ブラウザ内での下書き自動保存', '完璧なA4印刷プレビュー']
+      },
+      fr: {
+        name: 'Nomad Invoice Maker (Factures PDF A4)',
+        tagline: 'Créateur de factures et reçus A4 PDF sans inscription',
+        description: 'Générez des factures professionnelles multi-devises ($/€/£/₩/¥/₫) avec calcul des taxes et remises directement dans le navigateur.',
+        badge: '⚡ PDF A4 en 1 Clic',
+        categoryLabel: 'Travail & Finance',
+        features: ['Multi-devises ($/€/£/₩/¥/₫)', 'Calcul automatique taxes et remises', 'Sauvegarde locale automatique', 'Mise en page d\'impression A4 nette']
+      },
+      es: {
+        name: 'Nomad Invoice Maker (Facturas PDF A4)',
+        tagline: 'Creador de facturas y recibos PDF A4 sin registro para freelancers',
+        description: 'Cree facturas profesionales multidivisa ($/€/£/₩/¥/₫) con cálculo de impuestos y descuentos directamente en su navegador.',
+        badge: '⚡ PDF A4 en 1 Clic',
+        categoryLabel: 'Trabajo y Finanzas',
+        features: ['Soporte multidivisa ($/€/£/₩/¥/₫)', 'Cálculo automático de IVA y descuentos', 'Guardado automático local', 'Diseño de impresión A4 impecable']
+      }
+    }
   },
   {
     id: 'exif-scrubber',
@@ -466,7 +692,49 @@ export const TOOLS: ToolItem[] = [
     targetRegion: 'Global 🌐',
     targetRegionEn: 'Global 🌐',
     features: ['JPG, PNG, WebP 일괄 처리', '위치 정보(GPS) 감지 및 즉시 파기', '화질 손실 없는 픽셀 보존', '일괄 ZIP 압축 다운로드'],
-    featuresEn: ['Bulk JPG, PNG, WebP processing', 'Detects & strips GPS coordinates', 'Zero quality loss pixel preservation', 'Download all cleaned as .ZIP']
+    featuresEn: ['Bulk JPG, PNG, WebP processing', 'Detects & strips GPS coordinates', 'Zero quality loss pixel preservation', 'Download all cleaned as .ZIP'],
+    i18n: {
+      de: {
+        name: 'EXIF Privacy Scrubber (GPS-Entferner)',
+        tagline: 'Versteckte GPS-Standortdaten und Kamera-Metadaten sicher aus Fotos löschen',
+        description: 'Entfernen Sie präzise Wohnort-GPS-Koordinaten und Gerätedaten direkt im Browser vor dem Hochladen auf Kleinanzeigen oder Social Media.',
+        badge: '🛡️ GPS Bereinigt',
+        categoryLabel: 'Datenschutz-Tools',
+        features: ['Stapelverarbeitung für JPG, PNG, WebP', 'Erkennt & entfernt GPS-Koordinaten', 'Null Qualitätsverlust bei Pixeln', 'Sammel-Download als .ZIP']
+      },
+      vi: {
+        name: 'EXIF Privacy Scrubber (Xóa Tọa Độ GPS)',
+        tagline: 'Xóa tọa độ vị trí GPS và thông tin thiết bị ẩn trong ảnh chụp',
+        description: 'Loại bỏ vị trí nhà riêng và số sê-ri máy ảnh trực tiếp trên RAM trình duyệt trước khi đăng bán đồ cũ hoặc đăng mạng xã hội.',
+        badge: '🛡️ Đã Xóa GPS',
+        categoryLabel: 'Tiện Ích Bảo Mật',
+        features: ['Xử lý hàng loạt file JPG, PNG, WebP', 'Phát hiện & hủy vị trí GPS tức thì', 'Giữ nguyên 100% chất lượng ảnh gốc', 'Tải về tất cả dưới dạng file ZIP']
+      },
+      ja: {
+        name: 'EXIF プライバシースクラバー (GPS位置情報削除)',
+        tagline: '写真に記録された自宅GPS座標や撮影機器情報をブラウザ内で完全消去',
+        description: 'メルカリ・ヤフオク出品やSNS投稿前に、スマートフォン写真に潜む詳細な緯度・経度とシリアル情報を1秒で破棄。画質劣化ゼロ。',
+        badge: '🛡️ GPS情報完全消去',
+        categoryLabel: 'セキュリティ・プライバシー',
+        features: ['JPG/PNG/WebP一括処理対応', 'GPS位置情報の検知と即時破棄', '画質劣化ゼロのピクセル保持', '一括ZIP圧縮ダウンロード']
+      },
+      fr: {
+        name: 'EXIF Privacy Scrubber (Suppresseur GPS)',
+        tagline: 'Supprimez les coordonnées GPS et métadonnées cachées des photos',
+        description: 'Éliminez l\'adresse exacte et les données d\'appareil directement dans le navigateur avant de publier sur les petites annonces ou réseaux sociaux.',
+        badge: '🛡️ GPS Nettoyé',
+        categoryLabel: 'Utilitaires de Confidentialité',
+        features: ['Traitement par lot JPG, PNG, WebP', 'Détecte et supprime les coordonnées GPS', 'Préservation intégrale de la qualité d\'image', 'Téléchargement groupé au format .ZIP']
+      },
+      es: {
+        name: 'EXIF Privacy Scrubber (Eliminador de GPS)',
+        tagline: 'Elimine coordenadas GPS y metadatos ocultos de sus fotografías',
+        description: 'Elimine la ubicación de su casa y datos del dispositivo directamente en el navegador antes de publicar en redes sociales o sitios de compraventa.',
+        badge: '🛡️ GPS Eliminado',
+        categoryLabel: 'Utilidades de Privacidad',
+        features: ['Procesamiento por lotes JPG, PNG, WebP', 'Detecta y elimina coordenadas GPS', 'Cero pérdida de calidad fotográfica', 'Descarga masiva en archivo .ZIP']
+      }
+    }
   }
 ];
 
