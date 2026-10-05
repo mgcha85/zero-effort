@@ -18,6 +18,7 @@ async def get_ga4_stats():
             await page.wait_for_timeout(6000)
 
             content = await page.content()
+            text = await page.inner_text('body')
             await page.close()
 
             # Extract Active users and Events
@@ -38,10 +39,28 @@ async def get_ga4_stats():
             if m_events:
                 events = m_events.group(1)
 
+            # Extract Page breakdown
+            pages_breakdown = []
+            lines = text.split('\n')
+            for i, l in enumerate(lines):
+                if '페이지 제목 및 화면 클래스\t조회수' in l or '페이지 제목 및 화면 클래스' in l:
+                    # Next few lines contain rows
+                    for offset in range(1, 10):
+                        if i + offset < len(lines):
+                            row = lines[i + offset].strip()
+                            if '\t' in row:
+                                parts = row.split('\t')
+                                if len(parts) >= 2 and parts[1].isdigit():
+                                    pages_breakdown.append({'title': parts[0], 'views': int(parts[1])})
+                            elif '페이지 및 화면 보기' in row:
+                                break
+                    break
+
             return {
                 'active_users': active_users,
                 'new_users': new_users,
                 'events': events,
+                'pages': pages_breakdown,
                 'status': 'success'
             }
     except Exception as e:

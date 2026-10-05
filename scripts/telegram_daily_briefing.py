@@ -87,11 +87,15 @@ def main():
         import asyncio
         stats = asyncio.run(get_ga4_stats())
         if stats.get('status') == 'success':
+            pages_list = ""
+            if stats.get('pages'):
+                p_items = [f"   - {p['title'][:28]}: *{p['views']}회*" for p in stats['pages'][:6]]
+                pages_list = "\n• *페이지별 조회수*:\n" + "\n".join(p_items)
             ga4_section = (
                 f"📈 *[GA4 방문자 통계 요약]*\n"
                 f"• 활성 사용자: *{stats['active_users']}명*\n"
                 f"• 신규 사용자: *{stats['new_users']}명*\n"
-                f"• 총 이벤트: *{stats['events']}건*\n\n"
+                f"• 총 이벤트: *{stats['events']}건*{pages_list}\n\n"
             )
     except Exception as e:
         print(f"Warning: could not fetch GA4 stats: {e}", file=sys.stderr)
