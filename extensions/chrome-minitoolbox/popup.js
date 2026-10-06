@@ -16,6 +16,15 @@ const TOOLS = [
 const listEl = document.getElementById('toolList');
 const searchInput = document.getElementById('searchInput');
 
+function campaignUrl(tool) {
+  const url = new URL(tool.url);
+  url.searchParams.set('utm_source', 'chrome_extension');
+  url.searchParams.set('utm_medium', 'referral');
+  url.searchParams.set('utm_campaign', '7day-strategy');
+  url.searchParams.set('utm_content', tool.name.toLowerCase().replace(/\s+/g, '-'));
+  return url.toString();
+}
+
 function render(items) {
   listEl.innerHTML = '';
   if (items.length === 0) {
@@ -25,7 +34,7 @@ function render(items) {
   items.forEach(t => {
     const a = document.createElement('a');
     a.className = 'tool-item';
-    a.href = t.url;
+    a.href = campaignUrl(t);
     a.target = '_blank';
     a.innerHTML = `
       <div class="tool-info">

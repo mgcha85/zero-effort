@@ -52,12 +52,12 @@ I've dropped the direct links in the comments below for anyone who needs them. W
 ```markdown
 Here are the direct links to test them out:
 
-👉 PureQR Studio (Permanent Static QR): https://qr.minitoolbox.dev
-👉 Nomad Invoice Maker (Zero-Login A4 PDF): https://invoice.minitoolbox.dev
-👉 EXIF Privacy Scrubber (GPS Stripper): https://exif.minitoolbox.dev
+👉 PureQR Studio (Permanent Static QR): https://qr.minitoolbox.dev/?utm_source=reddit&utm_medium=community&utm_campaign=7day-strategy&utm_content=qr-studio
+👉 Nomad Invoice Maker (Zero-Login A4 PDF): https://invoice.minitoolbox.dev/?utm_source=reddit&utm_medium=community&utm_campaign=7day-strategy&utm_content=invoice-maker
+👉 EXIF Privacy Scrubber (GPS Stripper): https://exif.minitoolbox.dev/?utm_source=reddit&utm_medium=community&utm_campaign=7day-strategy&utm_content=exif-scrubber
 
 All 12 privacy tools in the suite:
-👉 https://minitoolbox.dev
+👉 https://minitoolbox.dev/?utm_source=reddit&utm_medium=community&utm_campaign=7day-strategy&utm_content=hub
 
 100% free, no accounts, no server tracking. Hope this saves you from recurring paywalls!
 ```
@@ -94,7 +94,7 @@ Link is in the comments if you want to bookmark it for your next client billing!
 ### 💬 작성자 첫 번째 댓글 (OP Comment):
 ```markdown
 Direct link to the tool:
-🧾 https://invoice.minitoolbox.dev
+🧾 https://invoice.minitoolbox.dev/?utm_source=reddit&utm_medium=community&utm_campaign=7day-strategy&utm_content=invoice-maker
 
 Zero accounts, zero tracking. Hope it helps your workflow!
 ```
@@ -115,7 +115,7 @@ Hi HN,
 
 Many popular "free QR code" tools rely on URL shortener redirects (dynamic QR). After users print menus, flyers, or business cards, the provider puts the redirect behind a subscription paywall, breaking the QR code unless paid.
 
-PureQR (https://qr.minitoolbox.dev) encodes the actual destination data (URL, WiFi WPA2/WPA3 credentials, vCard 3.0, WhatsApp API, or plaintext) directly into the QR matrix. 
+PureQR (https://qr.minitoolbox.dev/?utm_source=hackernews&utm_medium=community&utm_campaign=7day-strategy&utm_content=qr-studio) encodes the actual destination data (URL, WiFi WPA2/WPA3 credentials, vCard 3.0, WhatsApp API, or plaintext) directly into the QR matrix.
 
 Key details:
 - Zero redirects: Works offline and will never expire, even 50 years from now.
@@ -132,6 +132,6 @@ Built with SvelteKit and adapter-static. Feedback on QR payload formatting and S
 - **Name**: PureQR & Nomad Suite by MiniToolbox
 - **Tagline**: 3 Zero-Upload Privacy Tools: Permanent QR, Invoices & EXIF Scrubber
 - **Primary Category**: Productivity, Developer Tools, Privacy
-- **URL**: `https://minitoolbox.dev`
+- **URL**: `https://minitoolbox.dev/?utm_source=producthunt&utm_medium=community&utm_campaign=7day-strategy&utm_content=hub`
 - **Short Pitch**:
   "Stop paying monthly fees for simple utilities. PureQR, Nomad Invoice Maker, and EXIF Privacy Scrubber run 100% inside your browser with 0KB uploaded to any remote server."

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { TOOLS } from '$lib/tools';
+  import { TOOLS, getCampaignUrl } from '$lib/tools';
   import { currentLang, translations } from '$lib/langStore';
   import { setFaviconByRoute } from '$lib/faviconStore';
   import { AdBanner } from '@zero-effort/shared-ui';
@@ -46,7 +46,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {#each currentCategoryTools as tool (tool.id)}
       <a
-        href={tool.url}
+        href={getCampaignUrl(tool, `category-${categoryId}-${tool.id}`)}
         target="_blank"
         rel="noopener noreferrer"
         class="group relative flex flex-col justify-between rounded-3xl bg-white p-6 border border-slate-200/90 shadow-2xs hover:shadow-lg hover:border-indigo-300 transition-all duration-200"

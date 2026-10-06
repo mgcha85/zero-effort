@@ -773,3 +773,12 @@ export function getLocalizedTool(tool: ToolItem, lang: HubLang) {
     targetRegion: tool.targetRegionEn
   };
 }
+
+export function getCampaignUrl(tool: ToolItem, content = tool.id): string {
+  const url = new URL(tool.url);
+  url.searchParams.set('utm_source', 'hub');
+  url.searchParams.set('utm_medium', 'internal');
+  url.searchParams.set('utm_campaign', '7day-strategy');
+  url.searchParams.set('utm_content', content);
+  return url.toString();
+}

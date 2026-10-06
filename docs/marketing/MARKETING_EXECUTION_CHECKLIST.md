@@ -96,3 +96,14 @@
   - 도메인 `qr` / `invoice` / `exif`.minitoolbox.dev
   - 허브 `minitoolbox-hub` 재배포로 포털 카드·사이트맵·llms.txt 반영
 
+### [트랙 7] 다음 7일 데이터 기반 실행
+- [x] **완료 행동 GA4 이벤트 배포**
+  - `qr_download_svg`, `qr_download_png`, `invoice_print`
+  - `exif_process_complete`, `exif_download_zip`
+- [x] **내부 허브·Chrome Extension UTM 표준화**
+  - `utm_source`, `utm_medium`, `utm_campaign=7day-strategy`, `utm_content`
+- [x] **커뮤니티 런칭팩 UTM 링크 적용**
+  - Reddit, Hacker News, Product Hunt 링크별 채널·앱 식별
+- [ ] **7일 누적 데이터 수집**
+- [ ] **앱별 완료율·채널별 전환율 비교**
+

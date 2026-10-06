@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { TOOLS, getLocalizedTool, type ToolItem, type ToolColor } from '$lib/tools';
+  import { TOOLS, getCampaignUrl, getLocalizedTool, type ToolItem, type ToolColor } from '$lib/tools';
   import { currentLang, translations } from '$lib/langStore';
   import { setFaviconByRoute } from '$lib/faviconStore';
   import { AdBanner } from '@zero-effort/shared-ui';
@@ -195,7 +195,7 @@
       {@const style = COLOR_STYLES[tool.color] || COLOR_STYLES.indigo}
       
       <a
-        href={tool.url}
+        href={getCampaignUrl(tool)}
         target="_blank"
         rel="noopener noreferrer"
         class="group relative flex flex-col justify-between rounded-3xl bg-white/95 backdrop-blur-xs p-6 sm:p-7 border border-slate-200/80 {style.hoverBorder} shadow-2xs hover:shadow-xl {style.glow} hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
