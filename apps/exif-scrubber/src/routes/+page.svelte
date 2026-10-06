@@ -1,6 +1,7 @@
 <script lang="ts">
   import { buildFaqJsonLd, buildWebAppJsonLd } from '@zero-effort/seo-config';
   import { currentLang, translations } from '$lib/langStore';
+  import { trackEvent } from '@zero-effort/shared-ui';
   import JSZip from 'jszip';
 
   interface ProcessedFile {
@@ -130,6 +131,13 @@
 
     files = [...newItems, ...files];
     isProcessing = false;
+    if (newItems.length > 0) {
+      trackEvent('exif_process_complete', {
+        tool: 'exif_scrubber',
+        language: $currentLang,
+        file_count: newItems.length
+      });
+    }
   }
 
   function onDrop(e: DragEvent) {
@@ -150,6 +158,11 @@
 
   async function downloadAllZip() {
     if (files.length === 0) return;
+    trackEvent('exif_download_zip', {
+      tool: 'exif_scrubber',
+      language: $currentLang,
+      file_count: files.length
+    });
     const zip = new JSZip();
     files.forEach((f) => {
       zip.file(f.originalName, f.cleanedBlob);

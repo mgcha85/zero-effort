@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { buildFaqJsonLd, buildWebAppJsonLd } from '@zero-effort/seo-config';
   import { currentLang, translations } from '$lib/langStore';
+  import { trackEvent } from '@zero-effort/shared-ui';
 
   interface LineItem {
     id: string;
@@ -86,6 +87,12 @@
   }
 
   function handlePrint() {
+    trackEvent('invoice_print', {
+      tool: 'invoice_maker',
+      language: $currentLang,
+      currency: selectedCurrency.code,
+      line_item_count: items.length
+    });
     window.print();
   }
 

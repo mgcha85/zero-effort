@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { buildFaqJsonLd, buildWebAppJsonLd } from '@zero-effort/seo-config';
   import { currentLang, translations } from '$lib/langStore';
+  import { trackEvent } from '@zero-effort/shared-ui';
   import QRCode from 'qrcode';
 
   type Tab = 'url' | 'wifi' | 'vcard' | 'whatsapp' | 'email' | 'text';
@@ -127,6 +128,7 @@
 
   function downloadSvg() {
     if (!svgContent) return;
+    trackEvent('qr_download_svg', { tool: 'qr_studio', language: $currentLang, payload_type: activeTab });
     const blob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -140,6 +142,7 @@
 
   function downloadPng() {
     if (!canvasEl) return;
+    trackEvent('qr_download_png', { tool: 'qr_studio', language: $currentLang, payload_type: activeTab });
     // Export 2048px high-res PNG
     const tempCanvas = document.createElement('canvas');
     QRCode.toCanvas(tempCanvas, rawPayload, {
