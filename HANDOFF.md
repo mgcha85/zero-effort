@@ -35,7 +35,7 @@
 - Individual sitemap submissions succeeded for those three apps.
 - Naver ownership, sitemap submission, and homepage crawl request are complete for all 11 registered app domains; public exposure reports still require processing time.
 - IndexNow returned HTTP 200 from both endpoints; this is submission receipt, not indexing proof.
-- Commit `291f9c4` was pushed to `origin/main`. Vercel deployment records currently show success for `zero-effort-media`, `zero-effort-caro`, `zero-effort-visarun`, `zero-effort-rirekisho`, and `zero-effort-anmeldung`; remaining project hooks have not yet produced a deployment record and need Vercel dashboard/API follow-up.
+- Commit `291f9c4` was pushed to `origin/main`. Vercel eventually created deployments for all configured projects. Public checks confirm updated canonical/JSON-LD for Invoice, QR, EXIF, PDF, and Size; the legacy `build` project deployment remains a separate failure and is not attached to a public app domain.
 
 ## Current state
 
