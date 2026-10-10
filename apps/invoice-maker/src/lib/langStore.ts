@@ -34,10 +34,10 @@ export const translations = {
     sampleBtn: 'Load Sample',
     privacyNote: '🔒 All data is stored only in your local browser storage. No financial information is ever transmitted to any server.',
     faqTitle: 'Frequently Asked Questions',
-    faq1Q: 'Q. How do I save this as a PDF file?',
-    faq1A: 'A. Click the "Print / Save A4 PDF" button. In your browser print dialog, select "Destination: Save as PDF" with Margins set to "None" or "Default".',
+    faq1Q: 'Q. Is this a free invoice generator with no signup, and how do I save an A4 PDF?',
+    faq1A: 'A. Yes. Click "Print / Save A4 PDF", then choose "Save as PDF" in your browser print dialog. Only the invoice sheet is printed in A4 format; the website header, controls, and FAQ are excluded.',
     faq2Q: 'Q. Does Nomad Invoice store my invoices or client info?',
-    faq2A: 'A. No. 100% of data stays strictly inside your device browser localStorage. We do not operate an invoice database.'
+    faq2A: 'A. No. This zero-login invoice maker keeps invoice and client data in your device browser localStorage. We do not operate an invoice database or upload your draft.'
   },
   ko: {
     siteTitle: '노마드 인보이스 메이커',

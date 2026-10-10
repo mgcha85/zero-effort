@@ -49,10 +49,10 @@ export const translations = {
     scamWarningTitle: '🛡️ Why PureQR Never Expires',
     scamWarningDesc: 'Most free generators encode a redirect link (e.g. qr.biz/1234) and hold your printed menus or business cards hostage for $15/month after 14 days. PureQR encodes 100% direct raw data directly into the matrix in your local browser memory. It is physically impossible for this code to expire.',
     faqTitle: 'Frequently Asked Questions',
-    faq1Q: 'Q. Will this QR code ever expire or stop working?',
-    faq1A: 'A. Never. PureQR produces true static QR codes. The data is hardcoded into the graphic itself with no intermediary redirect server.',
+    faq1Q: 'Q. Is this a free static QR code generator with no expiration or redirect?',
+    faq1A: 'A. Yes. PureQR encodes the destination directly in a permanent static QR graphic, with no shortener, redirect server, subscription, or expiration date.',
     faq2Q: 'Q. Is it safe to generate WiFi and contact QR codes here?',
-    faq2A: 'A. Completely safe. All rendering is performed using client-side JavaScript in your device RAM. 0KB is uploaded to any server.'
+    faq2A: 'A. Yes. WiFi, vCard, URL, WhatsApp, email, and text QR data is rendered in your browser. 0KB is uploaded to any server.'
   },
   ko: {
     siteTitle: '퓨어 QR 스튜디오',

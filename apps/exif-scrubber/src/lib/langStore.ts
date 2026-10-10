@@ -25,10 +25,10 @@ export const translations = {
     privacyGuaranteeTitle: '🛡️ Why Stripping EXIF Before Sharing Matters',
     privacyGuaranteeDesc: 'When you take a photo on an iPhone or Android, it silently embeds your exact latitude/longitude GPS location, timestamp, and device model inside the EXIF header. When posted to Reddit, forums, or classifieds, anyone can view your home address. This tool strips 100% of metadata directly inside your browser memory without uploading a single byte to any server.',
     faqTitle: 'Frequently Asked Questions',
-    faq1Q: 'Q. Does this reduce the visual image quality?',
-    faq1A: 'A. No. The tool preserves 100% of visual RGB pixels with maximum quality while discarding the hidden metadata tags.',
+    faq1Q: 'Q. How do I remove GPS location and EXIF metadata from photos?',
+    faq1A: 'A. Add your JPG, PNG, or WebP photos, then download each cleaned image or the ZIP export. The browser removes hidden GPS, camera, and timestamp metadata locally.',
     faq2Q: 'Q. Are my private photos uploaded to your server?',
-    faq2A: 'A. Never. Processing uses the browser local Canvas/Blob API directly in your device RAM. You can disconnect your internet and it still works.'
+    faq2A: 'A. Never. EXIF scrubbing runs in your browser with the local Canvas/Blob APIs. You can disconnect your internet and it still works.'
   },
   ko: {
     siteTitle: '사진 위치(GPS) & EXIF 메타데이터 제거기',
