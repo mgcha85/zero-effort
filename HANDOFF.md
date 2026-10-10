@@ -27,6 +27,7 @@
 - Existing completion calls verified in QR, Invoice, and EXIF source.
 - Non-blocked browser loaded real `gtag.js`; diagnostic completion calls entered `dataLayer`.
 - Clean Chromium transport test confirmed all five completion events reached GA4 `/g/collect`: `qr_download_svg`, `qr_download_png`, `invoice_print`, `exif_process_complete`, and `exif_download_zip`.
+- Sent the same five names with `debug_mode` for GA4 DebugView diagnostics. The Admin event catalog can lag transport receipt; revisit after the next GA4 processing window and star each completion event as a key event if not already configured.
 - GA4 Admin currently lists only automatic events (`first_visit`, `page_view`, `scroll`, `session_start`, `user_engagement`). No completion event has appeared yet, so key-event marking is still pending; uBlock blocked the Brave test context.
 - Observed baseline: last 7 days 226 active users, 229 sessions, 251 views, 825 events; all sessions reported as Direct. Recent Search Console data was delayed and showed 1 impression / 0 clicks / average position 7.
 
