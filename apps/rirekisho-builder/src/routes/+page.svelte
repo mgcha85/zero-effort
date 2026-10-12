@@ -97,6 +97,7 @@
   });
 
   function saveToLocal() {
+    if (typeof window === 'undefined') return;
     try {
       const data = {
         name, furigana, birthDate, gender, phone, email, postalCode,

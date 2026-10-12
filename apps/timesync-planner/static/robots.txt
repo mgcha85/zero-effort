@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://timesync.minitoolbox.dev/sitemap.xml
+llms-txt: https://timesync.minitoolbox.dev/llms.txt

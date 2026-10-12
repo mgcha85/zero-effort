@@ -145,6 +145,7 @@
 <svelte:head>
   <title>{t.siteTitle} | {t.heroTitle}</title>
   <meta name="description" content={t.heroSub} />
+  <link rel="canonical" href="https://timesync.minitoolbox.dev/" />
   <script type="application/ld+json">
     {JSON.stringify({
       '@context': 'https://schema.org',

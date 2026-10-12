@@ -26,5 +26,5 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://minitoolbox.dev/sitemap.xml
-llms-txt: https://minitoolbox.dev/llms.txt
+Sitemap: https://schengen.minitoolbox.dev/sitemap.xml
+llms-txt: https://schengen.minitoolbox.dev/llms.txt

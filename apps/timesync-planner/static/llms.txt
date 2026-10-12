@@ -1,0 +1,7 @@
+# Nomad TimeSync
+
+Nomad TimeSync is a client-side timezone meeting planner for remote teams and digital nomads.
+It compares local times across cities, finds overlapping working hours and golden-hour windows, and exports calendar events.
+No meeting data is uploaded to a server.
+
+URL: https://timesync.minitoolbox.dev/

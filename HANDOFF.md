@@ -43,9 +43,21 @@
 
 - Repository: `/mnt/data/projects/zero-effort`
 - Branch: `main`
-- Latest project commit: `624f894 feat(seo): add Naver verification files for all apps`
+- Latest project commit: `25ba6a1 docs: record GA4 debug event verification`
 - Latest commit pushed to `origin/main`
 - Existing exploratory `scripts/*.js` files remain untracked. Do not stage them.
+
+## Google indexing exclusion diagnosis — 2026-10-12
+
+- GSC's new “redirected page” and “alternate page with proper canonical” notices correlate with two real SEO defects:
+  - Anmeldung, Schengen, Rirekisho, Visa Run, and TimeSync used `fallback: index.html`, so the adapter overwrote prerendered pages with an SPA shell lacking title/canonical/JSON-LD.
+  - Eight app `robots.txt` files pointed to the hub sitemap instead of their own domain sitemap.
+- Fix prepared:
+  - Added `prerender = true` and changed those five apps to `fallback: 404.html`.
+  - Added TimeSync sitemap, robots, and llms files; added its canonical link.
+  - Corrected per-app robots sitemap/llms URLs.
+- Local builds now emit title, canonical, and JSON-LD for all five repaired apps. Rirekisho localStorage save is browser-guarded during SSR.
+- Next: commit and push, wait for Vercel production deployments, then request reindex for affected canonical URLs and resubmit each corrected sitemap. Do not treat sitemap submission HTTP 200 as indexing proof.
 
 ## Completed
 
