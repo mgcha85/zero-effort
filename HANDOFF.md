@@ -58,6 +58,7 @@
   - Corrected per-app robots sitemap/llms URLs.
 - Local builds now emit title, canonical, and JSON-LD for all five repaired apps. Rirekisho localStorage save is browser-guarded during SSR.
 - TimeSync has no connected Vercel project and still serves an old SPA shell, so it was removed from the hub sitemap until separately deployed.
+- Removed TimeSync from IndexNow submissions; corrected 11-app URL list returned HTTP 200 from both IndexNow endpoints.
 - Next: request reindex for affected canonical URLs and resubmit each corrected sitemap. Do not treat sitemap submission HTTP 200 as indexing proof.
 
 ## Completed
