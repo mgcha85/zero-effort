@@ -54,10 +54,11 @@
   - Eight app `robots.txt` files pointed to the hub sitemap instead of their own domain sitemap.
 - Fix prepared:
   - Added `prerender = true` and changed those five apps to `fallback: 404.html`.
-  - Added TimeSync sitemap, robots, and llms files; added its canonical link.
+  - Added TimeSync sitemap, robots, and llms files; added its canonical link for future deployment.
   - Corrected per-app robots sitemap/llms URLs.
 - Local builds now emit title, canonical, and JSON-LD for all five repaired apps. Rirekisho localStorage save is browser-guarded during SSR.
-- Next: commit and push, wait for Vercel production deployments, then request reindex for affected canonical URLs and resubmit each corrected sitemap. Do not treat sitemap submission HTTP 200 as indexing proof.
+- TimeSync has no connected Vercel project and still serves an old SPA shell, so it was removed from the hub sitemap until separately deployed.
+- Next: request reindex for affected canonical URLs and resubmit each corrected sitemap. Do not treat sitemap submission HTTP 200 as indexing proof.
 
 ## Completed
 
