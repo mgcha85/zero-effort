@@ -1,5 +1,72 @@
 # MiniToolbox Handoff
 
+## Latest handoff — 2026-10-17
+
+### Repository
+
+- Path: `/mnt/data/projects/zero-effort`
+- Branch: `main`
+- Latest pushed commit: `2d294f2 fix(seo): align indexing submissions with deployed apps`
+- Working tree contains many pre-existing untracked exploratory `scripts/*.js`; do not stage them.
+
+### Current diagnosis
+
+- Google indexing notices were not only normal duplicate handling.
+- Five apps had `fallback: index.html`, which overwrote prerendered SEO HTML with an SPA shell.
+- Eight app `robots.txt` files pointed at the hub sitemap instead of their own sitemap.
+- `timesync.minitoolbox.dev` has no connected Vercel project and still serves an old SPA shell. It was removed from the hub sitemap and IndexNow list; deploy separately only if TimeSync becomes an intended product.
+
+### Applied fixes
+
+- Added `prerender = true` and changed fallback to `404.html` for Anmeldung, Schengen, Rirekisho, Visa Run, and TimeSync.
+- Added TimeSync SEO assets for future deployment.
+- Added TimeSync canonical link.
+- Corrected per-app `robots.txt` sitemap and `llms.txt` URLs.
+- Guarded Rirekisho localStorage writes during SSR.
+- Removed undeployed TimeSync from hub sitemap and IndexNow submissions.
+- Local builds emit title, canonical, and JSON-LD for repaired apps.
+- Public checks after deployment confirmed 11 intended app domains return HTTP 200 with self-canonical, JSON-LD, self-referencing robots, and self-referencing sitemap.
+- IndexNow resubmission returned HTTP 200 from both endpoints. This confirms receipt, not indexing completion.
+
+### GA4 and traffic evidence
+
+- Property: `G-0PT14QDEK4`.
+- Clean Chromium confirmed `/g/collect` requests for:
+  - `qr_download_svg`
+  - `qr_download_png`
+  - `invoice_print`
+  - `exif_process_complete`
+  - `exif_download_zip`
+- GA4 Admin event catalog had not listed these completion events at last check; key-event star configuration remains subject to GA4 processing delay.
+- Last observed GA4 snapshot on 2026-10-12:
+  - Today: 0 users, 0 views, 0 events.
+  - Last 7 days: 216 users, 222 sessions, 243 views.
+  - Sessions: 100% `Direct`.
+  - Data-center-like locations were prominent; treat part of traffic as low-quality/test/VPN until independently validated.
+- Do not interpret old 7-day totals as current organic growth.
+
+### Marketing decision
+
+- Stop broad promotion across all apps.
+- Focus next experiment on Invoice, EXIF, and Schengen.
+- Required funnel: tracked landing visit → meaningful tool action → completion event.
+- Validate UTM source/medium before judging any channel.
+- Organic channels already prepared:
+  - Reddit `r/SideProject` post live.
+  - Product Hunt draft exists but is not launched.
+  - Hacker News submission previously blocked by anti-spam eligibility.
+- No spam, fake accounts, CAPTCHA bypass, bought links, or unapproved paid spend.
+
+### Next session order
+
+1. Recheck current GA4 24-hour/7-day numbers; exclude diagnostic traffic.
+2. Confirm five completion events appear in GA4 Events and mark them as key events.
+3. Re-submit corrected 11-app sitemaps in Google Search Console and inspect representative URLs.
+4. Recheck Naver individual properties and Bing after recrawl.
+5. Launch one Product Hunt campaign and one tracked Reddit/community experiment, not all apps at once.
+6. Build localized intent pages only for Invoice, EXIF, and Schengen after measuring real completion.
+
+
 ## Seven-day organic growth execution — 2026-10-10
 
 - Search-intent audit completed:
