@@ -121,6 +121,8 @@
     notes = '';
   }
 
+  let isMounted = false;
+
   // Local storage auto-save
   onMount(() => {
     try {
@@ -142,10 +144,11 @@
         if (d.notes !== undefined) notes = d.notes;
       }
     } catch {}
+    isMounted = true;
   });
 
   $: {
-    if (typeof window !== 'undefined' && items) {
+    if (isMounted && typeof window !== 'undefined' && items) {
       try {
         localStorage.setItem('nomad_inv_v1', JSON.stringify({
           invoiceNumber, fromName, fromAddress, toName, toAddress,
@@ -218,17 +221,19 @@
       <div>
         <h2 class="text-3xl font-black tracking-tight text-slate-900">{t.invoiceTitle}</h2>
         <div class="mt-3 space-y-1">
+          <div class="print-only font-bold text-slate-900 text-lg leading-snug">{fromName || t.fromSection}</div>
           <input
             type="text"
             bind:value={fromName}
             placeholder={t.fromSection}
-            class="block w-full sm:w-80 font-bold text-slate-900 text-lg border-b border-dashed border-slate-300 hover:border-slate-500 focus:border-blue-600 focus:outline-hidden bg-transparent"
+            class="no-print block w-full sm:w-80 font-bold text-slate-900 text-lg border-b border-dashed border-slate-300 hover:border-slate-500 focus:border-blue-600 focus:outline-hidden bg-transparent"
           />
+          <div class="print-only text-xs text-slate-600 leading-relaxed whitespace-pre-line mt-1">{fromAddress}</div>
           <textarea
             bind:value={fromAddress}
             rows="3"
             placeholder="Address, VAT / Tax ID"
-            class="block w-full sm:w-80 text-xs text-slate-600 leading-relaxed border-b border-dashed border-slate-200 hover:border-slate-400 focus:border-blue-600 focus:outline-hidden bg-transparent resize-none"
+            class="no-print block w-full sm:w-80 text-xs text-slate-600 leading-relaxed border-b border-dashed border-slate-200 hover:border-slate-400 focus:border-blue-600 focus:outline-hidden bg-transparent resize-none"
           ></textarea>
         </div>
       </div>
@@ -236,26 +241,29 @@
       <div class="space-y-2 text-left sm:text-right w-full sm:w-auto">
         <div class="flex items-center sm:justify-end gap-2 text-xs font-bold text-slate-700">
           <span>{t.invNumber}:</span>
+          <span class="print-only font-mono font-bold text-slate-900">{invoiceNumber}</span>
           <input
             type="text"
             bind:value={invoiceNumber}
-            class="w-36 text-right font-mono font-bold text-slate-900 border-b border-dashed border-slate-300 focus:border-blue-600 focus:outline-hidden bg-transparent"
+            class="no-print w-36 text-right font-mono font-bold text-slate-900 border-b border-dashed border-slate-300 focus:border-blue-600 focus:outline-hidden bg-transparent"
           />
         </div>
         <div class="flex items-center sm:justify-end gap-2 text-xs text-slate-600">
           <span>{t.issueDate}:</span>
+          <span class="print-only text-xs font-semibold text-slate-800">{issueDate}</span>
           <input
             type="date"
             bind:value={issueDate}
-            class="text-right text-xs font-medium text-slate-800 border-b border-dashed border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
+            class="no-print text-right text-xs font-medium text-slate-800 border-b border-dashed border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
           />
         </div>
         <div class="flex items-center sm:justify-end gap-2 text-xs text-slate-600">
           <span>{t.dueDate}:</span>
+          <span class="print-only text-xs font-semibold text-slate-800">{dueDate}</span>
           <input
             type="date"
             bind:value={dueDate}
-            class="text-right text-xs font-medium text-slate-800 border-b border-dashed border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
+            class="no-print text-right text-xs font-medium text-slate-800 border-b border-dashed border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
           />
         </div>
         <div class="no-print flex items-center sm:justify-end gap-2 text-xs font-semibold text-slate-600 pt-1">
@@ -275,17 +283,19 @@
     <!-- Billed To Section -->
     <div class="py-6 border-b border-slate-100">
       <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">{t.toSection}</span>
+      <div class="print-only font-bold text-slate-800 text-base">{toName || '—'}</div>
       <input
         type="text"
         bind:value={toName}
         placeholder="Client or Company Name"
-        class="block w-full sm:w-80 font-bold text-slate-800 text-base border-b border-dashed border-slate-300 hover:border-slate-500 focus:border-blue-600 focus:outline-hidden bg-transparent"
+        class="no-print block w-full sm:w-80 font-bold text-slate-800 text-base border-b border-dashed border-slate-300 hover:border-slate-500 focus:border-blue-600 focus:outline-hidden bg-transparent"
       />
+      <div class="print-only text-xs text-slate-600 leading-relaxed whitespace-pre-line mt-1">{toAddress}</div>
       <textarea
         bind:value={toAddress}
         rows="2"
         placeholder="Client Address, Tax/VAT"
-        class="block w-full sm:w-80 text-xs text-slate-600 leading-relaxed border-b border-dashed border-slate-200 hover:border-slate-400 focus:border-blue-600 focus:outline-hidden bg-transparent resize-none mt-1"
+        class="no-print block w-full sm:w-80 text-xs text-slate-600 leading-relaxed border-b border-dashed border-slate-200 hover:border-slate-400 focus:border-blue-600 focus:outline-hidden bg-transparent resize-none mt-1"
       ></textarea>
     </div>
 
@@ -304,36 +314,39 @@
           </thead>
           <tbody class="divide-y divide-slate-100">
             {#each items as item (item.id)}
-              <tr class="group">
-                <td class="py-2.5 pr-4">
+              <tr class="group invoice-row">
+                <td class="py-2.5 pr-4 align-top">
+                  <div class="print-only text-xs font-medium text-slate-800 whitespace-pre-line leading-relaxed">{item.desc || '—'}</div>
                   <input
                     type="text"
                     bind:value={item.desc}
                     placeholder="Description of service or product"
-                    class="w-full text-xs font-medium text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
+                    class="no-print w-full text-xs font-medium text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
                   />
                 </td>
-                <td class="py-2.5 px-3 text-center">
+                <td class="py-2.5 px-3 text-center align-top">
+                  <span class="print-only text-xs font-semibold text-slate-800">{item.qty}</span>
                   <input
                     type="number"
                     min="1"
                     bind:value={item.qty}
-                    class="w-14 text-center text-xs font-semibold text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
+                    class="no-print w-14 text-center text-xs font-semibold text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
                   />
                 </td>
-                <td class="py-2.5 px-3 text-right">
+                <td class="py-2.5 px-3 text-right align-top">
+                  <span class="print-only text-xs font-semibold text-slate-800 font-mono">{formatMoney(Number(item.price) || 0)}</span>
                   <input
                     type="number"
                     min="0"
                     step="0.01"
                     bind:value={item.price}
-                    class="w-24 text-right text-xs font-semibold text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
+                    class="no-print w-24 text-right text-xs font-semibold text-slate-800 border-b border-transparent group-hover:border-slate-200 focus:border-blue-600 focus:outline-hidden bg-transparent"
                   />
                 </td>
-                <td class="py-2.5 pl-3 text-right font-bold text-slate-900 font-mono">
+                <td class="py-2.5 pl-3 text-right font-bold text-slate-900 font-mono align-top">
                   {formatMoney((Number(item.qty) || 0) * (Number(item.price) || 0))}
                 </td>
-                <td class="no-print py-2.5 pl-2 text-center">
+                <td class="no-print py-2.5 pl-2 text-center align-top">
                   {#if items.length > 1}
                     <button
                       type="button"
@@ -363,54 +376,96 @@
     </div>
 
     <!-- Summary & Notes Calculation Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-slate-200">
+    <div class="summary-grid grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-slate-200">
       <!-- Left: Notes & Bank Details -->
-      <div>
+      <div class="summary-notes">
         <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
           {t.paymentTerms}
         </span>
+        {#if notes.trim()}
+          <div class="print-only rounded-xl bg-slate-50/80 p-3 text-xs text-slate-600 leading-relaxed font-mono whitespace-pre-line border border-slate-100">
+            {notes}
+          </div>
+        {/if}
         <textarea
           bind:value={notes}
           rows="4"
           placeholder={t.paymentTermsPlaceholder}
-          class="w-full rounded-xl border border-dashed border-slate-200 p-2.5 text-xs text-slate-600 leading-relaxed focus:border-blue-600 focus:outline-hidden bg-transparent resize-none font-mono"
+          class="no-print w-full rounded-xl border border-dashed border-slate-200 p-2.5 text-xs text-slate-600 leading-relaxed focus:border-blue-600 focus:outline-hidden bg-transparent resize-none font-mono"
         ></textarea>
       </div>
 
       <!-- Right: Subtotal, Tax, Discount, Total Due -->
-      <div class="space-y-2 text-xs">
+      <div class="summary-totals space-y-2 text-xs">
         <div class="flex justify-between text-slate-600 py-1">
           <span>{t.subtotal}:</span>
           <span class="font-bold text-slate-800 font-mono">{formatMoney(subtotal)}</span>
         </div>
 
-        <div class="flex justify-between items-center text-slate-600 py-1">
-          <div class="flex items-center gap-1">
-            <span>{t.taxRate}:</span>
-            <input
-              type="number"
-              min="0"
-              max="100"
-              bind:value={taxRate}
-              class="w-12 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
-            />
-            <span>%</span>
+        {#if Number(taxRate) > 0}
+          <div class="flex justify-between items-center text-slate-600 py-1">
+            <div class="flex items-center gap-1">
+              <span>{t.taxRate}:</span>
+              <span class="print-only font-semibold text-slate-800">{taxRate}%</span>
+              <span class="no-print inline-flex items-center gap-1">
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  bind:value={taxRate}
+                  class="w-12 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
+                />
+                <span>%</span>
+              </span>
+            </div>
+            <span class="font-bold text-slate-800 font-mono">{formatMoney(taxAmount)}</span>
           </div>
-          <span class="font-bold text-slate-800 font-mono">{formatMoney(taxAmount)}</span>
-        </div>
+        {:else}
+          <div class="no-print flex justify-between items-center text-slate-600 py-1">
+            <div class="flex items-center gap-1">
+              <span>{t.taxRate}:</span>
+              <input
+                type="number"
+                min="0"
+                max="100"
+                bind:value={taxRate}
+                class="w-12 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
+              />
+              <span>%</span>
+            </div>
+            <span class="font-bold text-slate-800 font-mono">{formatMoney(taxAmount)}</span>
+          </div>
+        {/if}
 
-        <div class="flex justify-between items-center text-slate-600 py-1">
-          <div class="flex items-center gap-1">
-            <span>{t.discount}:</span>
-            <input
-              type="number"
-              min="0"
-              bind:value={discount}
-              class="w-16 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
-            />
+        {#if Number(discount) > 0}
+          <div class="flex justify-between items-center text-slate-600 py-1">
+            <div class="flex items-center gap-1">
+              <span>{t.discount}:</span>
+              <span class="no-print inline-flex items-center">
+                <input
+                  type="number"
+                  min="0"
+                  bind:value={discount}
+                  class="w-16 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
+                />
+              </span>
+            </div>
+            <span class="font-bold text-rose-600 font-mono">-{formatMoney(Number(discount) || 0)}</span>
           </div>
-          <span class="font-bold text-rose-600 font-mono">-{formatMoney(Number(discount) || 0)}</span>
-        </div>
+        {:else}
+          <div class="no-print flex justify-between items-center text-slate-600 py-1">
+            <div class="flex items-center gap-1">
+              <span>{t.discount}:</span>
+              <input
+                type="number"
+                min="0"
+                bind:value={discount}
+                class="w-16 text-center border-b border-dashed border-slate-300 font-semibold text-slate-800 focus:border-blue-600 focus:outline-hidden bg-transparent"
+              />
+            </div>
+            <span class="font-bold text-rose-600 font-mono">-{formatMoney(Number(discount) || 0)}</span>
+          </div>
+        {/if}
 
         <div class="flex justify-between items-center py-3 border-t-2 border-slate-900 mt-2">
           <span class="text-sm font-black text-slate-900">{t.totalDue}:</span>
@@ -442,47 +497,67 @@
 </div>
 
 <style>
+  .print-only {
+    display: none;
+  }
+
   @media print {
     @page {
       size: A4 portrait;
-      margin: 0;
+      margin: 12mm 15mm;
     }
 
+    :global(html),
     :global(body) {
-      background: white !important;
+      background: #ffffff !important;
       margin: 0 !important;
+      padding: 0 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    :global(.no-print),
+    .no-print {
+      display: none !important;
+    }
+
+    .print-only {
+      display: block !important;
+    }
+
+    span.print-only {
+      display: inline !important;
     }
 
     .invoice-page {
-      width: 210mm !important;
+      width: 100% !important;
       max-width: none !important;
       margin: 0 !important;
       padding: 0 !important;
     }
 
-    :global(.no-print) {
-      display: none !important;
-    }
-
     .print-sheet {
-      width: 210mm !important;
-      min-height: 297mm;
-      box-sizing: border-box;
+      width: 100% !important;
+      max-width: none !important;
+      min-height: auto !important;
+      box-sizing: border-box !important;
       margin: 0 !important;
       border: none !important;
       box-shadow: none !important;
-      padding: 12mm !important;
+      padding: 0 !important;
       border-radius: 0 !important;
-      page-break-inside: avoid;
-      break-inside: avoid;
     }
 
-    .print-sheet table,
-    .print-sheet tr,
-    .print-sheet td,
-    .print-sheet th {
-      page-break-inside: avoid;
-      break-inside: avoid;
+    .invoice-row {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+
+    .summary-grid,
+    .summary-notes,
+    .summary-totals {
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
     }
   }
 </style>

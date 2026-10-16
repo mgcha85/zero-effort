@@ -117,3 +117,16 @@
     <Footer lang={$currentLang} />
   </div>
 </div>
+
+<style>
+  @media print {
+    :global(body),
+    :global(html) {
+      background: #ffffff !important;
+    }
+    div.relative.min-h-screen {
+      min-height: auto !important;
+      background: transparent !important;
+    }
+  }
+</style>
