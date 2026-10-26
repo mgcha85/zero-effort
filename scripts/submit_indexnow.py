@@ -26,6 +26,10 @@ def main():
             'https://size.minitoolbox.dev/',
             'https://qr.minitoolbox.dev/',
             'https://invoice.minitoolbox.dev/',
+            'https://invoice.minitoolbox.dev/templates/freelance-developer/',
+            'https://invoice.minitoolbox.dev/templates/consultant/',
+            'https://invoice.minitoolbox.dev/templates/contractor-receipt/',
+            'https://invoice.minitoolbox.dev/templates/graphic-designer/',
             'https://exif.minitoolbox.dev/',
             'https://caro.minitoolbox.dev/'
         ]

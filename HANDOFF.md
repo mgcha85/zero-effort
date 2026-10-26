@@ -1,5 +1,13 @@
 # MiniToolbox Handoff
 
+## Revival focus — 2026-10-26
+
+- Today still 0. Last 7 days were about 31 Direct sessions plus 1 Naver session. Invoice template pages were the only pages with new views.
+- Revival scope is Invoice only. Other apps stay live but are not promoted.
+- Hub sitemap, `llms.txt`, and `llms-full.txt` now list the four live Invoice templates.
+- IndexNow should be resubmitted after this commit. HTTP 200 is receipt, not indexing.
+- Reddit and Product Hunt were not republished in this pass unless a later note says a live URL exists. Do not duplicate the old r/SideProject post.
+
 ## Latest handoff — 2026-10-17
 
 ### Repository

@@ -140,23 +140,23 @@
   }
 
   $: availableCities = POPULAR_CITIES.filter(c => !activeCities.some(ac => ac.id === c.id));
+
+  $: jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Nomad TimeSync',
+    url: 'https://timesync.minitoolbox.dev/',
+    description: 'Zero-upload, 100% client-side timezone meeting planner and golden hours overlap finder for digital nomads and remote teams.',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Any'
+  });
 </script>
 
 <svelte:head>
   <title>{t.siteTitle} | {t.heroTitle}</title>
   <meta name="description" content={t.heroSub} />
   <link rel="canonical" href="https://timesync.minitoolbox.dev/" />
-  <script type="application/ld+json">
-    {JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebApplication',
-      name: 'Nomad TimeSync',
-      url: 'https://timesync.minitoolbox.dev',
-      description: 'Zero-upload, 100% client-side timezone meeting planner and golden hours overlap finder for digital nomads and remote teams.',
-      applicationCategory: 'BusinessApplication',
-      operatingSystem: 'Any'
-    })}
-  </script>
+  {@html `<script type="application/ld+json">${jsonLd}</script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6">

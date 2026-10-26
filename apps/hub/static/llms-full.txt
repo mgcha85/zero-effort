@@ -98,6 +98,11 @@ MiniToolbox.dev is a curated suite of single-purpose micro web tools engineered 
 - Processing: Real-time calculation of subtotal, tax breakdown, and total in local browser RAM. Zero backend database storing invoices.
 - Output: Pixel-perfect, margin-free A4 PDF invoices or direct printout.
 - Use Case: Freelancers, digital nomads, and contractors needing to issue quick, professional billing documents without subscription invoice SaaS lock-in.
+- Intent pages:
+  - https://invoice.minitoolbox.dev/templates/freelance-developer/
+  - https://invoice.minitoolbox.dev/templates/consultant/
+  - https://invoice.minitoolbox.dev/templates/contractor-receipt/
+  - https://invoice.minitoolbox.dev/templates/graphic-designer/
 
 ### 12. EXIF Privacy Scrubber (GPS & Metadata Stripper)
 - URL: https://exif.minitoolbox.dev

@@ -15,6 +15,10 @@
 - [Nomad TimeSync Overlap Planner](https://timesync.minitoolbox.dev): World timezone comparison and golden working hours (08:00-19:00) overlap finder for digital nomads and remote teams across Paris, New York, London, SF, and Asia. 1-click meeting time copy and .ICS calendar export with zero server tracking.
 - [PureQR Studio](https://qr.minitoolbox.dev): Permanent static QR code studio with zero redirects, expiry dates, or tracking. Encodes raw URL, WiFi, vCard, WhatsApp, and text into high-resolution vector SVG and 2048px PNG directly in browser RAM.
 - [Nomad Invoice Maker](https://invoice.minitoolbox.dev): Zero-login, zero-server-tracking A4 PDF freelance invoice & receipt generator. Supports multi-currency ($/€/£/₩/¥/₫), automatic tax/VAT calculations, and clean print layout.
+  - [Freelance developer invoice](https://invoice.minitoolbox.dev/templates/freelance-developer/)
+  - [Consulting invoice and retainer](https://invoice.minitoolbox.dev/templates/consultant/)
+  - [Contractor work order and receipt](https://invoice.minitoolbox.dev/templates/contractor-receipt/)
+  - [Graphic designer invoice](https://invoice.minitoolbox.dev/templates/graphic-designer/)
 - [EXIF Privacy Scrubber](https://exif.minitoolbox.dev): In-browser photo GPS and camera metadata scrubber. Strips hidden home address coordinates, device serials, and timestamps from JPG/PNG/WebP with zero image degradation and bulk ZIP download.
 - [Cờ Caro WebRTC P2P Game](https://caro.minitoolbox.dev): Traditional Vietnamese Gomoku (5-in-a-row) board game with peer-to-peer browser connectivity.
 
