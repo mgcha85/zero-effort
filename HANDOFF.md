@@ -8,6 +8,14 @@
 - IndexNow should be resubmitted after this commit. HTTP 200 is receipt, not indexing.
 - Reddit and Product Hunt were not republished in this pass unless a later note says a live URL exists. Do not duplicate the old r/SideProject post.
 
+## GSC unparsable structured data — 2026-10-28
+
+- Issue: `파싱 오류: '}' 또는 개체 구성 요소 이름 누락` · 영향 URL 1개.
+- URL: `https://timesync.minitoolbox.dev/?utm_source=hub&utm_medium=internal&utm_campaign=7day-strategy&utm_content=timesync-planner` (크롤 2026-10-25).
+- Cause: live TimeSync still empty SPA shell (no title/canonical/JSON-LD). Local `pnpm --filter @zero-effort/timesync-planner build` already emits valid JSON-LD; Vercel project not wired to this repo so production never got that build.
+- Hub no longer lists TimeSync in `tools.ts` / `llms.txt` / `llms-full.txt` so Google is not re-fed the bad URL.
+- To clear GSC: either connect+redeploy TimeSync with prerendered HTML, or leave it unlinked and click **수정 결과 확인** after Google recrawls.
+
 ## Latest handoff — 2026-10-17
 
 ### Repository
